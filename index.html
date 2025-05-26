@@ -1,655 +1,219 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>The Future of Agentic Internet Communication: Trends & Insights</title>
+    <meta charset="utf-8"/>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+    <title>AI Knowledge Base</title>
     <script src="https://cdn.tailwindcss.com"></script>
-    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-    <!-- Infographic Plan Summary:
-    1. Hero: Intro to Agentic Internet & Protocol Need.
-    2. Protocol Landscape: MCP vs A2A (dev.aimwork.ai flows visualized via HTML/CSS), Comparative Table of key protocols (MCP, A2A, ACP, AGP from report's Table 1). Added Gemini API Protocol Explainer.
-    3. Dominant Trends: Interoperability, Decentralization, Security (ZKP, MPC, HE), Governance (DAOs), Agentic Economy, Open vs. Walled Gardens (Icon + Text cards). Added Gemini API Trend Deeper Dive.
-    4. Protocol Synergy & Evaluation: Illustrative Venn Diagram (HTML/CSS) for MCP, A2A, ACP.
-    5. Illustrative Charts: Donut chart for Protocol Focus, Bar chart for Trend Momentum (Chart.js).
-    6. Future Outlook & Challenges: Key takeaways, list of challenges.
-    7. Conclusion: Summary of multi-protocol future.
-    All content derived/synthesized from the provided Deep Research Report.
-    -->
-    <!-- Visualization Choices Summary:
-    - MCP/A2A Flows (dev.aimwork.ai): HTML/CSS flowcharts. Goal: Organize. Justification: Direct representation. NO SVG/MERMAID.
-    - Protocol Comparison: HTML Table. Goal: Compare. Justification: Clear feature comparison. NO SVG.
-    - Dominant Trends: HTML/CSS cards with Unicode icons. Goal: Inform. Justification: Quick visual cues. NO SVG.
-    - Protocol Synergy: HTML/CSS Venn Diagram. Goal: Organize/Relationships. Justification: Illustrate roles/overlap. NO SVG/MERMAID.
-    - Illustrative Charts (Chart.js):
-        - Protocol Focus Distribution (Donut Chart). Goal: Compare. Justification: Visual breakdown of focus areas.
-        - Key Trend Momentum (Bar Chart). Goal: Compare. Justification: Visual ranking of trend importance.
-    - Lists/Text: Standard HTML for summaries and challenges. Goal: Inform.
-    All Chart.js instances will include label wrapping and required tooltip configuration.
-    -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet"/>
     <style>
         body {
             font-family: 'Inter', sans-serif;
-            background-color: #F7FAFC; 
-            color: #2D3748; 
+            background-color: #0f172a;
+            color: #e2e8f0;
         }
-        .chart-container {
-            position: relative;
-            width: 100%;
-            max-width: 600px; 
-            margin-left: auto;
-            margin-right: auto;
-            height: 300px; 
-            max-height: 400px;
+        .card {
+            background: linear-gradient(135deg, #1e293b 0%, #334155 100%);
+            border-radius: 1rem;
+            padding: 2rem;
+            border: 1px solid #475569;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
         }
-        @media (min-width: 768px) {
-            .chart-container {
-                height: 350px;
-            }
+        .card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.3);
         }
-        .flow-step {
-            border: 2px solid #FF8C00; 
-            border-radius: 0.5rem;
-            padding: 0.75rem;
-            margin-bottom: 0.5rem;
-            text-align: center;
-            background-color: #FFFFFF;
-            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        .hero-gradient {
+            background: linear-gradient(135deg, #3b82f6 0%, #8b5cf6 50%, #06b6d4 100%);
         }
-        .flow-arrow {
-            font-size: 1.5rem;
-            color: #FF8C00; 
-            margin: 0.25rem 0;
-            text-align: center;
-        }
-        .protocol-card {
-            background-color: #FFFFFF;
-            border-radius: 0.75rem;
-            padding: 1.5rem;
-            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
-            transition: transform 0.3s ease;
-        }
-        .protocol-card:hover {
-            transform: translateY(-5px);
-        }
-        .trend-card {
-            background-color: #FFFFFF;
-            border-left: 5px solid #FF69B4; 
-        }
-        .section-title {
-            color: #9370DB; 
-        }
-        .highlight-stat {
-            color: #FF8C00; 
-            font-weight: bold;
-        }
-        .venn-circle {
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-weight: bold;
-            color: white;
-            text-align: center;
-            padding: 1rem;
-        }
-        .venn-overlap {
-            position: absolute;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 0.8rem;
-            font-weight: bold;
-            color: #2D3748;
-            background-color: rgba(255, 255, 255, 0.8);
-            padding: 0.5rem;
-            border-radius: 0.25rem;
-            text-align: center;
-        }
-        .table-header {
-            background-color: #008080; 
-            color: white;
-        }
-        /* Modal styles */
-        .modal {
-            display: none; /* Hidden by default */
-            position: fixed; 
-            z-index: 100; 
-            left: 0;
-            top: 0;
-            width: 100%; 
-            height: 100%; 
-            overflow: auto; 
-            background-color: rgba(0,0,0,0.6); 
-        }
-        .modal-content {
-            background-color: #FFFFFF;
-            margin: 10% auto; 
-            padding: 25px;
-            border: 1px solid #888;
-            width: 80%; 
-            max-width: 700px;
-            border-radius: 0.75rem;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.3);
-            position: relative;
-        }
-        .modal-close-button {
-            color: #aaa;
-            float: right;
-            font-size: 28px;
-            font-weight: bold;
-            position: absolute;
-            top: 10px;
-            right: 20px;
-        }
-        .modal-close-button:hover,
-        .modal-close-button:focus {
-            color: #2D3748;
+        .article-link {
+            color: #60a5fa;
             text-decoration: none;
-            cursor: pointer;
-        }
-        .gemini-button {
-            background-color: #9370DB; /* Purple */
-            color: white;
-            padding: 0.5rem 1rem;
-            border-radius: 0.375rem;
             font-weight: 600;
-            transition: background-color 0.2s ease;
-            cursor: pointer;
-            border: none;
+            transition: color 0.2s ease;
         }
-        .gemini-button:hover {
-            background-color: #7A5FB5; /* Darker Purple */
+        .article-link:hover {
+            color: #93c5fd;
         }
-        .loading-spinner {
-            border: 4px solid #f3f3f3; /* Light grey */
-            border-top: 4px solid #9370DB; /* Purple */
-            border-radius: 50%;
-            width: 30px;
-            height: 30px;
-            animation: spin 1s linear infinite;
-            margin: 10px auto;
-        }
-        @keyframes spin {
-            0% { transform: rotate(0deg); }
-            100% { transform: rotate(360deg); }
+        .tag {
+            background-color: #1e293b;
+            color: #94a3b8;
+            padding: 0.25rem 0.75rem;
+            border-radius: 9999px;
+            font-size: 0.75rem;
+            font-weight: 500;
         }
     </style>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
 </head>
-<body class="antialiased">
-
-    <header class="bg-gradient-to-r from-[#FF8C00] to-[#FF69B4] text-white p-8 text-center sticky top-0 z-50 shadow-lg">
-        <h1 class="text-4xl font-bold mb-2">The Future of Agentic Internet Communication</h1>
-        <p class="text-xl">Navigating Protocols, Trends, and Trajectories</p>
+<body class="bg-slate-900 text-slate-200">
+    <!-- Hero Section -->
+    <header class="hero-gradient text-white py-20">
+        <div class="container mx-auto px-6 text-center">
+            <h1 class="text-5xl md:text-6xl font-bold mb-6">AI Knowledge Base</h1>
+            <p class="text-xl md:text-2xl mb-8 max-w-3xl mx-auto">
+                Exploring the future of artificial intelligence, agentic communication, and the evolving digital landscape
+            </p>
+            <div class="flex justify-center space-x-4 text-sm">
+                <span class="tag">AI Research</span>
+                <span class="tag">Protocol Analysis</span>
+                <span class="tag">Future Tech</span>
+            </div>
+        </div>
     </header>
 
-    <main class="container mx-auto p-6 md:p-12 space-y-16">
+    <!-- Navigation -->
+    <nav class="bg-slate-800 border-b border-slate-700 sticky top-0 z-50">
+        <div class="container mx-auto px-6 py-4">
+            <div class="flex items-center justify-between">
+                <div class="text-xl font-bold text-white">Articles & Resources</div>
+                <div class="text-sm text-slate-400">
+                    Last updated: May 2025
+                </div>
+            </div>
+        </div>
+    </nav>
 
-        <section id="intro" class="text-center">
-            <h2 class="text-3xl font-semibold mb-6 section-title">🚀 The Dawn of the Agentic Internet</h2>
-            <div class="grid md:grid-cols-2 gap-8 items-center">
-                <div class="protocol-card p-6">
-                    <h3 class="text-2xl font-semibold mb-3 text-[#008080]">What is Agentic AI?</h3>
-                    <p class="text-lg leading-relaxed">Agentic AI refers to AI-driven autonomous systems capable of executing complex, multi-step processes with minimal human intervention. Key principles include:</p>
-                    <ul class="list-disc list-inside mt-3 text-left mx-auto max-w-md space-y-1">
-                        <li><span class="font-semibold text-[#FF8C00]">Autonomy:</span> End-to-end task execution.</li>
-                        <li><span class="font-semibold text-[#FFD700]">Adaptability:</span> Continuous learning and refinement.</li>
-                        <li><span class="font-semibold text-[#FF69B4]">Goal-orientation:</span> Operating with predefined objectives.</li>
-                    </ul>
-                    <p class="mt-3 text-lg">It's a shift to a web where AI agents make decisions and perform tasks, demanding new communication infrastructures. 🤖🌐💬</p>
-                </div>
-                <div class="protocol-card p-6">
-                    <h3 class="text-2xl font-semibold mb-3 text-[#008080]">The Imperative for Advanced Protocols</h3>
-                    <p class="text-lg leading-relaxed">The current internet is suboptimal for autonomous agents. Heterogeneous agents create communication barriers. Standardized protocols are <span class="highlight-stat">CRITICAL</span> to enable agents to:</p>
-                    <ul class="list-disc list-inside mt-3 text-left mx-auto max-w-md space-y-1">
-                        <li><span class="font-semibold text-[#FF8C00]">Discover</span> each other efficiently.</li>
-                        <li><span class="font-semibold text-[#FFD700]">Exchange</span> context and capabilities.</li>
-                        <li><span class="font-semibold text-[#FF69B4]">Negotiate</span> roles and tasks dynamically.</li>
-                        <li><span class="font-semibold text-[#9370DB]">Collaborate</span> securely and scalably.</li>
-                    </ul>
-                    <p class="mt-3 text-lg">Without these, the agentic internet's potential remains untapped.</p>
-                </div>
+    <!-- Main Content -->
+    <main class="container mx-auto px-6 py-12">
+        <!-- Featured Articles Section -->
+        <section class="mb-16">
+            <h2 class="text-3xl font-bold mb-8 text-center">Featured Articles</h2>
+            <div class="grid md:grid-cols-2 gap-8">
+                <!-- Parallel Internet Article -->
+                <article class="card">
+                    <h3 class="text-2xl font-bold mb-4 text-white">
+                        <a href="pages/parellel_internet.html" class="article-link">
+                            The Internet's Next Act: From Browsers to Brainy Agents
+                        </a>
+                    </h3>
+                    <p class="text-slate-300 mb-4 leading-relaxed">
+                        A comprehensive visual guide to understanding how AI agents are transforming—not replacing—the internet we know. Explore the dual architecture of traditional and agentic internet systems working together.
+                    </p>
+                    <div class="flex flex-wrap gap-2 mb-4">
+                        <span class="tag">MCP Protocol</span>
+                        <span class="tag">A2A Communication</span>
+                        <span class="tag">Architecture</span>
+                    </div>
+                    <div class="flex items-center justify-between">
+                        <a href="pages/parellel_internet.html" class="article-link hover:underline">
+                            Read Article →
+                        </a>
+                        <span class="text-xs text-slate-500">May 2025</span>
+                    </div>
+                </article>
+
+                <!-- Agentic Protocol Future Trend -->
+                <article class="card">
+                    <h3 class="text-2xl font-bold mb-4 text-white">
+                        <a href="pages/agentic protocol future trend.html" class="article-link">
+                            The Future of Agentic Internet Communication
+                        </a>
+                    </h3>
+                    <p class="text-slate-300 mb-4 leading-relaxed">
+                        An interactive infographic exploring protocols, trends, and trajectories in AI agent communication. Features detailed analysis of MCP, A2A, and emerging standards.
+                    </p>
+                    <div class="flex flex-wrap gap-2 mb-4">
+                        <span class="tag">Interactive</span>
+                        <span class="tag">Protocols</span>
+                        <span class="tag">Trends Analysis</span>
+                    </div>
+                    <div class="flex items-center justify-between">
+                        <a href="pages/agentic protocol future trend.html" class="article-link hover:underline">
+                            Explore Interactive →
+                        </a>
+                        <span class="text-xs text-slate-500">May 2025</span>
+                    </div>
+                </article>
             </div>
         </section>
 
-        <section id="protocols-dev-aimwork">
-            <h2 class="text-3xl font-semibold mb-8 text-center section-title">🔎 Protocol Visions: MCP vs. A2A (from dev.aimwork.ai)</h2>
-            <p class="text-center text-lg mb-8">The `dev.aimwork.ai` blog post illustrates two distinct architectural models for agent communication. These visualizations depict the core flows as described:</p>
-            <div class="grid md:grid-cols-2 gap-12">
-                <div class="protocol-card">
-                    <h3 class="text-2xl font-semibold mb-4 text-center text-[#FF8C00]">Model Context Protocol (MCP) Flow</h3>
-                    <p class="text-sm text-center mb-4">A centralized, client-server architecture with an MCP server as an intermediary.</p>
-                    <div class="flex flex-col items-center">
-                        <div class="flow-step w-4/5">User 🧑</div>
-                        <div class="flow-arrow">↓</div>
-                        <div class="flow-step w-4/5">LLM Chat 💬</div>
-                        <div class="flow-arrow">↓</div>
-                        <div class="flow-step w-4/5">AI Agent (Intelligence) 🧠</div>
-                        <div class="flow-arrow">↓</div>
-                        <div class="flow-step w-4/5">Tools (MCP Client, Memory) 🛠️</div>
-                        <div class="flow-arrow">↓ (MCP Protocol)</div>
-                        <div class="flow-step w-full md:w-3/5 bg-[#FFD700] text-black">MCP Server (Protocol Interface) 🖥️</div>
-                        <div class="flow-arrow">↕️</div>
-                        <div class="flow-step w-4/5">Resources (APIs, DBs) 📦</div>
-                        <p class="mt-4 text-center text-sm">Advantages cited: Centralized control, security, standardized interface.</p>
+        <!-- All Resources Section -->
+        <section>
+            <h2 class="text-3xl font-bold mb-8 text-center">All Resources</h2>
+            <div class="grid md:grid-cols-3 gap-6">
+                <!-- Template Resource -->
+                <article class="card">
+                    <h3 class="text-xl font-bold mb-3 text-white">
+                        <a href="pages/template.html" class="article-link">
+                            UI Template Collection
+                        </a>
+                    </h3>
+                    <p class="text-slate-300 mb-4 text-sm leading-relaxed">
+                        A showcase of modern UI templates and components for web applications, featuring dark themes and responsive design patterns.
+                    </p>
+                    <div class="flex flex-wrap gap-2 mb-4">
+                        <span class="tag">Templates</span>
+                        <span class="tag">UI/UX</span>
                     </div>
-                </div>
-                <div class="protocol-card">
-                    <h3 class="text-2xl font-semibold mb-4 text-center text-[#FF69B4]">Agent-to-Agent (A2A) Protocol Flow</h3>
-                    <p class="text-sm text-center mb-4">A decentralized model enabling direct, symmetric peer-to-peer communication.</p>
-                     <div class="flex flex-col items-center">
-                        <div class="flow-step w-4/5">User 🧑</div>
-                        <div class="flow-arrow">↓</div>
-                        <div class="flow-step w-4/5">LLM Chat 💬</div>
-                        <div class="flow-arrow">↓</div>
-                        <div class="flow-step w-4/5">Client Agent (Simplified Intelligence) 🤖</div>
-                        <div class="flow-arrow">↓ (A2A Protocol)</div>
-                        <div class="flow-step w-full md:w-3/5 bg-[#008080] text-white">Merchant Agent (Business Intelligence) 💼</div>
-                        <div class="flow-arrow">↓</div>
-                        <div class="flow-step w-4/5">Merchant Tools & Resources 🛠️📦</div>
-                         <p class="mt-4 text-center text-sm">Advantages cited: Reduced latency, flexibility, distributed intelligence.</p>
-                    </div>
-                </div>
-            </div>
-            <p class="text-center mt-8 text-lg">These represent a classic architectural trade-off: MCP's control vs. A2A's directness and potential for greater autonomy.</p>
-        </section>
+                    <a href="pages/template.html" class="article-link text-sm hover:underline">
+                        View Templates →
+                    </a>
+                </article>
 
-        <section id="protocol-landscape">
-            <h2 class="text-3xl font-semibold mb-8 text-center section-title">🗺️ The Evolving Protocol Landscape</h2>
-            <p class="text-center text-lg mb-6">Beyond the initial MCP/A2A comparison, a diverse ecosystem of protocols is emerging, each with unique strengths. The following table, based on data from the research report, summarizes key players:</p>
-            <div class="overflow-x-auto protocol-card p-0 mb-6">
-                <table class="min-w-full divide-y divide-gray-200">
-                    <thead class="table-header">
-                        <tr>
-                            <th class="px-4 py-3 text-left text-xs font-medium uppercase tracking-wider">Feature</th>
-                            <th class="px-4 py-3 text-left text-xs font-medium uppercase tracking-wider">MCP (Anthropic/Evolving)</th>
-                            <th class="px-4 py-3 text-left text-xs font-medium uppercase tracking-wider">A2A (Google)</th>
-                            <th class="px-4 py-3 text-left text-xs font-medium uppercase tracking-wider">AGP (AGNTCY/Cisco)</th>
-                            <th class="px-4 py-3 text-left text-xs font-medium uppercase tracking-wider">ACP (Linux Foundation/IBM)</th>
-                        </tr>
-                    </thead>
-                    <tbody class="bg-white divide-y divide-gray-200">
-                        <tr>
-                            <td class="px-4 py-3 whitespace-nowrap font-semibold">Core Architecture</td>
-                            <td class="px-4 py-3 whitespace-normal">Client-Server (evolving for inter-agent)</td>
-                            <td class="px-4 py-3 whitespace-normal">P2P or Mediated, Structured Message Passing</td>
-                            <td class="px-4 py-3 whitespace-normal">Gateway-centric, Distributed Systems</td>
-                            <td class="px-4 py-3 whitespace-normal">RESTful API, Router Agent Pattern</td>
-                        </tr>
-                        <tr>
-                            <td class="px-4 py-3 whitespace-nowrap font-semibold">Primary Focus</td>
-                            <td class="px-4 py-3 whitespace-normal">Context Provisioning, Tool Integration</td>
-                            <td class="px-4 py-3 whitespace-normal">Vendor-Agnostic Agent Collaboration</td>
-                            <td class="px-4 py-3 whitespace-normal">High-performance, Secure Distributed Interactions</td>
-                            <td class="px-4 py-3 whitespace-normal">Broad Interoperability, Multimodal Communication</td>
-                        </tr>
-                        <tr>
-                            <td class="px-4 py-3 whitespace-nowrap font-semibold">Key Technologies</td>
-                            <td class="px-4 py-3 whitespace-normal">JSON-RPC, SSE, Tool/Resource Sharing, Capability Negotiation</td>
-                            <td class="px-4 py-3 whitespace-normal">JSON-RPC, Agent Cards, Vendor-Neutral, Extensible Schemas</td>
-                            <td class="px-4 py-3 whitespace-normal">gRPC, mTLS, RBAC, Pub/Sub, Streaming</td>
-                            <td class="px-4 py-3 whitespace-normal">REST API, Offline Discovery, Multimodal Messages, Await</td>
-                        </tr>
-                        <tr>
-                            <td class="px-4 py-3 whitespace-nowrap font-semibold">Decentralized Leaning</td>
-                            <td class="px-4 py-3 whitespace-normal">Initially Centralized, evolving</td>
-                            <td class="px-4 py-3 whitespace-normal">Leans Decentralized (P2P capable)</td>
-                            <td class="px-4 py-3 whitespace-normal">Gateway implies some centralization</td>
-                            <td class="px-4 py-3 whitespace-normal">Decentralized (REST endpoints)</td>
-                        </tr>
-                    </tbody>
-                </table>
-            </div>
-            <div class="protocol-card p-6 text-center">
-                <h3 class="text-xl font-semibold mb-3 text-[#008080]">✨ Explore Protocols with AI Insights</h3>
-                <p class="mb-4 text-sm">Select a protocol and let Gemini provide a deeper explanation or potential use cases.</p>
-                <div class="flex flex-col sm:flex-row justify-center items-center gap-4">
-                    <select id="protocolSelect" class="p-2 border border-gray-300 rounded-md shadow-sm focus:ring-[#9370DB] focus:border-[#9370DB]">
-                        <option value="MCP">MCP (Model Context Protocol)</option>
-                        <option value="A2A">A2A (Agent-to-Agent Protocol)</option>
-                        <option value="AGP">AGP (Agent Gateway Protocol)</option>
-                        <option value="ACP">ACP (Agent Communication Protocol)</option>
-                    </select>
-                    <button id="explainProtocolBtn" class="gemini-button">Explain Protocol ✨</button>
-                </div>
-            </div>
-             <p class="text-center mt-6 text-md">Conceptual frameworks like ACN (P2P/DHT) and ANP (DIDs, Semantic Web) also point towards more decentralized futures.</p>
-        </section>
+                <!-- Page 1 -->
+                <article class="card">
+                    <h3 class="text-xl font-bold mb-3 text-white">
+                        <a href="pages/1.html" class="article-link">
+                            Document Archive
+                        </a>
+                    </h3>
+                    <p class="text-slate-300 mb-4 text-sm leading-relaxed">
+                        Additional research documents and archived content related to AI development and technological trends.
+                    </p>
+                    <div class="flex flex-wrap gap-2 mb-4">
+                        <span class="tag">Archive</span>
+                        <span class="tag">Research</span>
+                    </div>
+                    <a href="pages/1.html" class="article-link text-sm hover:underline">
+                        View Archive →
+                    </a>
+                </article>
 
-        <section id="dominant-trends">
-            <h2 class="text-3xl font-semibold mb-8 text-center section-title">📈 Dominant Trends Shaping Future Communication</h2>
-            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-                <div class="protocol-card trend-card p-6 flex flex-col justify-between">
-                    <div>
-                        <h3 class="text-xl font-semibold mb-2 text-[#FF69B4]">🔗 Interoperability & Open Standards</h3>
-                        <p class="text-sm">A strong drive to overcome agent silos. Initiatives like MCP, A2A, and ACP are open-sourced or under open governance, aiming for vendor-neutral communication. Goal: Seamless discovery and coordination, like HTTP for the web.</p>
+                <!-- Quick Access -->
+                <article class="card border-2 border-blue-500/30">
+                    <h3 class="text-xl font-bold mb-3 text-blue-400">
+                        Quick Navigation
+                    </h3>
+                    <div class="space-y-3">
+                        <a href="pages/parellel_internet.html" class="block text-sm article-link hover:underline">
+                            → Parallel Internet Guide
+                        </a>
+                        <a href="pages/agentic protocol future trend.html" class="block text-sm article-link hover:underline">
+                            → Protocol Trends Interactive
+                        </a>
+                        <a href="pages/template.html" class="block text-sm article-link hover:underline">
+                            → UI Templates
+                        </a>
+                        <a href="pages/1.html" class="block text-sm article-link hover:underline">
+                            → Document Archive
+                        </a>
                     </div>
-                    <button class="gemini-button mt-4 self-start" onclick="getTrendInsight('Interoperability & Open Standards')">Explore Trend ✨</button>
-                </div>
-                <div class="protocol-card trend-card p-6 flex flex-col justify-between">
-                    <div>
-                        <h3 class="text-xl font-semibold mb-2 text-[#FF69B4]">🌐 Decentralization</h3>
-                        <p class="text-sm">A core tenet for agent autonomy, resilience, and scalability. Manifests in P2P networks (e.g., ACN), direct agent protocols (A2A), and influence from Web3 technologies (blockchain for trust).</p>
-                    </div>
-                    <button class="gemini-button mt-4 self-start" onclick="getTrendInsight('Decentralization in Agentic AI')">Explore Trend ✨</button>
-                </div>
-                <div class="protocol-card trend-card p-6 flex flex-col justify-between">
-                    <div>
-                        <h3 class="text-xl font-semibold mb-2 text-[#FF69B4]">🛡️ Security, Privacy & Trust</h3>
-                        <p class="text-sm">Paramount as agents handle sensitive data. Requires robust identity (DIDs), secure communication (E2EE, mTLS), and advanced cryptography: ZKPs, MPC, HE.</p>
-                    </div>
-                     <button class="gemini-button mt-4 self-start" onclick="getTrendInsight('Security, Privacy & Trust in Agentic AI using ZKPs, MPC, and HE')">Explore Trend ✨</button>
-                </div>
-                <div class="protocol-card trend-card p-6 flex flex-col justify-between">
-                    <div>
-                        <h3 class="text-xl font-semibold mb-2 text-[#FF69B4]">🏛️ Governance Models</h3>
-                        <p class="text-sm">Needed for accountability, ethics, and liability. DAOs (Decentralized Autonomous Organizations) are proposed for participatory decision-making. Complemented by frameworks like NIST AI RMF and EU AI Act.</p>
-                    </div>
-                    <button class="gemini-button mt-4 self-start" onclick="getTrendInsight('Governance Models for Agentic AI, including DAOs')">Explore Trend ✨</button>
-                </div>
-                <div class="protocol-card trend-card p-6 flex flex-col justify-between">
-                    <div>
-                        <h3 class="text-xl font-semibold mb-2 text-[#FF69B4]">💰 The Agentic Economy</h3>
-                        <p class="text-sm">Agents facilitating economic transactions, potentially reorganizing markets. Involves tokenized incentives, AI-driven marketplaces, and smart contracts for automated agreements.</p>
-                    </div>
-                    <button class="gemini-button mt-4 self-start" onclick="getTrendInsight('The Agentic Economy and its implications')">Explore Trend ✨</button>
-                </div>
-                <div class="protocol-card trend-card p-6 flex flex-col justify-between">
-                    <div>
-                        <h3 class="text-xl font-semibold mb-2 text-[#FF69B4]">🌍 Open Ecosystems vs. Walled Gardens</h3>
-                        <p class="text-sm">A key battle: Will communication be open like the web, or within proprietary platforms? Openness is crucial for innovation and equitable access. Many major players publicly support open initiatives while building their own platforms.</p>
-                    </div>
-                    <button class="gemini-button mt-4 self-start" onclick="getTrendInsight('Open Ecosystems vs. Walled Gardens in Agentic AI Communication')">Explore Trend ✨</button>
-                </div>
+                </article>
             </div>
         </section>
 
-        <section id="charts-and-synergy">
-            <h2 class="text-3xl font-semibold mb-8 text-center section-title">📊 Illustrative Insights & Protocol Synergy</h2>
-            <p class="text-center text-lg mb-8">While the agentic internet is still emerging, we can illustrate potential distributions and synergies. The following charts use representative data to highlight concepts from the research.</p>
-            <div class="grid md:grid-cols-2 gap-12 items-start">
-                <div class="protocol-card">
-                    <h3 class="text-xl font-semibold mb-3 text-center text-[#008080]">Illustrative: Protocol Focus Areas</h3>
-                    <p class="text-sm text-center mb-4">A hypothetical breakdown of where current protocol development emphasis might lie, based on report themes.</p>
-                    <div class="chart-container mx-auto h-[300px] md:h-[350px]">
-                        <canvas id="protocolFocusChart"></canvas>
-                    </div>
-                    <p class="text-xs text-center mt-2">This donut chart visualizes a possible distribution of effort across key protocol functionalities.</p>
-                </div>
-                <div class="protocol-card">
-                    <h3 class="text-xl font-semibold mb-3 text-center text-[#008080]">Illustrative: Key Trend Momentum</h3>
-                     <p class="text-sm text-center mb-4">A visual representation of the perceived momentum behind key trends shaping agent communication.</p>
-                    <div class="chart-container mx-auto h-[300px] md:h-[350px]">
-                        <canvas id="trendMomentumChart"></canvas>
-                    </div>
-                     <p class="text-xs text-center mt-2">This bar chart offers a comparative look at the driving forces in the agentic internet's evolution.</p>
-                </div>
-            </div>
-
-            <div class="mt-16 protocol-card p-8">
-                <h3 class="text-2xl font-semibold mb-6 text-center text-[#9370DB]">🤝 Protocol Synergies: A Multi-Layered Future</h3>
-                <p class="text-lg text-center mb-6">No single protocol will dominate. The future is a hybrid, with protocols complementing each other. For example:</p>
-                <div class="relative w-full max-w-2xl h-80 mx-auto flex items-center justify-center">
-                    <div class="venn-circle absolute bg-[#FF8C00] w-48 h-48 md:w-56 md:h-56" style="left: 10%; top: 15%;">MCP<br/><span class="text-xs font-normal">(Context, Tools)</span></div>
-                    <div class="venn-circle absolute bg-[#FF69B4] w-48 h-48 md:w-56 md:h-56" style="right: 10%; top: 15%;">A2A<br/><span class="text-xs font-normal">(Collaboration)</span></div>
-                    <div class="venn-circle absolute bg-[#008080] w-40 h-40 md:w-48 md:h-48" style="left: 35%; top: 45%; z-index:5;">ACP<br/><span class="text-xs font-normal">(Interoperability, REST)</span></div>
-
-                    <div class="venn-overlap" style="left: 30%; top: 30%; transform: translate(-50%, -50%); z-index:10;">Tooling &<br/>Resource Access</div>
-                    <div class="venn-overlap" style="right: 28%; top: 30%; transform: translate(50%, -50%); z-index:10;">Agent<br/>Dialogue</div>
-                    <div class="venn-overlap" style="left: 50%; top: 65%; transform: translate(-50%, -50%); z-index:15;">Open Web<br/>Integration</div>
-                </div>
-                <p class="text-center mt-8 text-lg">A2A might handle high-level agent collaboration, with agents using MCP internally for tools. ACP could bridge systems via REST. This HTML/CSS Venn diagram illustrates potential overlaps.</p>
+        <!-- About Section -->
+        <section class="mt-16 text-center">
+            <div class="card max-w-4xl mx-auto">
+                <h2 class="text-2xl font-bold mb-4 text-white">About This Knowledge Base</h2>
+                <p class="text-slate-300 leading-relaxed mb-4">
+                    This knowledge base explores the cutting-edge developments in artificial intelligence, particularly focusing on agentic AI communication, protocol development, and the evolution of internet architecture. Our content synthesizes research findings, protocol specifications, and forward-looking analysis to provide insights into the future of AI-driven systems.
+                </p>
+                <p class="text-slate-400 text-sm">
+                    Topics include Model Context Protocol (MCP), Agent-to-Agent (A2A) communication, decentralized AI systems, and the intersection of AI with web technologies.
+                </p>
             </div>
         </section>
-
-
-        <section id="future-outlook">
-            <h2 class="text-3xl font-semibold mb-8 text-center section-title">🔮 Future Outlook & Key Challenges</h2>
-            <div class="protocol-card p-8">
-                <p class="text-xl text-center mb-6 leading-relaxed">The trajectory is towards <span class="highlight-stat">open, interoperable, and increasingly decentralized</span> frameworks. A multi-layered architecture, like the internet's protocol stack, is likely, with specialized protocols for discovery, context, collaboration, and messaging.</p>
-                <h3 class="text-2xl font-semibold mt-8 mb-4 text-[#FF8C00]">Key Challenges Ahead:</h3>
-                <ul class="list-none space-y-3">
-                    <li class="flex items-start"><span class="text-2xl mr-3">📈</span><div><strong class="text-[#FF8C00]">Scalability:</strong> Handling billions of agents and their interactions efficiently.</div></li>
-                    <li class="flex items-start"><span class="text-2xl mr-3">🛡️</span><div><strong class="text-[#FFD700]">Security in Decentralized Environments:</strong> Addressing novel threats like collusion, spoofing, and data poisoning with advanced cryptography.</div></li>
-                    <li class="flex items-start"><span class="text-2xl mr-3">🏛️</span><div><strong class="text-[#FF69B4]">Governance:</strong> Establishing effective, adaptable models (DAOs, ethical frameworks, legal liability).</div></li>
-                    <li class="flex items-start"><span class="text-2xl mr-3">🔗</span><div><strong class="text-[#008080]">Adoption & Standardization:</strong> Overcoming protocol fragmentation for true interoperability.</div></li>
-                    <li class="flex items-start"><span class="text-2xl mr-3">💰</span><div><strong class="text-[#9370DB]">Economic Models:</strong> Developing viable models for value exchange in the agentic economy.</div></li>
-                </ul>
-                <p class="text-center mt-8 text-lg">Success hinges on a robust framework where multiple protocols interoperate effectively through common registries, data formats, or translation layers.</p>
-            </div>
-        </section>
-
-        <section id="conclusion" class="text-center">
-            <h2 class="text-3xl font-semibold mb-6 section-title">🏁 Conclusion: A Dynamic & Composable Future</h2>
-            <div class="protocol-card p-8">
-                <p class="text-xl leading-relaxed">The agentic internet's communication future will be characterized by the <span class="highlight-stat">dynamic composition of capabilities</span>. Agents will discover, negotiate, and utilize services on the fly, demanding flexible protocols. The journey requires a concerted, multi-stakeholder effort to guide development responsibly and harness its transformative potential.</p>
-                <p class="mt-4 text-lg">It's not about one protocol winning, but about building an ecosystem where many can thrive and interoperate to create a truly intelligent and autonomous web.</p>
-            </div>
-        </section>
-
     </main>
 
-    <footer class="text-center p-8 mt-12 bg-gray-800 text-gray-300">
-        <p>&copy; 2025 Agentic Internet Insights. Infographic based on Deep Research Report.</p>
-        <p class="text-xs mt-1">This is a synthesized visual representation for informational purposes. Gemini API features provide AI-generated insights.</p>
-    </footer>
-
-    <div id="geminiModal" class="modal">
-        <div class="modal-content">
-            <span class="modal-close-button" onclick="closeModal()">&times;</span>
-            <h3 id="modalTitle" class="text-2xl font-semibold mb-4 text-[#9370DB]">AI Insight ✨</h3>
-            <div id="modalLoading" class="loading-spinner" style="display: none;"></div>
-            <div id="modalResponse" class="text-base leading-relaxed max-h-[60vh] overflow-y-auto">
-                </div>
+    <!-- Footer -->
+    <footer class="bg-slate-800 border-t border-slate-700 mt-16 py-8">
+        <div class="container mx-auto px-6 text-center">
+            <p class="text-slate-400 mb-2">&copy; 2025 AI Knowledge Base. All rights reserved.</p>
+            <p class="text-slate-500 text-sm">
+                Exploring the future of AI communication and intelligent systems
+            </p>
         </div>
-    </div>
-
-    <script>
-        function wrapLabels(label, maxLength = 16) {
-            if (typeof label !== 'string') return label;
-            if (label.length <= maxLength) return label;
-
-            const words = label.split(' ');
-            const lines = [];
-            let currentLine = '';
-            for (const word of words) {
-                if ((currentLine + word).length > maxLength && currentLine.length > 0) {
-                    lines.push(currentLine.trim());
-                    currentLine = '';
-                }
-                currentLine += word + ' ';
-            }
-            if (currentLine.trim().length > 0) {
-                lines.push(currentLine.trim());
-            }
-            return lines.length > 0 ? lines : [label]; 
-        }
-
-        const tooltipTitleCallback = function(tooltipItems) {
-            const item = tooltipItems[0];
-            let label = item.chart.data.labels[item.dataIndex];
-            if (Array.isArray(label)) {
-                return label.join(' ');
-            } else {
-                return label;
-            }
-        };
-
-        const protocolFocusCtx = document.getElementById('protocolFocusChart').getContext('2d');
-        const protocolFocusData = {
-            labels: [
-                wrapLabels('Context Provisioning (e.g., MCP)'),
-                wrapLabels('Direct Agent Collaboration (e.g., A2A)'),
-                wrapLabels('Broad Interoperability (e.g., ACP)'),
-                wrapLabels('High-Performance Distributed (e.g., AGP)')
-            ],
-            datasets: [{
-                label: 'Protocol Focus Distribution',
-                data: [40, 30, 20, 10], 
-                backgroundColor: ['#FF8C00', '#FF69B4', '#008080', '#FFD700'],
-                borderColor: '#FFFFFF',
-                borderWidth: 2
-            }]
-        };
-        new Chart(protocolFocusCtx, {
-            type: 'doughnut',
-            data: protocolFocusData,
-            options: {
-                responsive: true, maintainAspectRatio: false,
-                plugins: {
-                    legend: {
-                        position: 'bottom',
-                        labels: {
-                            font: { size: 10 }, boxWidth: 20, padding: 15,
-                            generateLabels: function(chart) {
-                                const data = chart.data;
-                                if (data.labels.length && data.datasets.length) {
-                                    return data.labels.map(function(label, i) {
-                                        const meta = chart.getDatasetMeta(0);
-                                        const style = meta.controller.getStyle(i);
-                                        let textLabel = Array.isArray(label) ? label.join(' ') : label;
-                                        if (textLabel.length > 25) textLabel = textLabel.substring(0,22) + '...';
-                                        return {
-                                            text: textLabel, fillStyle: style.backgroundColor, strokeStyle: style.borderColor,
-                                            lineWidth: style.borderWidth, hidden: isNaN(data.datasets[0].data[i]) || meta.data[i].hidden, index: i
-                                        };
-                                    });
-                                }
-                                return [];
-                            }
-                        }
-                    },
-                    tooltip: { callbacks: { title: tooltipTitleCallback, label: function(context) {
-                        let label = context.dataset.label || '';
-                        if (label) { label += ': '; }
-                        if (context.parsed !== null) { label += context.parsed + '%'; }
-                        return label;
-                    }}},
-                    title: { display: false, text: 'Illustrative Protocol Focus Areas' }
-                },
-                cutout: '60%'
-            }
-        });
-
-        const trendMomentumCtx = document.getElementById('trendMomentumChart').getContext('2d');
-        const trendMomentumData = {
-            labels: [
-                wrapLabels('Decentralization'),
-                wrapLabels('Open Standards & Interoperability'),
-                wrapLabels('Security & Privacy (Advanced Crypto)'),
-                wrapLabels('Governance Models (e.g., DAOs)'),
-                wrapLabels('Agentic Economy Emergence')
-            ],
-            datasets: [{
-                label: 'Illustrative Trend Momentum (Score 1-10)',
-                data: [9, 8.5, 8, 7, 7.5], 
-                backgroundColor: ['#FF8C00', '#FFD700', '#FF69B4', '#008080', '#9370DB'],
-                borderColor: ['#E57200', '#E5BF00', '#E55A9F', '#006666', '#7A5FB5'],
-                borderWidth: 1
-            }]
-        };
-        new Chart(trendMomentumCtx, {
-            type: 'bar',
-            data: trendMomentumData,
-            options: {
-                responsive: true, maintainAspectRatio: false, indexAxis: 'y',
-                scales: { x: { beginAtZero: true, max: 10, title: { display: true, text: 'Momentum Score (Illustrative)' }},
-                          y: { ticks: { font: { size: 10 }, autoSkip: false }}
-                },
-                plugins: { legend: { display: false }, tooltip: { callbacks: { title: tooltipTitleCallback }},
-                           title: { display: false, text: 'Illustrative Key Trend Momentum' }
-                }
-            }
-        });
-
-        // Gemini API Integration
-        const modal = document.getElementById('geminiModal');
-        const modalTitle = document.getElementById('modalTitle');
-        const modalResponse = document.getElementById('modalResponse');
-        const modalLoading = document.getElementById('modalLoading');
-        const explainProtocolBtn = document.getElementById('explainProtocolBtn');
-        const protocolSelect = document.getElementById('protocolSelect');
-
-        function openModal() {
-            modal.style.display = 'block';
-        }
-
-        function closeModal() {
-            modal.style.display = 'none';
-            modalResponse.innerHTML = ''; 
-            modalLoading.style.display = 'none';
-        }
-
-        window.onclick = function(event) {
-            if (event.target == modal) {
-                closeModal();
-            }
-        }
-
-        async function callGeminiAPI(prompt) {
-            modalResponse.innerHTML = '';
-            modalLoading.style.display = 'block';
-            openModal();
-
-            let chatHistory = [{ role: "user", parts: [{ text: prompt }] }];
-            const payload = { contents: chatHistory };
-            const apiKey = ""; 
-            const apiUrl = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent?key=${apiKey}`;
-
-            try {
-                const response = await fetch(apiUrl, {
-                    method: 'POST',
-                    headers: { 'Content-Type': 'application/json' },
-                    body: JSON.stringify(payload)
-                });
-                
-                if (!response.ok) {
-                    const errorBody = await response.text();
-                    throw new Error(`API request failed with status ${response.status}: ${errorBody}`);
-                }
-
-                const result = await response.json();
-
-                if (result.candidates && result.candidates.length > 0 &&
-                    result.candidates[0].content && result.candidates[0].content.parts &&
-                    result.candidates[0].content.parts.length > 0) {
-                    const text = result.candidates[0].content.parts[0].text;
-                    // Basic Markdown to HTML conversion (bold, newlines)
-                    let htmlText = text.replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>'); // Bold
-                    htmlText = htmlText.replace(/\*(.*?)\*/g, '<em>$1</em>'); // Italics
-                    htmlText = htmlText.replace(/```([\s\S]*?)```/g, '<pre class="bg-gray-100 p-2 rounded text-sm"><code>$1</code></pre>'); // Code blocks
-                    htmlText = htmlText.replace(/\n/g, '<br>'); // Newlines
-                    modalResponse.innerHTML = htmlText;
-                } else {
-                    modalResponse.textContent = 'No content received from AI or unexpected response structure.';
-                    console.error("Unexpected API response structure:", result);
-                }
-            } catch (error) {
-                console.error('Error calling Gemini API:', error);
-                modalResponse.textContent = 'Error fetching AI insight: ' + error.message;
-            } finally {
-                modalLoading.style.display = 'none';
-            }
-        }
-
-        if (explainProtocolBtn) {
-            explainProtocolBtn.addEventListener('click', () => {
-                const selectedProtocol = protocolSelect.value;
-                const protocolFullName = protocolSelect.options[protocolSelect.selectedIndex].text;
-                modalTitle.textContent = `AI Insight on ${protocolFullName} ✨`;
-                const prompt = `Explain the ${protocolFullName} (${selectedProtocol}) for agentic internet communication. Focus on its core purpose, key features, typical use cases, and potential advantages or disadvantages in 200-300 words. Format your response clearly, using markdown for emphasis if needed.`;
-                callGeminiAPI(prompt);
-            });
-        }
-
-        // Expose to global scope for inline onclick handlers
-        window.getTrendInsight = (trendName) => {
-            modalTitle.textContent = `AI Insight on ${trendName} ✨`;
-            const prompt = `Provide a deeper dive into the trend of "${trendName}" within the context of agentic AI and its communication protocols. Discuss its significance, recent developments or examples, and potential future implications in 200-300 words. Format your response clearly, using markdown for emphasis if needed.`;
-            callGeminiAPI(prompt);
-        };
-
-    </script>
+    </footer>
 </body>
 </html>
