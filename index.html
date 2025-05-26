@@ -42,6 +42,18 @@
           max-height: 200px;
           transition: max-height 0.3s ease-in;
         }
+        .loading-placeholder {
+          animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+        }
+        .loading-placeholder {
+          background: linear-gradient(90deg, var(--border-color) 25%, transparent 50%, var(--border-color) 75%);
+          background-size: 200% 100%;
+          animation: shimmer 2s infinite;
+        }
+        @keyframes shimmer {
+          0% { background-position: 200% 0; }
+          100% { background-position: -200% 0; }
+        }
       </style>
     </head>
     <body class="light-theme">
@@ -76,10 +88,13 @@
     </svg>
     </button>
     <div class="pl-6 space-y-1 sidebar-dropdown" id="dropdown-menu">
-    <a class="block px-3 py-2 rounded-md text-xs font-normal leading-normal text-[var(--text-muted-color)] hover:bg-gray-100 dark:hover:bg-gray-700 hover:text-[var(--text-color)] transition-colors truncate" href="#post-parallel-internet">The Internet's Next Act</a>
-    <a class="block px-3 py-2 rounded-md text-xs font-normal leading-normal text-[var(--text-muted-color)] hover:bg-gray-100 dark:hover:bg-gray-700 hover:text-[var(--text-color)] transition-colors truncate" href="#post-agentic-trends">Agentic Communication Trends</a>
-    <a class="block px-3 py-2 rounded-md text-xs font-normal leading-normal text-[var(--text-muted-color)] hover:bg-gray-100 dark:hover:bg-gray-700 hover:text-[var(--text-color)] transition-colors truncate" href="#post-ui-templates">UI Template Collection</a>
-    <a class="block px-3 py-2 rounded-md text-xs font-normal leading-normal text-[var(--text-muted-color)] hover:bg-gray-100 dark:hover:bg-gray-700 hover:text-[var(--text-color)] transition-colors truncate" href="#post-archive">Document Archive</a>
+    <!-- Dynamic content will be loaded here -->
+    <noscript>
+        <a class="block px-3 py-2 rounded-md text-xs font-normal leading-normal text-[var(--text-muted-color)] hover:bg-gray-100 dark:hover:bg-gray-700 hover:text-[var(--text-color)] transition-colors truncate" href="#post-parallel-internet">Parallel Internet</a>
+        <a class="block px-3 py-2 rounded-md text-xs font-normal leading-normal text-[var(--text-muted-color)] hover:bg-gray-100 dark:hover:bg-gray-700 hover:text-[var(--text-color)] transition-colors truncate" href="#post-agentic-trends">Agentic Trends</a>
+        <a class="block px-3 py-2 rounded-md text-xs font-normal leading-normal text-[var(--text-muted-color)] hover:bg-gray-100 dark:hover:bg-gray-700 hover:text-[var(--text-color)] transition-colors truncate" href="#post-ui-templates">UI Templates</a>
+        <a class="block px-3 py-2 rounded-md text-xs font-normal leading-normal text-[var(--text-muted-color)] hover:bg-gray-100 dark:hover:bg-gray-700 hover:text-[var(--text-color)] transition-colors truncate" href="#post-archive">Document Archive</a>
+    </noscript>
     </div>
     </div>
     <a class="flex items-center gap-3 px-3 py-2 rounded-md text-sm font-medium leading-normal hover:bg-gray-100 dark:hover:bg-gray-700 transition-colors text-[var(--text-muted-color)] hover:text-[var(--text-color)]" href="#">
@@ -115,99 +130,46 @@
     <div class="px-4 md:px-6 lg:px-8 py-8">
     <div class="layout-content-container flex flex-col max-w-screen-lg mx-auto">
     <h2 class="text-[var(--text-color)] text-3xl font-bold leading-tight tracking-tight pb-6 pt-2" style="font-family: Newsreader, serif;">AI KnowledgeBase</h2>
-    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-6" id="blog-posts-container">
     
-    <!-- Parallel Internet Article -->
-    <article class="flex flex-col bg-[var(--card-bg-color)] rounded-lg shadow-md overflow-hidden hover:shadow-xl transition-shadow duration-300 border border-[var(--border-color)]" id="post-parallel-internet">
-    <a class="block" href="pages/parellel_internet.html">
-    <div class="w-full bg-center bg-no-repeat aspect-[16/10] bg-cover bg-gradient-to-br from-blue-500 via-purple-600 to-teal-500 flex items-center justify-center">
-    <div class="text-white text-center p-4">
-    <svg class="w-16 h-16 mx-auto mb-2" fill="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-    <path d="M12 2L13.09 8.26L19 7L14.74 12L19 17L13.09 15.74L12 22L10.91 15.74L5 17L9.26 12L5 7L10.91 8.26L12 2Z"/>
-    </svg>
-    <div class="text-sm font-semibold">Internet Architecture</div>
+    <!-- Loading placeholders - will be replaced by dynamic content -->
+    <article class="flex flex-col bg-[var(--card-bg-color)] rounded-lg shadow-md overflow-hidden border border-[var(--border-color)] loading-placeholder">
+    <div class="w-full aspect-[16/10] bg-[var(--border-color)]"></div>
+    <div class="p-5">
+    <div class="h-6 bg-[var(--border-color)] rounded mb-2"></div>
+    <div class="h-4 bg-[var(--border-color)] rounded mb-2"></div>
+    <div class="h-4 bg-[var(--border-color)] rounded w-3/4"></div>
     </div>
-    </div>
-    </a>
-    <div class="p-5 flex flex-col flex-grow">
-    <h3 class="text-[var(--text-color)] text-xl font-semibold leading-snug mb-2" style="font-family: Newsreader, serif;">
-    <a class="hover:text-blue-600 dark:hover:text-blue-400 transition-colors" href="pages/parellel_internet.html">Parallel Internet: Traditional vs Agentic Internet</a>
-    </h3>
-    <p class="text-[var(--text-muted-color)] text-sm font-normal leading-relaxed flex-grow">
-                        A visual guide to understanding how AI agents are transforming—not replacing—the internet we know. Explore the dual architecture of traditional and agentic internet systems working together.
-                      </p>
-    <a class="text-blue-600 dark:text-blue-400 text-sm font-semibold mt-4 inline-block hover:underline" href="pages/parellel_internet.html">Read article →</a>
+    </article>
+    
+    <article class="flex flex-col bg-[var(--card-bg-color)] rounded-lg shadow-md overflow-hidden border border-[var(--border-color)] loading-placeholder">
+    <div class="w-full aspect-[16/10] bg-[var(--border-color)]"></div>
+    <div class="p-5">
+    <div class="h-6 bg-[var(--border-color)] rounded mb-2"></div>
+    <div class="h-4 bg-[var(--border-color)] rounded mb-2"></div>
+    <div class="h-4 bg-[var(--border-color)] rounded w-3/4"></div>
     </div>
     </article>
 
-    <!-- Agentic Protocol Trends -->
-    <article class="flex flex-col bg-[var(--card-bg-color)] rounded-lg shadow-md overflow-hidden hover:shadow-xl transition-shadow duration-300 border border-[var(--border-color)]" id="post-agentic-trends">
-    <a class="block" href="pages/agentic protocol future trend.html">
-    <div class="w-full bg-center bg-no-repeat aspect-[16/10] bg-cover bg-gradient-to-br from-orange-500 via-pink-500 to-purple-600 flex items-center justify-center">
-    <div class="text-white text-center p-4">
-    <svg class="w-16 h-16 mx-auto mb-2" fill="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-    <path d="M12 2C13.1 2 14 2.9 14 4C14 5.1 13.1 6 12 6C10.9 6 10 5.1 10 4C10 2.9 10.9 2 12 2ZM21 9V7L15 1H5C3.9 1 3 1.9 3 3V21C3 22.1 3.9 23 5 23H19C20.1 23 21 22.1 21 21V9Z"/>
-    </svg>
-    <div class="text-sm font-semibold">Protocol Analysis</div>
-    </div>
-    </div>
-    </a>
-    <div class="p-5 flex flex-col flex-grow">
-    <h3 class="text-[var(--text-color)] text-xl font-semibold leading-snug mb-2" style="font-family: Newsreader, serif;">
-    <a class="hover:text-blue-600 dark:hover:text-blue-400 transition-colors" href="pages/agentic protocol future trend.html">The Future of Agentic Internet Communication</a>
-    </h3>
-    <p class="text-[var(--text-muted-color)] text-sm font-normal leading-relaxed flex-grow">
-                        An interactive infographic exploring protocols, trends, and trajectories in AI agent communication. Features detailed analysis of MCP, A2A, and emerging standards.
-                      </p>
-    <a class="text-blue-600 dark:text-blue-400 text-sm font-semibold mt-4 inline-block hover:underline" href="pages/agentic protocol future trend.html">Read article →</a>
-    </div>
-    </article>
-
-    <!-- UI Templates -->
-    <article class="flex flex-col bg-[var(--card-bg-color)] rounded-lg shadow-md overflow-hidden hover:shadow-xl transition-shadow duration-300 border border-[var(--border-color)]" id="post-ui-templates">
-    <a class="block" href="pages/template.html">
-    <div class="w-full bg-center bg-no-repeat aspect-[16/10] bg-cover bg-gradient-to-br from-green-500 via-teal-500 to-blue-500 flex items-center justify-center">
-    <div class="text-white text-center p-4">
-    <svg class="w-16 h-16 mx-auto mb-2" fill="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-    <path d="M3 3H21V5H3V3ZM3 7H21V9H3V7ZM3 11H21V13H3V11ZM3 15H21V17H3V15ZM3 19H21V21H3V19Z"/>
-    </svg>
-    <div class="text-sm font-semibold">UI Components</div>
-    </div>
-    </div>
-    </a>
-    <div class="p-5 flex flex-col flex-grow">
-    <h3 class="text-[var(--text-color)] text-xl font-semibold leading-snug mb-2" style="font-family: Newsreader, serif;">
-    <a class="hover:text-blue-600 dark:hover:text-blue-400 transition-colors" href="pages/template.html">UI Template Collection</a>
-    </h3>
-    <p class="text-[var(--text-muted-color)] text-sm font-normal leading-relaxed flex-grow">
-                        A showcase of modern UI templates and components for web applications, featuring dark themes and responsive design patterns.
-                      </p>
-    <a class="text-blue-600 dark:text-blue-400 text-sm font-semibold mt-4 inline-block hover:underline" href="pages/template.html">Read article →</a>
-    </div>
-    </article>
-
-    <!-- Document Archive -->
-    <article class="flex flex-col bg-[var(--card-bg-color)] rounded-lg shadow-md overflow-hidden hover:shadow-xl transition-shadow duration-300 border border-[var(--border-color)]" id="post-archive">
-    <a class="block" href="pages/1.html">
-    <div class="w-full bg-center bg-no-repeat aspect-[16/10] bg-cover bg-gradient-to-br from-gray-600 via-gray-700 to-gray-800 flex items-center justify-center">
-    <div class="text-white text-center p-4">
-    <svg class="w-16 h-16 mx-auto mb-2" fill="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-    <path d="M14,2H6A2,2 0 0,0 4,4V20A2,2 0 0,0 6,22H18A2,2 0 0,0 20,20V8L14,2M18,20H6V4H13V9H18V20Z"/>
-    </svg>
-    <div class="text-sm font-semibold">Archive</div>
-    </div>
-    </div>
-    </a>
-    <div class="p-5 flex flex-col flex-grow">
-    <h3 class="text-[var(--text-color)] text-xl font-semibold leading-snug mb-2" style="font-family: Newsreader, serif;">
-    <a class="hover:text-blue-600 dark:hover:text-blue-400 transition-colors" href="pages/1.html">Document Archive</a>
-    </h3>
-    <p class="text-[var(--text-muted-color)] text-sm font-normal leading-relaxed flex-grow">
-                        Additional research documents and archived content related to AI development and technological trends.
-                      </p>
-    <a class="text-blue-600 dark:text-blue-400 text-sm font-semibold mt-4 inline-block hover:underline" href="pages/1.html">Read article →</a>
-    </div>
-    </article>
+    <!-- Fallback content for no-JS -->
+    <noscript>
+        <article class="flex flex-col bg-[var(--card-bg-color)] rounded-lg shadow-md overflow-hidden hover:shadow-xl transition-shadow duration-300 border border-[var(--border-color)]">
+        <a class="block" href="pages/parellel_internet.html">
+        <div class="w-full bg-center bg-no-repeat aspect-[16/10] bg-cover bg-gradient-to-br from-blue-500 via-purple-600 to-teal-500 flex items-center justify-center">
+        <div class="text-white text-center p-4">
+        <div class="text-sm font-semibold">Internet Architecture</div>
+        </div>
+        </div>
+        </a>
+        <div class="p-5 flex flex-col flex-grow">
+        <h3 class="text-[var(--text-color)] text-xl font-semibold leading-snug mb-2" style="font-family: Newsreader, serif;">
+        <a class="hover:text-blue-600 dark:hover:text-blue-400 transition-colors" href="pages/parellel_internet.html">Parallel Internet</a>
+        </h3>
+        <p class="text-[var(--text-muted-color)] text-sm font-normal leading-relaxed flex-grow">Exploring internet architecture concepts.</p>
+        <a class="text-blue-600 dark:text-blue-400 text-sm font-semibold mt-4 inline-block hover:underline" href="pages/parellel_internet.html">Read article →</a>
+        </div>
+        </article>
+    </noscript>
 
     </div>
     </div>
@@ -221,92 +183,283 @@
     </div>
     </div>
     <script>
-        const themeToggleBtn = document.getElementById('theme-toggle');
-        const themeToggleDarkIcon = document.getElementById('theme-toggle-dark-icon');
-        const themeToggleLightIcon = document.getElementById('theme-toggle-light-icon');
-        const themeToggleText = document.getElementById('theme-toggle-text');
-        
-        // Check for saved theme preference or use system preference
-        if (localStorage.getItem('color-theme') === 'dark' || (!('color-theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
-          document.body.classList.add('dark-theme');
-          document.body.classList.remove('light-theme');
-          themeToggleLightIcon.classList.add('hidden');
-          themeToggleDarkIcon.classList.remove('hidden');
-          themeToggleText.textContent = 'Dark Mode';
-        } else {
-          document.body.classList.add('light-theme');
-          document.body.classList.remove('dark-theme');
-          themeToggleDarkIcon.classList.add('hidden');
-          themeToggleLightIcon.classList.remove('hidden');
-          themeToggleText.textContent = 'Light Mode';
+        // Blog post configuration and metadata
+        const blogPosts = [
+            {
+                filename: 'parellel_internet.html',
+                id: 'post-parallel-internet',
+                fallback: {
+                    title: 'Parallel Internet: Traditional vs Agentic Internet',
+                    description: 'A visual guide to understanding how AI agents are transforming—not replacing—the internet we know.',
+                    category: 'Internet Architecture',
+                    gradient: 'from-blue-500 via-purple-600 to-teal-500',
+                    icon: `<path d="M12 2L13.09 8.26L19 7L14.74 12L19 17L13.09 15.74L12 22L10.91 15.74L5 17L9.26 12L5 7L10.91 8.26L12 2Z"/>`
+                }
+            },
+            {
+                filename: 'agentic protocol future trend.html',
+                id: 'post-agentic-trends',
+                fallback: {
+                    title: 'Agentic Protocol Future Trends',
+                    description: 'Exploring protocols, trends, and trajectories in AI agent communication.',
+                    category: 'Protocol Analysis',
+                    gradient: 'from-orange-500 via-pink-500 to-purple-600',
+                    icon: `<path d="M12 2C13.1 2 14 2.9 14 4C14 5.1 13.1 6 12 6C10.9 6 10 5.1 10 4C10 2.9 10.9 2 12 2ZM21 9V7L15 1H5C3.9 1 3 1.9 3 3V21C3 22.1 3.9 23 5 23H19C20.1 23 21 22.1 21 21V9Z"/>`
+                }
+            },
+            {
+                filename: 'template.html',
+                id: 'post-ui-templates',
+                fallback: {
+                    title: 'UI Template Collection',
+                    description: 'A showcase of modern UI templates and components for web applications.',
+                    category: 'UI Components',
+                    gradient: 'from-green-500 via-teal-500 to-blue-500',
+                    icon: `<path d="M3 3H21V5H3V3ZM3 7H21V9H3V7ZM3 11H21V13H3V11ZM3 15H21V17H3V15ZM3 19H21V21H3V19Z"/>`
+                }
+            },
+            {
+                filename: '1.html',
+                id: 'post-archive',
+                fallback: {
+                    title: 'Document Archive',
+                    description: 'Additional research documents and archived content related to AI development.',
+                    category: 'Archive',
+                    gradient: 'from-gray-600 via-gray-700 to-gray-800',
+                    icon: `<path d="M14,2H6A2,2 0 0,0 4,4V20A2,2 0 0,0 6,22H18A2,2 0 0,0 20,20V8L14,2M18,20H6V4H13V9H18V20Z"/>`
+                }
+            }
+        ];
+
+        // Cache for parsed post metadata
+        const postCache = new Map();
+        const CACHE_DURATION = 24 * 60 * 60 * 1000; // 24 hours
+
+        // Extract metadata from HTML content
+        function extractPostMetadata(htmlContent, filename) {
+            const parser = new DOMParser();
+            const doc = parser.parseFromString(htmlContent, 'text/html');
+            
+            // Extract title (try multiple sources)
+            let title = doc.querySelector('title')?.textContent?.replace(' - AI KnowledgeBase', '') ||
+                       doc.querySelector('article h1')?.textContent ||
+                       doc.querySelector('h1')?.textContent ||
+                       filename.replace('.html', '');
+            
+            // Extract description (try multiple sources)
+            let description = doc.querySelector('meta[name="description"]')?.content ||
+                             doc.querySelector('article p')?.textContent ||
+                             doc.querySelector('p')?.textContent ||
+                             'No description available';
+            
+            // Clean and truncate description
+            description = description.replace(/\s+/g, ' ').trim();
+            if (description.length > 150) {
+                description = description.substring(0, 147) + '...';
+            }
+            
+            // Extract publication date
+            const dateElement = doc.querySelector('time[datetime]');
+            const publishDate = dateElement?.getAttribute('datetime') || 
+                               dateElement?.textContent || 
+                               new Date().toISOString().split('T')[0];
+            
+            return { title, description, publishDate };
         }
-        
-        themeToggleBtn.addEventListener('click', function() {
-          // toggle icons inside button
-          themeToggleDarkIcon.classList.toggle('hidden');
-          themeToggleLightIcon.classList.toggle('hidden');
-          
-          // if set via local storage previously
-          if (localStorage.getItem('color-theme')) {
-            if (localStorage.getItem('color-theme') === 'light') {
-              document.body.classList.add('dark-theme');
-              document.body.classList.remove('light-theme');
-              localStorage.setItem('color-theme', 'dark');
-              themeToggleText.textContent = 'Dark Mode';
-            } else {
-              document.body.classList.add('light-theme');
-              document.body.classList.remove('dark-theme');
-              localStorage.setItem('color-theme', 'light');
-              themeToggleText.textContent = 'Light Mode';
+
+        // Fetch and parse post metadata
+        async function fetchPostMetadata(post) {
+            const cacheKey = `post-${post.filename}`;
+            const cached = postCache.get(cacheKey);
+            
+            // Check cache validity
+            if (cached && (Date.now() - cached.timestamp < CACHE_DURATION)) {
+                return cached.data;
             }
-            // if NOT set via local storage previously
-          } else {
-            if (document.body.classList.contains('dark-theme')) {
-              document.body.classList.remove('dark-theme');
-              document.body.classList.add('light-theme');
-              localStorage.setItem('color-theme', 'light');
-              themeToggleText.textContent = 'Light Mode';
-            } else {
-              document.body.classList.remove('light-theme');
-              document.body.classList.add('dark-theme');
-              localStorage.setItem('color-theme', 'dark');
-              themeToggleText.textContent = 'Dark Mode';
+            
+            try {
+                const response = await fetch(`pages/${post.filename}`);
+                if (!response.ok) throw new Error(`HTTP ${response.status}`);
+                
+                const htmlContent = await response.text();
+                const metadata = extractPostMetadata(htmlContent, post.filename);
+                
+                // Merge with fallback data
+                const result = {
+                    ...post.fallback,
+                    ...metadata,
+                    filename: post.filename,
+                    id: post.id
+                };
+                
+                // Cache the result
+                postCache.set(cacheKey, {
+                    data: result,
+                    timestamp: Date.now()
+                });
+                
+                return result;
+            } catch (error) {
+                console.warn(`Failed to fetch ${post.filename}:`, error);
+                return {
+                    ...post.fallback,
+                    filename: post.filename,
+                    id: post.id
+                };
             }
-          }
-        });
-        
-        // Sidebar dropdown toggle
-        const dropdownButton = document.getElementById('dropdown-toggle');
-        const dropdownMenu = document.getElementById('dropdown-menu');
-        const dropdownIcon = document.getElementById('dropdown-icon');
-        
-        dropdownButton.addEventListener('click', () => {
-          dropdownMenu.classList.toggle('open');
-          dropdownIcon.classList.toggle('rotate-180');
-        });
-        
-        // Smooth scroll for anchor links in sidebar
-        document.querySelectorAll('nav a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
-                e.preventDefault();
-                const targetId = this.getAttribute('href');
-                const targetElement = document.querySelector(targetId);
-                if (targetElement) {
-                    targetElement.scrollIntoView({
-                        behavior: 'smooth'
-                    });
+        }
+
+        // Generate post card HTML
+        function generatePostCard(post) {
+            const shortTitle = post.title.length > 60 ? post.title.substring(0, 57) + '...' : post.title;
+            
+            return `
+                <article class="flex flex-col bg-[var(--card-bg-color)] rounded-lg shadow-md overflow-hidden hover:shadow-xl transition-shadow duration-300 border border-[var(--border-color)]" id="${post.id}">
+                    <a class="block" href="pages/${post.filename}">
+                        <div class="w-full bg-center bg-no-repeat aspect-[16/10] bg-cover bg-gradient-to-br ${post.gradient} flex items-center justify-center">
+                            <div class="text-white text-center p-4">
+                                <svg class="w-16 h-16 mx-auto mb-2" fill="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                    ${post.icon}
+                                </svg>
+                                <div class="text-sm font-semibold">${post.category}</div>
+                            </div>
+                        </div>
+                    </a>
+                    <div class="p-5 flex flex-col flex-grow">
+                        <h3 class="text-[var(--text-color)] text-xl font-semibold leading-snug mb-2" style="font-family: Newsreader, serif;">
+                            <a class="hover:text-blue-600 dark:hover:text-blue-400 transition-colors" href="pages/${post.filename}">${shortTitle}</a>
+                        </h3>
+                        <p class="text-[var(--text-muted-color)] text-sm font-normal leading-relaxed flex-grow">
+                            ${post.description}
+                        </p>
+                        <a class="text-blue-600 dark:text-blue-400 text-sm font-semibold mt-4 inline-block hover:underline" href="pages/${post.filename}">Read article →</a>
+                    </div>
+                </article>
+            `;
+        }
+
+        // Generate sidebar navigation item
+        function generateSidebarItem(post) {
+            const shortTitle = post.title.length > 25 ? post.title.substring(0, 22) + '...' : post.title;
+            return `
+                <a class="block px-3 py-2 rounded-md text-xs font-normal leading-normal text-[var(--text-muted-color)] hover:bg-gray-100 dark:hover:bg-gray-700 hover:text-[var(--text-color)] transition-colors truncate" 
+                   href="#${post.id}" title="${post.title}">
+                    ${shortTitle}
+                </a>
+            `;
+        }
+
+        // Load and render all blog posts
+        async function loadBlogPosts() {
+            try {
+                // Fetch all post metadata
+                const posts = await Promise.all(
+                    blogPosts.map(post => fetchPostMetadata(post))
+                );
+                
+                // Update main content
+                const container = document.getElementById('blog-posts-container');
+                container.innerHTML = posts.map(post => generatePostCard(post)).join('');
+                
+                // Update sidebar navigation
+                const sidebarMenu = document.getElementById('dropdown-menu');
+                sidebarMenu.innerHTML = posts.map(post => generateSidebarItem(post)).join('');
+                
+                // Re-initialize smooth scrolling for new elements
+                initializeSmoothScrolling();
+                
+                console.log('✅ Blog posts loaded successfully');
+            } catch (error) {
+                console.error('❌ Failed to load blog posts:', error);
+            }
+        }
+
+        // Initialize smooth scrolling for anchor links
+        function initializeSmoothScrolling() {
+            document.querySelectorAll('nav a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function (e) {
+                    e.preventDefault();
+                    const targetId = this.getAttribute('href');
+                    const targetElement = document.querySelector(targetId);
+                    if (targetElement) {
+                        targetElement.scrollIntoView({ behavior: 'smooth' });
+                    }
+                });
+            });
+        }
+
+        // Theme toggle functionality
+        function initializeThemeToggle() {
+            const themeToggleBtn = document.getElementById('theme-toggle');
+            const themeToggleDarkIcon = document.getElementById('theme-toggle-dark-icon');
+            const themeToggleLightIcon = document.getElementById('theme-toggle-light-icon');
+            const themeToggleText = document.getElementById('theme-toggle-text');
+            
+            // Check for saved theme preference
+            if (localStorage.getItem('color-theme') === 'dark' || 
+                (!('color-theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+                document.body.classList.add('dark-theme');
+                document.body.classList.remove('light-theme');
+                themeToggleLightIcon.classList.add('hidden');
+                themeToggleDarkIcon.classList.remove('hidden');
+                themeToggleText.textContent = 'Dark Mode';
+            } else {
+                document.body.classList.add('light-theme');
+                document.body.classList.remove('dark-theme');
+                themeToggleDarkIcon.classList.add('hidden');
+                themeToggleLightIcon.classList.remove('hidden');
+                themeToggleText.textContent = 'Light Mode';
+            }
+            
+            themeToggleBtn.addEventListener('click', function() {
+                themeToggleDarkIcon.classList.toggle('hidden');
+                themeToggleLightIcon.classList.toggle('hidden');
+                
+                if (localStorage.getItem('color-theme')) {
+                    if (localStorage.getItem('color-theme') === 'light') {
+                        document.body.classList.add('dark-theme');
+                        document.body.classList.remove('light-theme');
+                        localStorage.setItem('color-theme', 'dark');
+                        themeToggleText.textContent = 'Dark Mode';
+                    } else {
+                        document.body.classList.add('light-theme');
+                        document.body.classList.remove('dark-theme');
+                        localStorage.setItem('color-theme', 'light');
+                        themeToggleText.textContent = 'Light Mode';
+                    }
+                } else {
+                    if (document.body.classList.contains('dark-theme')) {
+                        document.body.classList.remove('dark-theme');
+                        document.body.classList.add('light-theme');
+                        localStorage.setItem('color-theme', 'light');
+                        themeToggleText.textContent = 'Light Mode';
+                    } else {
+                        document.body.classList.remove('light-theme');
+                        document.body.classList.add('dark-theme');
+                        localStorage.setItem('color-theme', 'dark');
+                        themeToggleText.textContent = 'Dark Mode';
+                    }
                 }
             });
-        });
-        
-        // Mobile menu toggle (if needed)
-        const mobileMenuToggle = document.getElementById('mobile-menu-toggle');
-        const sidebar = document.querySelector('aside');
-        
-        if (mobileMenuToggle) {
-            mobileMenuToggle.addEventListener('click', () => {
-                sidebar.classList.toggle('-translate-x-full');
+        }
+
+        // Initialize sidebar dropdown
+        function initializeSidebarDropdown() {
+            const dropdownButton = document.getElementById('dropdown-toggle');
+            const dropdownMenu = document.getElementById('dropdown-menu');
+            const dropdownIcon = document.getElementById('dropdown-icon');
+            
+            dropdownButton.addEventListener('click', () => {
+                dropdownMenu.classList.toggle('open');
+                dropdownIcon.classList.toggle('rotate-180');
             });
         }
-      </script>
+
+        // Initialize everything when DOM is loaded
+        document.addEventListener('DOMContentLoaded', function() {
+            initializeThemeToggle();
+            initializeSidebarDropdown();
+            loadBlogPosts();
+        });
+    </script>
     </body></html>
