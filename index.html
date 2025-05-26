@@ -1,219 +1,312 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
+<html><head>
     <meta charset="utf-8"/>
-    <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
-    <title>AI Knowledge Base</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet"/>
+    <link crossorigin="" href="https://fonts.gstatic.com/" rel="preconnect"/>
+    <link as="style" href="https://fonts.googleapis.com/css2?display=swap&amp;family=Newsreader%3Awght%40400%3B500%3B600%3B700%3B800&amp;family=Noto+Sans%3Awght%40400%3B500%3B600%3B700%3B900" onload="this.rel='stylesheet'" rel="stylesheet"/>
+    <title>Zorro Cheng - AI Knowledge Base</title>
+    <link href="data:image/x-icon;base64," rel="icon" type="image/x-icon"/>
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
     <style>
+        .text-primary {
+          color: #111827;}
+        .bg-primary {
+          background-color: #111827;}
+        .border-primary {
+          border-color: #111827;}
+        .hover\:text-primary:hover {
+          color: #3b82f6;}
+        .hover\:bg-primary-dark:hover {
+          background-color: #0f172a;}
+        .active-link {
+          color: #3b82f6;font-weight: 600;
+        }
+        .light-theme {
+          --bg-color: #f9fafb;--text-color: #1f2937;--text-muted-color: #6b7280;--border-color: #e5e7eb;--card-bg-color: #ffffff;}
+        .dark-theme {
+          --bg-color: #1f2937;--text-color: #f3f4f6;--text-muted-color: #9ca3af;--border-color: #374151;--card-bg-color: #374151;}
         body {
-            font-family: 'Inter', sans-serif;
-            background-color: #0f172a;
-            color: #e2e8f0;
+          background-color: var(--bg-color);
+          color: var(--text-color);
+          font-family: "Noto Sans", sans-serif;
         }
-        .card {
-            background: linear-gradient(135deg, #1e293b 0%, #334155 100%);
-            border-radius: 1rem;
-            padding: 2rem;
-            border: 1px solid #475569;
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        .theme-toggle-button {
+          background-color: var(--card-bg-color);
+          color: var(--text-color);
+          border: 1px solid var(--border-color);
         }
-        .card:hover {
-            transform: translateY(-4px);
-            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.3);
+        .sidebar-dropdown {
+          max-height: 0;
+          overflow: hidden;
+          transition: max-height 0.3s ease-out;
         }
-        .hero-gradient {
-            background: linear-gradient(135deg, #3b82f6 0%, #8b5cf6 50%, #06b6d4 100%);
+        .sidebar-dropdown.open {
+          max-height: 200px;
+          transition: max-height 0.3s ease-in;
         }
-        .article-link {
-            color: #60a5fa;
-            text-decoration: none;
-            font-weight: 600;
-            transition: color 0.2s ease;
-        }
-        .article-link:hover {
-            color: #93c5fd;
-        }
-        .tag {
-            background-color: #1e293b;
-            color: #94a3b8;
-            padding: 0.25rem 0.75rem;
-            border-radius: 9999px;
-            font-size: 0.75rem;
-            font-weight: 500;
-        }
-    </style>
-</head>
-<body class="bg-slate-900 text-slate-200">
-    <!-- Hero Section -->
-    <header class="hero-gradient text-white py-20">
-        <div class="container mx-auto px-6 text-center">
-            <h1 class="text-5xl md:text-6xl font-bold mb-6">AI Knowledge Base</h1>
-            <p class="text-xl md:text-2xl mb-8 max-w-3xl mx-auto">
-                Exploring the future of artificial intelligence, agentic communication, and the evolving digital landscape
-            </p>
-            <div class="flex justify-center space-x-4 text-sm">
-                <span class="tag">AI Research</span>
-                <span class="tag">Protocol Analysis</span>
-                <span class="tag">Future Tech</span>
-            </div>
-        </div>
-    </header>
-
-    <!-- Navigation -->
-    <nav class="bg-slate-800 border-b border-slate-700 sticky top-0 z-50">
-        <div class="container mx-auto px-6 py-4">
-            <div class="flex items-center justify-between">
-                <div class="text-xl font-bold text-white">Articles & Resources</div>
-                <div class="text-sm text-slate-400">
-                    Last updated: May 2025
-                </div>
-            </div>
-        </div>
+      </style>
+    </head>
+    <body class="light-theme">
+    <div class="relative flex size-full min-h-screen flex-row group/design-root overflow-x-hidden">
+    <aside class="fixed top-0 left-0 z-40 w-64 h-screen transition-transform -translate-x-full sm:translate-x-0 bg-[var(--card-bg-color)] border-r border-[var(--border-color)] flex flex-col">
+    <div class="flex items-center gap-3 p-6 border-b border-[var(--border-color)]">
+    <div class="size-8 text-primary">
+    <svg fill="none" viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg">
+    <path clip-rule="evenodd" d="M24 4L10 12.6667V35.3333L24 44L38 35.3333V12.6667L24 4ZM12 15.0533L24 23.72V40.9467L12 32.28V15.0533ZM36 15.0533V32.28L24 40.9467V23.72L36 15.0533ZM24 6.72L34.8 12.6667L24 18.6133L13.2 12.6667L24 6.72Z" fill="currentColor" fill-rule="evenodd"></path>
+    </svg>
+    </div>
+    <h1 class="text-2xl font-bold tracking-tight" style="font-family: Newsreader, serif; color: var(--text-color);">Zorro Cheng</h1>
+    </div>
+    <nav class="flex-grow p-4 space-y-1 overflow-y-auto">
+    <a class="flex items-center gap-3 px-3 py-2 rounded-md text-sm font-medium leading-normal hover:bg-gray-100 dark:hover:bg-gray-700 transition-colors text-[var(--text-muted-color)] hover:text-[var(--text-color)]" href="#">
+    <svg fill="none" height="20" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24" width="20" xmlns="http://www.w3.org/2000/svg">
+    <path d="m3 9 9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path>
+    <polyline points="9 22 9 12 15 12 15 22"></polyline>
+    </svg>
+              Home
+            </a>
+    <div class="space-y-1">
+    <button class="flex items-center justify-between w-full gap-3 px-3 py-2 rounded-md text-sm font-medium leading-normal hover:bg-gray-100 dark:hover:bg-gray-700 transition-colors active-link" type="button" id="dropdown-toggle">
+    <div class="flex items-center gap-3">
+    <svg fill="none" height="20" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24" width="20" xmlns="http://www.w3.org/2000/svg">
+    <path d="M4 19.5v-15A2.5 2.5 0 0 1 6.5 2H20v20H6.5a2.5 2.5 0 0 1 0-5H20"></path>
+    </svg>
+                AI KnowledgeBase
+              </div>
+    <svg class="h-4 w-4 text-[var(--text-muted-color)] transition-transform duration-200 transform rotate-0" id="dropdown-icon" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+    <polyline points="6 9 12 15 18 9"></polyline>
+    </svg>
+    </button>
+    <div class="pl-6 space-y-1 sidebar-dropdown" id="dropdown-menu">
+    <a class="block px-3 py-2 rounded-md text-xs font-normal leading-normal text-[var(--text-muted-color)] hover:bg-gray-100 dark:hover:bg-gray-700 hover:text-[var(--text-color)] transition-colors truncate" href="#post-parallel-internet">The Internet's Next Act</a>
+    <a class="block px-3 py-2 rounded-md text-xs font-normal leading-normal text-[var(--text-muted-color)] hover:bg-gray-100 dark:hover:bg-gray-700 hover:text-[var(--text-color)] transition-colors truncate" href="#post-agentic-trends">Agentic Communication Trends</a>
+    <a class="block px-3 py-2 rounded-md text-xs font-normal leading-normal text-[var(--text-muted-color)] hover:bg-gray-100 dark:hover:bg-gray-700 hover:text-[var(--text-color)] transition-colors truncate" href="#post-ui-templates">UI Template Collection</a>
+    <a class="block px-3 py-2 rounded-md text-xs font-normal leading-normal text-[var(--text-muted-color)] hover:bg-gray-100 dark:hover:bg-gray-700 hover:text-[var(--text-color)] transition-colors truncate" href="#post-archive">Document Archive</a>
+    </div>
+    </div>
+    <a class="flex items-center gap-3 px-3 py-2 rounded-md text-sm font-medium leading-normal hover:bg-gray-100 dark:hover:bg-gray-700 transition-colors text-[var(--text-muted-color)] hover:text-[var(--text-color)]" href="#">
+    <svg fill="none" height="20" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24" width="20" xmlns="http://www.w3.org/2000/svg">
+    <circle cx="12" cy="12" r="10"></circle>
+    <path d="M12 16v-4"></path>
+    <path d="M12 8h.01"></path>
+    </svg>
+              About
+            </a>
+    <a class="flex items-center gap-3 px-3 py-2 rounded-md text-sm font-medium leading-normal hover:bg-gray-100 dark:hover:bg-gray-700 transition-colors text-[var(--text-muted-color)] hover:text-[var(--text-color)]" href="#">
+    <svg fill="none" height="20" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24" width="20" xmlns="http://www.w3.org/2000/svg">
+    <rect height="16" rx="2" width="20" x="2" y="4"></rect>
+    <path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"></path>
+    </svg>
+              Contact
+            </a>
     </nav>
+    <div class="p-4 border-t border-[var(--border-color)]">
+    <button class="theme-toggle-button w-full flex items-center justify-center gap-2 px-3 py-2 rounded-md text-sm font-medium leading-normal hover:bg-gray-100 dark:hover:bg-gray-700 transition-colors" id="theme-toggle">
+    <svg class="h-5 w-5" fill="none" id="theme-toggle-light-icon" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+    <path d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path>
+    </svg>
+    <svg class="h-5 w-5 hidden" fill="none" id="theme-toggle-dark-icon" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+    <path d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path>
+    </svg>
+    <span id="theme-toggle-text">Light Mode</span>
+    </button>
+    </div>
+    </aside>
+    <div class="flex-1 sm:ml-64">
+    <main class="flex-1 bg-[var(--bg-color)]">
+    <div class="px-4 md:px-6 lg:px-8 py-8">
+    <div class="layout-content-container flex flex-col max-w-screen-lg mx-auto">
+    <h2 class="text-[var(--text-color)] text-3xl font-bold leading-tight tracking-tight pb-6 pt-2" style="font-family: Newsreader, serif;">AI KnowledgeBase</h2>
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+    
+    <!-- Parallel Internet Article -->
+    <article class="flex flex-col bg-[var(--card-bg-color)] rounded-lg shadow-md overflow-hidden hover:shadow-xl transition-shadow duration-300 border border-[var(--border-color)]" id="post-parallel-internet">
+    <a class="block" href="pages/parellel_internet.html">
+    <div class="w-full bg-center bg-no-repeat aspect-[16/10] bg-cover bg-gradient-to-br from-blue-500 via-purple-600 to-teal-500 flex items-center justify-center">
+    <div class="text-white text-center p-4">
+    <svg class="w-16 h-16 mx-auto mb-2" fill="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+    <path d="M12 2L13.09 8.26L19 7L14.74 12L19 17L13.09 15.74L12 22L10.91 15.74L5 17L9.26 12L5 7L10.91 8.26L12 2Z"/>
+    </svg>
+    <div class="text-sm font-semibold">Internet Architecture</div>
+    </div>
+    </div>
+    </a>
+    <div class="p-5 flex flex-col flex-grow">
+    <h3 class="text-[var(--text-color)] text-xl font-semibold leading-snug mb-2" style="font-family: Newsreader, serif;">
+    <a class="hover:text-blue-600 dark:hover:text-blue-400 transition-colors" href="pages/parellel_internet.html">The Internet's Next Act: From Browsers to Brainy Agents</a>
+    </h3>
+    <p class="text-[var(--text-muted-color)] text-sm font-normal leading-relaxed flex-grow">
+                        A visual guide to understanding how AI agents are transforming—not replacing—the internet we know. Explore the dual architecture of traditional and agentic internet systems working together.
+                      </p>
+    <a class="text-blue-600 dark:text-blue-400 text-sm font-semibold mt-4 inline-block hover:underline" href="pages/parellel_internet.html">Read article →</a>
+    </div>
+    </article>
 
-    <!-- Main Content -->
-    <main class="container mx-auto px-6 py-12">
-        <!-- Featured Articles Section -->
-        <section class="mb-16">
-            <h2 class="text-3xl font-bold mb-8 text-center">Featured Articles</h2>
-            <div class="grid md:grid-cols-2 gap-8">
-                <!-- Parallel Internet Article -->
-                <article class="card">
-                    <h3 class="text-2xl font-bold mb-4 text-white">
-                        <a href="pages/parellel_internet.html" class="article-link">
-                            The Internet's Next Act: From Browsers to Brainy Agents
-                        </a>
-                    </h3>
-                    <p class="text-slate-300 mb-4 leading-relaxed">
-                        A comprehensive visual guide to understanding how AI agents are transforming—not replacing—the internet we know. Explore the dual architecture of traditional and agentic internet systems working together.
-                    </p>
-                    <div class="flex flex-wrap gap-2 mb-4">
-                        <span class="tag">MCP Protocol</span>
-                        <span class="tag">A2A Communication</span>
-                        <span class="tag">Architecture</span>
-                    </div>
-                    <div class="flex items-center justify-between">
-                        <a href="pages/parellel_internet.html" class="article-link hover:underline">
-                            Read Article →
-                        </a>
-                        <span class="text-xs text-slate-500">May 2025</span>
-                    </div>
-                </article>
-
-                <!-- Agentic Protocol Future Trend -->
-                <article class="card">
-                    <h3 class="text-2xl font-bold mb-4 text-white">
-                        <a href="pages/agentic protocol future trend.html" class="article-link">
-                            The Future of Agentic Internet Communication
-                        </a>
-                    </h3>
-                    <p class="text-slate-300 mb-4 leading-relaxed">
+    <!-- Agentic Protocol Trends -->
+    <article class="flex flex-col bg-[var(--card-bg-color)] rounded-lg shadow-md overflow-hidden hover:shadow-xl transition-shadow duration-300 border border-[var(--border-color)]" id="post-agentic-trends">
+    <a class="block" href="pages/agentic protocol future trend.html">
+    <div class="w-full bg-center bg-no-repeat aspect-[16/10] bg-cover bg-gradient-to-br from-orange-500 via-pink-500 to-purple-600 flex items-center justify-center">
+    <div class="text-white text-center p-4">
+    <svg class="w-16 h-16 mx-auto mb-2" fill="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+    <path d="M12 2C13.1 2 14 2.9 14 4C14 5.1 13.1 6 12 6C10.9 6 10 5.1 10 4C10 2.9 10.9 2 12 2ZM21 9V7L15 1H5C3.9 1 3 1.9 3 3V21C3 22.1 3.9 23 5 23H19C20.1 23 21 22.1 21 21V9Z"/>
+    </svg>
+    <div class="text-sm font-semibold">Protocol Analysis</div>
+    </div>
+    </div>
+    </a>
+    <div class="p-5 flex flex-col flex-grow">
+    <h3 class="text-[var(--text-color)] text-xl font-semibold leading-snug mb-2" style="font-family: Newsreader, serif;">
+    <a class="hover:text-blue-600 dark:hover:text-blue-400 transition-colors" href="pages/agentic protocol future trend.html">The Future of Agentic Internet Communication</a>
+    </h3>
+    <p class="text-[var(--text-muted-color)] text-sm font-normal leading-relaxed flex-grow">
                         An interactive infographic exploring protocols, trends, and trajectories in AI agent communication. Features detailed analysis of MCP, A2A, and emerging standards.
-                    </p>
-                    <div class="flex flex-wrap gap-2 mb-4">
-                        <span class="tag">Interactive</span>
-                        <span class="tag">Protocols</span>
-                        <span class="tag">Trends Analysis</span>
-                    </div>
-                    <div class="flex items-center justify-between">
-                        <a href="pages/agentic protocol future trend.html" class="article-link hover:underline">
-                            Explore Interactive →
-                        </a>
-                        <span class="text-xs text-slate-500">May 2025</span>
-                    </div>
-                </article>
-            </div>
-        </section>
+                      </p>
+    <a class="text-blue-600 dark:text-blue-400 text-sm font-semibold mt-4 inline-block hover:underline" href="pages/agentic protocol future trend.html">Read article →</a>
+    </div>
+    </article>
 
-        <!-- All Resources Section -->
-        <section>
-            <h2 class="text-3xl font-bold mb-8 text-center">All Resources</h2>
-            <div class="grid md:grid-cols-3 gap-6">
-                <!-- Template Resource -->
-                <article class="card">
-                    <h3 class="text-xl font-bold mb-3 text-white">
-                        <a href="pages/template.html" class="article-link">
-                            UI Template Collection
-                        </a>
-                    </h3>
-                    <p class="text-slate-300 mb-4 text-sm leading-relaxed">
+    <!-- UI Templates -->
+    <article class="flex flex-col bg-[var(--card-bg-color)] rounded-lg shadow-md overflow-hidden hover:shadow-xl transition-shadow duration-300 border border-[var(--border-color)]" id="post-ui-templates">
+    <a class="block" href="pages/template.html">
+    <div class="w-full bg-center bg-no-repeat aspect-[16/10] bg-cover bg-gradient-to-br from-green-500 via-teal-500 to-blue-500 flex items-center justify-center">
+    <div class="text-white text-center p-4">
+    <svg class="w-16 h-16 mx-auto mb-2" fill="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+    <path d="M3 3H21V5H3V3ZM3 7H21V9H3V7ZM3 11H21V13H3V11ZM3 15H21V17H3V15ZM3 19H21V21H3V19Z"/>
+    </svg>
+    <div class="text-sm font-semibold">UI Components</div>
+    </div>
+    </div>
+    </a>
+    <div class="p-5 flex flex-col flex-grow">
+    <h3 class="text-[var(--text-color)] text-xl font-semibold leading-snug mb-2" style="font-family: Newsreader, serif;">
+    <a class="hover:text-blue-600 dark:hover:text-blue-400 transition-colors" href="pages/template.html">UI Template Collection</a>
+    </h3>
+    <p class="text-[var(--text-muted-color)] text-sm font-normal leading-relaxed flex-grow">
                         A showcase of modern UI templates and components for web applications, featuring dark themes and responsive design patterns.
-                    </p>
-                    <div class="flex flex-wrap gap-2 mb-4">
-                        <span class="tag">Templates</span>
-                        <span class="tag">UI/UX</span>
-                    </div>
-                    <a href="pages/template.html" class="article-link text-sm hover:underline">
-                        View Templates →
-                    </a>
-                </article>
+                      </p>
+    <a class="text-blue-600 dark:text-blue-400 text-sm font-semibold mt-4 inline-block hover:underline" href="pages/template.html">Read article →</a>
+    </div>
+    </article>
 
-                <!-- Page 1 -->
-                <article class="card">
-                    <h3 class="text-xl font-bold mb-3 text-white">
-                        <a href="pages/1.html" class="article-link">
-                            Document Archive
-                        </a>
-                    </h3>
-                    <p class="text-slate-300 mb-4 text-sm leading-relaxed">
+    <!-- Document Archive -->
+    <article class="flex flex-col bg-[var(--card-bg-color)] rounded-lg shadow-md overflow-hidden hover:shadow-xl transition-shadow duration-300 border border-[var(--border-color)]" id="post-archive">
+    <a class="block" href="pages/1.html">
+    <div class="w-full bg-center bg-no-repeat aspect-[16/10] bg-cover bg-gradient-to-br from-gray-600 via-gray-700 to-gray-800 flex items-center justify-center">
+    <div class="text-white text-center p-4">
+    <svg class="w-16 h-16 mx-auto mb-2" fill="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+    <path d="M14,2H6A2,2 0 0,0 4,4V20A2,2 0 0,0 6,22H18A2,2 0 0,0 20,20V8L14,2M18,20H6V4H13V9H18V20Z"/>
+    </svg>
+    <div class="text-sm font-semibold">Archive</div>
+    </div>
+    </div>
+    </a>
+    <div class="p-5 flex flex-col flex-grow">
+    <h3 class="text-[var(--text-color)] text-xl font-semibold leading-snug mb-2" style="font-family: Newsreader, serif;">
+    <a class="hover:text-blue-600 dark:hover:text-blue-400 transition-colors" href="pages/1.html">Document Archive</a>
+    </h3>
+    <p class="text-[var(--text-muted-color)] text-sm font-normal leading-relaxed flex-grow">
                         Additional research documents and archived content related to AI development and technological trends.
-                    </p>
-                    <div class="flex flex-wrap gap-2 mb-4">
-                        <span class="tag">Archive</span>
-                        <span class="tag">Research</span>
-                    </div>
-                    <a href="pages/1.html" class="article-link text-sm hover:underline">
-                        View Archive →
-                    </a>
-                </article>
+                      </p>
+    <a class="text-blue-600 dark:text-blue-400 text-sm font-semibold mt-4 inline-block hover:underline" href="pages/1.html">Read article →</a>
+    </div>
+    </article>
 
-                <!-- Quick Access -->
-                <article class="card border-2 border-blue-500/30">
-                    <h3 class="text-xl font-bold mb-3 text-blue-400">
-                        Quick Navigation
-                    </h3>
-                    <div class="space-y-3">
-                        <a href="pages/parellel_internet.html" class="block text-sm article-link hover:underline">
-                            → Parallel Internet Guide
-                        </a>
-                        <a href="pages/agentic protocol future trend.html" class="block text-sm article-link hover:underline">
-                            → Protocol Trends Interactive
-                        </a>
-                        <a href="pages/template.html" class="block text-sm article-link hover:underline">
-                            → UI Templates
-                        </a>
-                        <a href="pages/1.html" class="block text-sm article-link hover:underline">
-                            → Document Archive
-                        </a>
-                    </div>
-                </article>
-            </div>
-        </section>
-
-        <!-- About Section -->
-        <section class="mt-16 text-center">
-            <div class="card max-w-4xl mx-auto">
-                <h2 class="text-2xl font-bold mb-4 text-white">About This Knowledge Base</h2>
-                <p class="text-slate-300 leading-relaxed mb-4">
-                    This knowledge base explores the cutting-edge developments in artificial intelligence, particularly focusing on agentic AI communication, protocol development, and the evolution of internet architecture. Our content synthesizes research findings, protocol specifications, and forward-looking analysis to provide insights into the future of AI-driven systems.
-                </p>
-                <p class="text-slate-400 text-sm">
-                    Topics include Model Context Protocol (MCP), Agent-to-Agent (A2A) communication, decentralized AI systems, and the intersection of AI with web technologies.
-                </p>
-            </div>
-        </section>
+    </div>
+    </div>
+    </div>
     </main>
-
-    <!-- Footer -->
-    <footer class="bg-slate-800 border-t border-slate-700 mt-16 py-8">
-        <div class="container mx-auto px-6 text-center">
-            <p class="text-slate-400 mb-2">&copy; 2025 AI Knowledge Base. All rights reserved.</p>
-            <p class="text-slate-500 text-sm">
-                Exploring the future of AI communication and intelligent systems
-            </p>
-        </div>
+    <footer class="bg-[var(--card-bg-color)] border-t border-[var(--border-color)]">
+    <div class="max-w-screen-lg mx-auto px-5 py-8">
+    <p class="text-[var(--text-muted-color)] text-sm font-normal leading-normal text-center">© 2025 Zorro Cheng. All rights reserved.</p>
+    </div>
     </footer>
-</body>
-</html>
+    </div>
+    </div>
+    <script>
+        const themeToggleBtn = document.getElementById('theme-toggle');
+        const themeToggleDarkIcon = document.getElementById('theme-toggle-dark-icon');
+        const themeToggleLightIcon = document.getElementById('theme-toggle-light-icon');
+        const themeToggleText = document.getElementById('theme-toggle-text');
+        
+        // Check for saved theme preference or use system preference
+        if (localStorage.getItem('color-theme') === 'dark' || (!('color-theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+          document.body.classList.add('dark-theme');
+          document.body.classList.remove('light-theme');
+          themeToggleLightIcon.classList.add('hidden');
+          themeToggleDarkIcon.classList.remove('hidden');
+          themeToggleText.textContent = 'Dark Mode';
+        } else {
+          document.body.classList.add('light-theme');
+          document.body.classList.remove('dark-theme');
+          themeToggleDarkIcon.classList.add('hidden');
+          themeToggleLightIcon.classList.remove('hidden');
+          themeToggleText.textContent = 'Light Mode';
+        }
+        
+        themeToggleBtn.addEventListener('click', function() {
+          // toggle icons inside button
+          themeToggleDarkIcon.classList.toggle('hidden');
+          themeToggleLightIcon.classList.toggle('hidden');
+          
+          // if set via local storage previously
+          if (localStorage.getItem('color-theme')) {
+            if (localStorage.getItem('color-theme') === 'light') {
+              document.body.classList.add('dark-theme');
+              document.body.classList.remove('light-theme');
+              localStorage.setItem('color-theme', 'dark');
+              themeToggleText.textContent = 'Dark Mode';
+            } else {
+              document.body.classList.add('light-theme');
+              document.body.classList.remove('dark-theme');
+              localStorage.setItem('color-theme', 'light');
+              themeToggleText.textContent = 'Light Mode';
+            }
+            // if NOT set via local storage previously
+          } else {
+            if (document.body.classList.contains('dark-theme')) {
+              document.body.classList.remove('dark-theme');
+              document.body.classList.add('light-theme');
+              localStorage.setItem('color-theme', 'light');
+              themeToggleText.textContent = 'Light Mode';
+            } else {
+              document.body.classList.remove('light-theme');
+              document.body.classList.add('dark-theme');
+              localStorage.setItem('color-theme', 'dark');
+              themeToggleText.textContent = 'Dark Mode';
+            }
+          }
+        });
+        
+        // Sidebar dropdown toggle
+        const dropdownButton = document.getElementById('dropdown-toggle');
+        const dropdownMenu = document.getElementById('dropdown-menu');
+        const dropdownIcon = document.getElementById('dropdown-icon');
+        
+        dropdownButton.addEventListener('click', () => {
+          dropdownMenu.classList.toggle('open');
+          dropdownIcon.classList.toggle('rotate-180');
+        });
+        
+        // Smooth scroll for anchor links in sidebar
+        document.querySelectorAll('nav a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const targetId = this.getAttribute('href');
+                const targetElement = document.querySelector(targetId);
+                if (targetElement) {
+                    targetElement.scrollIntoView({
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+        
+        // Mobile menu toggle (if needed)
+        const mobileMenuToggle = document.getElementById('mobile-menu-toggle');
+        const sidebar = document.querySelector('aside');
+        
+        if (mobileMenuToggle) {
+            mobileMenuToggle.addEventListener('click', () => {
+                sidebar.classList.toggle('-translate-x-full');
+            });
+        }
+      </script>
+    </body></html>
