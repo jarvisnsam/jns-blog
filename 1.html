@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Minute Template Selection</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #111827;color: #F9FAFB;}
+        .template-card {
+            transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+        }
+        .template-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+        }
+        .template-card.selected {
+            border-color: #3B82F6;box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.5);
+        }
+        .btn-primary {
+            background-color: #EF4444;color: white;
+        }
+        .btn-primary:hover {
+            background-color: #DC2626;}
+        .btn-secondary {
+            background-color: #4B5563;color: white;
+        }
+        .btn-secondary:hover {
+            background-color: #374151;}
+        .upload-area {
+            border: 2px dashed #4B5563;}
+        .upload-area:hover {
+            border-color: #6B7280;}
+    </style>
+</head>
+<body class="bg-gray-900 text-gray-50">
+<nav class="bg-gray-800 p-4 shadow-md">
+<div class="container mx-auto flex justify-between items-center">
+<div class="text-2xl font-bold text-white">VoiceBot</div>
+<div class="flex items-center space-x-4">
+<a class="text-gray-300 hover:text-white px-3 py-2 rounded-md text-sm font-medium" href="#">Dashboard</a>
+<a class="text-gray-300 hover:text-white px-3 py-2 rounded-md text-sm font-medium" href="#">Recordings</a>
+<a class="text-gray-300 hover:text-white px-3 py-2 rounded-md text-sm font-medium" href="#">Upload</a>
+<a aria-current="page" class="text-white bg-gray-700 px-3 py-2 rounded-md text-sm font-medium" href="#">Templates</a>
+<a class="text-gray-300 hover:text-white px-3 py-2 rounded-md text-sm font-medium" href="#">UI Components</a>
+</div>
+<div class="flex items-center space-x-3">
+<img alt="User avatar" class="h-8 w-8 rounded-full" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCnxEQs8rQ-rLdcs27ghxYhdk490rMFYqd9N1OXsr_Zis7WP56smiAg7dn5lWtTb3MBaT2dUKWJxee9ltA902HmL78NlMPqtpsS3HKbjt73r20sWUFPcfPQVAUrO7mW9NWzZaDjqmG1lLEpFf7y69f5CgVTJ50fz6AokO58uuTScNHt2Ugznfkw9LZvXAoE-cCSQy6P0A9_jWIIMuNRaa0R7mNlNuJKa6F8u_mDm5HVjB5v3y1BoNPwE01ZZOK7xjicucfd2gGtfaz0"/>
+<span class="text-white text-sm font-medium">Roy Cheng</span>
+<button class="btn-primary px-4 py-2 rounded-md text-sm font-semibold">Sign Out</button>
+</div>
+</div>
+</nav>
+<div class="container mx-auto p-8">
+<a class="inline-flex items-center text-sm text-gray-400 hover:text-gray-200 mb-6" href="#">
+<span class="material-icons mr-1">arrow_back_ios</span>
+            Back to Recordings
+        </a>
+<div class="mb-8">
+<h1 class="text-3xl font-bold text-white mb-2">Select Minute Template</h1>
+<p class="text-gray-400">Choose a template for your meeting minutes or upload your own.</p>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-12">
+<div class="template-card bg-gray-800 p-6 rounded-lg border-2 border-gray-700 cursor-pointer" id="template-1" onclick="selectTemplate('template-1')">
+<img alt="Formal Meeting Template Thumbnail" class="w-full h-40 object-cover rounded-md mb-4" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBK_ea0E701VbsZrRx02tz5hEVDkSpCDhgZtYX4rQr4I1y6ioGJrcJqMwvmsUfnhpbyZqjmHzgD2ijwOQQUTwOajtUUljhsdwXrPlWO9mi3cWy0t8Jns3nun_unMLFnTCo6hEQQYQc22l_ZcGd4jGi86obKXzsdqMdXcn4uSovWBQ109E8kBx4gx8M-7p54z4BPUAWBU6L0hmu1YVgbtXNkC316001JRhYGPQY4bby_GVxcKie2iesFsjLDth25nai85KnfiMmhn-6i"/>
+<h3 class="text-xl font-semibold text-white mb-2">Formal Meeting Template</h3>
+<p class="text-sm text-gray-400 mb-3">A structured template for official meetings, including sections for agenda items, decisions, and action items.</p>
+<button class="w-full py-2 px-4 bg-blue-600 hover:bg-blue-700 text-white rounded-md text-sm font-medium flex items-center justify-center">
+<span class="material-icons mr-2 text-base">visibility</span>
+                    Preview
+                </button>
+</div>
+<div class="template-card bg-gray-800 p-6 rounded-lg border-2 border-gray-700 cursor-pointer" id="template-2" onclick="selectTemplate('template-2')">
+<img alt="Casual Brainstorm Template Thumbnail" class="w-full h-40 object-cover rounded-md mb-4" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDudbKp8ZmQ5r3FcGSLH35GRIcSuZALAtPNkBn5T56gVFQH2onmb3AULsEm3XY2kMgkL55Tkj6H_5iO7joUt8ATA1GocLKdr56Ir3eQrd5e95UE8tKvRODRobptK78n4Q5MfHUJ4fKdwGU1dsPbB2wKcXMLMpdtT1XWm5FOao-RNf_sJSybZvTBdTE-V6VHK17FA-WNYv6t69oaUkbFN_gND1wDQSq6aeLBhgGtoR8xad13OrfMa6FpBAICC3Aqh1lXbSszZYeaarcs"/>
+<h3 class="text-xl font-semibold text-white mb-2">Casual Brainstorm Template</h3>
+<p class="text-sm text-gray-400 mb-3">A flexible template for brainstorming sessions, focusing on ideas, notes, and quick takeaways.</p>
+<button class="w-full py-2 px-4 bg-blue-600 hover:bg-blue-700 text-white rounded-md text-sm font-medium flex items-center justify-center">
+<span class="material-icons mr-2 text-base">visibility</span>
+                    Preview
+                </button>
+</div>
+<div class="template-card bg-gray-800 p-6 rounded-lg border-2 border-gray-700 cursor-pointer" id="template-3" onclick="selectTemplate('template-3')">
+<img alt="Project Update Template Thumbnail" class="w-full h-40 object-cover rounded-md mb-4" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDJd4nfSY05wqeiefmv5lmdyaVnJdKhQr5_u19J9QvliHcvR89Upf-PocMigYdDhfVajg_axnVb_bzX4g9a4IYldVk5eAF5RKsYCiRn_y-3O41DvaYhpJUYvYlgPgNcQSPxztnsMYZFa8YytZp6GaGfNbJqSB9dbMiYTLCdVQQ5LQ2DH1Fqno7VYoeXze37piKSDfcOKYFcl9KNN7IoyKT74D0xAFDpn6wnL3bhJ3tcNBh4rUn0Nv3U_gqI0wrx9wmNP_OHomKQc3jx"/>
+<h3 class="text-xl font-semibold text-white mb-2">Project Update Template</h3>
+<p class="text-sm text-gray-400 mb-3">Ideal for project status updates, highlighting progress, blockers, and next steps.</p>
+<button class="w-full py-2 px-4 bg-blue-600 hover:bg-blue-700 text-white rounded-md text-sm font-medium flex items-center justify-center">
+<span class="material-icons mr-2 text-base">visibility</span>
+                    Preview
+                </button>
+</div>
+</div>
+<div class="bg-gray-800 p-8 rounded-lg shadow-xl">
+<h2 class="text-2xl font-semibold text-white mb-4">Upload Your Own Template</h2>
+<p class="text-gray-400 mb-6">Have a specific format? Upload your .docx file here to use it as a template.</p>
+<div class="upload-area p-8 rounded-lg text-center cursor-pointer mb-6" id="drop-zone">
+<input accept=".docx" class="hidden" id="file-upload" type="file"/>
+<span class="material-icons text-5xl text-gray-500 mb-4">cloud_upload</span>
+<p class="text-gray-300 font-medium">Drag &amp; drop your .docx file here</p>
+<p class="text-sm text-gray-500">or</p>
+<label class="mt-2 inline-block bg-indigo-600 hover:bg-indigo-700 text-white font-medium py-2 px-4 rounded-md cursor-pointer text-sm" for="file-upload">
+                    Browse Files
+                </label>
+<p class="text-sm text-gray-400 mt-3" id="file-name"></p>
+</div>
+<div class="flex justify-end space-x-4">
+<button class="btn-secondary px-6 py-2 rounded-md text-sm font-semibold">Cancel</button>
+<button class="bg-green-600 hover:bg-green-700 text-white px-6 py-2 rounded-md text-sm font-semibold flex items-center">
+<span class="material-icons mr-2 text-base">save</span>
+                    Use Selected Template
+                </button>
+</div>
+</div>
+</div>
+<script>
+        let selectedTemplateId = null;
+        function selectTemplate(templateId) {
+            // Remove 'selected' class from previously selected card
+            if (selectedTemplateId) {
+                document.getElementById(selectedTemplateId).classList.remove('selected', 'border-blue-500');
+                document.getElementById(selectedTemplateId).classList.add('border-gray-700');
+            }
+            // Add 'selected' class to the clicked card
+            const currentCard = document.getElementById(templateId);
+            currentCard.classList.add('selected', 'border-blue-500');
+            currentCard.classList.remove('border-gray-700');
+            selectedTemplateId = templateId;
+            console.log("Selected template:", templateId);
+        }
+        const dropZone = document.getElementById('drop-zone');
+        const fileUpload = document.getElementById('file-upload');
+        const fileNameDisplay = document.getElementById('file-name');
+        dropZone.addEventListener('click', () => fileUpload.click());
+        dropZone.addEventListener('dragover', (event) => {
+            event.preventDefault();
+            dropZone.classList.add('border-indigo-500');
+        });
+        dropZone.addEventListener('dragleave', () => {
+            dropZone.classList.remove('border-indigo-500');
+        });
+        dropZone.addEventListener('drop', (event) => {
+            event.preventDefault();
+            dropZone.classList.remove('border-indigo-500');
+            const files = event.dataTransfer.files;
+            if (files.length > 0) {
+                handleFile(files[0]);
+            }
+        });
+        fileUpload.addEventListener('change', (event) => {
+            const files = event.target.files;
+            if (files.length > 0) {
+                handleFile(files[0]);
+            }
+        });
+        function handleFile(file) {
+            if (file.type === "application/vnd.openxmlformats-officedocument.wordprocessingml.document") {
+                fileNameDisplay.textContent = `File selected: ${file.name}`;
+                fileNameDisplay.classList.remove('text-red-500');
+                fileNameDisplay.classList.add('text-gray-400');
+                // Here you would typically handle the file upload process
+                console.log("File ready for upload:", file.name);
+                // If a template was previously selected via card, deselect it
+                if (selectedTemplateId) {
+                    document.getElementById(selectedTemplateId).classList.remove('selected', 'border-blue-500');
+                     document.getElementById(selectedTemplateId).classList.add('border-gray-700');
+                    selectedTemplateId = null;
+                }
+            } else {
+                fileNameDisplay.textContent = "Invalid file type. Please upload a .docx file.";
+                fileNameDisplay.classList.add('text-red-500');
+                fileNameDisplay.classList.remove('text-gray-400');
+                fileUpload.value = ''; // Reset file input
+            }
+        }
+    </script>
+
+</body></html>
