@@ -1,0 +1,126 @@
+{
+  "name": "AI KnowledgeBase Blog",
+  "description": "Static AI knowledge blog published on GitHub Pages",
+  "type": "documentation",
+  "context": {
+    "projectStructure": {
+      "description": "This is a static AI KnowledgeBase website with no build tools, using vanilla HTML/CSS/JavaScript",
+      "folders": {
+        "pages/": "Individual blog post HTML files",
+        "md/": "Markdown source content for blog posts",
+        "img/": "All images including hero images, diagrams, and illustrations",
+        "templates/": "Reusable page templates",
+        ".github/workflows/": "GitHub Pages deployment configuration"
+      },
+      "keyFiles": {
+        "index.html": "Homepage with dynamic blog post loading and JavaScript logic",
+        "templates/page.html": "Base template for all blog posts",
+        "CLAUDE.md": "Project architecture documentation"
+      }
+    },
+    "technicalStack": {
+      "frontend": {
+        "css": "TailwindCSS via CDN",
+        "fonts": ["Newsreader (serif for headings)", "Noto Sans (body text)"],
+        "features": ["Light/dark theme toggle", "Responsive design", "Dynamic content loading"]
+      },
+      "javascript": {
+        "embedded": true,
+        "features": [
+          "Theme management with localStorage",
+          "Dynamic blog post metadata extraction",
+          "Hero image auto-extraction from posts",
+          "24-hour browser caching"
+        ]
+      },
+      "deployment": "GitHub Pages with .nojekyll"
+    },
+    "contentGuidelines": {
+      "blogPostStructure": {
+        "title": "Clear, SEO-friendly title",
+        "subtitle": "Optional descriptive subtitle",
+        "heroImage": "Featured image at the top (16:10 aspect ratio preferred)",
+        "content": "Well-structured with h2/h3 headings, paragraphs, lists, code blocks",
+        "metadata": "Author, publication date, category"
+      },
+      "imageRequirements": {
+        "location": "All images must be in img/ folder",
+        "paths": "Use ../img/ in HTML files",
+        "formats": "SVG for diagrams, PNG/JPG for photos",
+        "heroImages": "Should be visually striking and relevant"
+      }
+    },
+    "workflowRules": {
+      "newBlogPost": [
+        "1. Create HTML file in pages/ using templates/page.html",
+        "2. Add corresponding markdown in md/ directory",
+        "3. Update blogPosts array in index.html",
+        "4. Add hero image to img/ directory",
+        "5. Test locally before pushing to GitHub"
+      ]
+    }
+  },
+  "systemPrompt": "You are an AI assistant helping to develop content for the AI KnowledgeBase blog. This is a static website focused on AI, technology, and internet architecture topics. When creating blog posts:\n\n1. **Follow the Template**: Always use templates/page.html as the base structure\n2. **Image Paths**: Use ../img/ for all image references in HTML files\n3. **Content Style**: Write in an engaging, educational tone suitable for technical audiences\n4. **SEO Optimization**: Create descriptive titles and meta descriptions\n5. **Visual Elements**: Suggest hero images and diagrams to enhance understanding\n6. **Code Examples**: Use proper syntax highlighting and explanations\n7. **Consistency**: Maintain the existing design system and navigation structure\n\nRemember: All content will be published on GitHub Pages, so ensure compatibility with static hosting.",
+  "customInstructions": {
+    "blogPostCreation": {
+      "process": [
+        "1. Understand the topic and target audience",
+        "2. Create an outline with clear sections",
+        "3. Write engaging introduction with hook",
+        "4. Develop main content with examples and visuals",
+        "5. Add code snippets or technical details where relevant",
+        "6. Conclude with actionable insights or next steps",
+        "7. Generate image prompt for hero image",
+        "8. Update index.html configuration"
+      ],
+      "htmlStructure": {
+        "mustInclude": [
+          "Proper <title> tag with post title",
+          "Meta description if applicable",
+          "Hero image or gradient fallback",
+          "Publication date in <time> element",
+          "Author link to about.html",
+          "Share buttons functionality",
+          "Previous/Next post navigation"
+        ]
+      }
+    },
+    "imagePromptGeneration": {
+      "guidelines": [
+        "Create detailed prompts for hero images that match the blog post theme",
+        "Suggest modern, professional, tech-oriented visuals",
+        "Include specific colors, styles, and composition details",
+        "Consider abstract representations for complex topics",
+        "Ensure images work well at 16:10 aspect ratio"
+      ],
+      "exampleFormat": "Create a modern, professional hero image showing [main concept]. Use a [color scheme] palette with [visual style]. Include [specific elements]. The image should convey [emotion/message] and work well as a blog header at 16:10 aspect ratio."
+    },
+    "updateProcess": {
+      "indexConfiguration": {
+        "location": "blogPosts array in index.html",
+        "requiredFields": {
+          "filename": "HTML filename in pages/",
+          "id": "Unique identifier for the post",
+          "fallback": {
+            "title": "Post title",
+            "description": "150 character description",
+            "category": "Topic category",
+            "gradient": "Tailwind gradient classes for fallback",
+            "icon": "SVG path for category icon"
+          }
+        }
+      }
+    }
+  },
+  "codeSnippets": {
+    "newBlogPostEntry": "{\n    filename: 'your-post-name.html',\n    id: 'post-your-post-id',\n    fallback: {\n        title: 'Your Post Title',\n        description: 'A brief description of your post content (max 150 chars).',\n        category: 'Category Name',\n        gradient: 'from-color1-500 via-color2-600 to-color3-500',\n        icon: `<path d=\"M12 2L13.09 8.26...\"/>`\n    }\n}",
+    "imageTag": "<figure class=\"my-8\">\n    <img src=\"../img/your-image.png\" alt=\"Descriptive alt text\" class=\"w-full h-auto rounded-lg shadow-md\"/>\n    <figcaption class=\"text-center text-sm text-[var(--text-muted-color)] mt-2\">Image caption</figcaption>\n</figure>",
+    "codeBlock": "<pre class=\"prose\"><code class=\"language-javascript\">\n// Your code here\n</code></pre>"
+  },
+  "prompts": {
+    "blogPostIdeas": "Generate 5 blog post ideas for an AI KnowledgeBase focusing on emerging AI technologies, agent architectures, protocols, and practical applications. Each idea should include a catchy title, brief description, and potential visual elements.",
+    "heroImagePrompt": "Based on this blog post about [TOPIC], create a detailed prompt for generating a hero image. The prompt should specify: visual style (modern/tech/abstract), color palette, key visual elements, composition, and mood. Ensure it works at 16:10 aspect ratio.",
+    "contentOutline": "Create a detailed outline for a blog post about [TOPIC]. Include: engaging introduction, 3-5 main sections with subheadings, technical details where relevant, practical examples, visual elements suggestions, and actionable conclusion.",
+    "technicalExplanation": "Explain [TECHNICAL CONCEPT] in a way that's accessible to developers and tech enthusiasts. Include analogies, code examples if relevant, and suggest diagrams or visualizations to aid understanding."
+  }
+}
