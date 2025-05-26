@@ -1,5 +1,7 @@
-<html><head>
+<!DOCTYPE html>
+<html lang="en"><head>
     <meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     <link crossorigin="" href="https://fonts.gstatic.com/" rel="preconnect"/>
     <link as="style" href="https://fonts.googleapis.com/css2?display=swap&amp;family=Newsreader%3Awght%40400%3B500%3B600%3B700%3B800&amp;family=Noto+Sans%3Awght%40400%3B500%3B600%3B700%3B900" onload="this.rel='stylesheet'" rel="stylesheet"/>
     <title>AI KnowledgeBase - Home</title>
@@ -94,10 +96,10 @@
     <div class="pl-6 space-y-1 sidebar-dropdown" id="dropdown-menu">
     <!-- Dynamic content will be loaded here -->
     <noscript>
-        <a class="block px-3 py-2 rounded-md text-xs font-normal leading-normal text-[var(--text-muted-color)] hover:bg-gray-100 dark:hover:bg-gray-700 hover:text-[var(--text-color)] transition-colors truncate" href="pages/parellel_internet.html">Parallel Internet</a>
-        <a class="block px-3 py-2 rounded-md text-xs font-normal leading-normal text-[var(--text-muted-color)] hover:bg-gray-100 dark:hover:bg-gray-700 hover:text-[var(--text-color)] transition-colors truncate" href="pages/agentic protocol future trend.html">Agentic Trends</a>
-        <a class="block px-3 py-2 rounded-md text-xs font-normal leading-normal text-[var(--text-muted-color)] hover:bg-gray-100 dark:hover:bg-gray-700 hover:text-[var(--text-color)] transition-colors truncate" href="pages/template.html">UI Templates</a>
-        <a class="block px-3 py-2 rounded-md text-xs font-normal leading-normal text-[var(--text-muted-color)] hover:bg-gray-100 dark:hover:bg-gray-700 hover:text-[var(--text-color)] transition-colors truncate" href="pages/1.html">Document Archive</a>
+        <a class="block px-3 py-2 rounded-md text-xs font-normal leading-normal text-[var(--text-muted-color)] hover:bg-gray-100 dark:hover:bg-gray-700 hover:text-[var(--text-color)] transition-colors truncate" href="./pages/parellel_internet.html">Parallel Internet</a>
+        <a class="block px-3 py-2 rounded-md text-xs font-normal leading-normal text-[var(--text-muted-color)] hover:bg-gray-100 dark:hover:bg-gray-700 hover:text-[var(--text-color)] transition-colors truncate" href="./pages/agentic protocol future trend.html">Agentic Trends</a>
+        <a class="block px-3 py-2 rounded-md text-xs font-normal leading-normal text-[var(--text-muted-color)] hover:bg-gray-100 dark:hover:bg-gray-700 hover:text-[var(--text-color)] transition-colors truncate" href="./pages/template.html">UI Templates</a>
+        <a class="block px-3 py-2 rounded-md text-xs font-normal leading-normal text-[var(--text-muted-color)] hover:bg-gray-100 dark:hover:bg-gray-700 hover:text-[var(--text-color)] transition-colors truncate" href="./pages/1.html">Document Archive</a>
     </noscript>
     </div>
     </div>
@@ -158,7 +160,7 @@
     <!-- Fallback content for no-JS -->
     <noscript>
         <article class="flex flex-col bg-[var(--card-bg-color)] rounded-lg shadow-md overflow-hidden hover:shadow-xl transition-shadow duration-300 border border-[var(--border-color)]">
-        <a class="block" href="pages/parellel_internet.html">
+        <a class="block" href="./pages/parellel_internet.html">
         <div class="w-full bg-center bg-no-repeat aspect-[16/10] bg-cover bg-gradient-to-br from-blue-500 via-purple-600 to-teal-500 flex items-center justify-center">
         <div class="text-white text-center p-4">
         <div class="text-sm font-semibold">Internet Architecture</div>
@@ -167,10 +169,10 @@
         </a>
         <div class="p-5 flex flex-col flex-grow">
         <h3 class="text-[var(--text-color)] text-xl font-semibold leading-snug mb-2" style="font-family: Newsreader, serif;">
-        <a class="hover:text-blue-600 dark:hover:text-blue-400 transition-colors" href="pages/parellel_internet.html">Parallel Internet</a>
+        <a class="hover:text-blue-600 dark:hover:text-blue-400 transition-colors" href="./pages/parellel_internet.html">Parallel Internet</a>
         </h3>
         <p class="text-[var(--text-muted-color)] text-sm font-normal leading-relaxed flex-grow">Exploring internet architecture concepts.</p>
-        <a class="text-blue-600 dark:text-blue-400 text-sm font-semibold mt-4 inline-block hover:underline" href="pages/parellel_internet.html">Read article →</a>
+        <a class="text-blue-600 dark:text-blue-400 text-sm font-semibold mt-4 inline-block hover:underline" href="./pages/parellel_internet.html">Read article →</a>
         </div>
         </article>
     </noscript>
@@ -288,16 +290,18 @@
                 if (imgElement) {
                     let src = imgElement.getAttribute('src');
                     if (src) {
-                        // Handle relative paths - convert to absolute paths from pages/ perspective
+                        // Handle relative paths - convert to work with GitHub Pages
                         if (src.startsWith('../img/')) {
-                            src = src.replace('../img/', 'img/');
+                            src = src.replace('../img/', './img/');
                         } else if (src.startsWith('img/')) {
-                            // Already in correct format
+                            // Make relative path explicit for GitHub Pages
+                            src = './' + src;
                         } else if (src.startsWith('/')) {
-                            // Absolute path, keep as is
-                        } else if (!src.startsWith('http')) {
+                            // Convert absolute path to relative for GitHub Pages
+                            src = '.' + src;
+                        } else if (!src.startsWith('http') && !src.startsWith('./')) {
                             // Relative path, assume it's in img folder
-                            src = 'img/' + src;
+                            src = './img/' + src;
                         }
                         
                         heroImage = src;
@@ -320,10 +324,32 @@
             }
             
             try {
-                const response = await fetch(`pages/${post.filename}`);
-                if (!response.ok) throw new Error(`HTTP ${response.status}`);
+                // Try multiple path variations for GitHub Pages compatibility
+                const possiblePaths = [
+                    `./pages/${post.filename}`,
+                    `pages/${post.filename}`
+                ];
                 
-                const htmlContent = await response.text();
+                let response;
+                let htmlContent;
+                
+                for (const path of possiblePaths) {
+                    try {
+                        response = await fetch(path);
+                        if (response.ok) {
+                            htmlContent = await response.text();
+                            break;
+                        }
+                    } catch (pathError) {
+                        console.warn(`Failed to fetch from ${path}:`, pathError);
+                        continue;
+                    }
+                }
+                
+                if (!htmlContent) {
+                    throw new Error(`Could not fetch ${post.filename} from any path`);
+                }
+                
                 const metadata = extractPostMetadata(htmlContent, post.filename);
                 
                 // Merge with fallback data
@@ -343,6 +369,7 @@
                 return result;
             } catch (error) {
                 console.warn(`Failed to fetch ${post.filename}:`, error);
+                // Return fallback data when fetch fails
                 return {
                     ...post.fallback,
                     filename: post.filename,
@@ -384,19 +411,19 @@
             
             return `
                 <article class="flex flex-col bg-[var(--card-bg-color)] rounded-lg shadow-md overflow-hidden hover:shadow-xl transition-shadow duration-300 border border-[var(--border-color)]" id="${post.id}">
-                    <a class="block" href="pages/${post.filename}">
+                    <a class="block" href="./pages/${post.filename}">
                         <div class="w-full aspect-[16/10] overflow-hidden">
                             ${heroContent}
                         </div>
                     </a>
                     <div class="p-5 flex flex-col flex-grow">
                         <h3 class="text-[var(--text-color)] text-xl font-semibold leading-snug mb-2" style="font-family: Newsreader, serif;">
-                            <a class="hover:text-blue-600 dark:hover:text-blue-400 transition-colors" href="pages/${post.filename}">${shortTitle}</a>
+                            <a class="hover:text-blue-600 dark:hover:text-blue-400 transition-colors" href="./pages/${post.filename}">${shortTitle}</a>
                         </h3>
                         <p class="text-[var(--text-muted-color)] text-sm font-normal leading-relaxed flex-grow">
                             ${post.description}
                         </p>
-                        <a class="text-blue-600 dark:text-blue-400 text-sm font-semibold mt-4 inline-block hover:underline" href="pages/${post.filename}">Read article →</a>
+                        <a class="text-blue-600 dark:text-blue-400 text-sm font-semibold mt-4 inline-block hover:underline" href="./pages/${post.filename}">Read article →</a>
                     </div>
                 </article>
             `;
@@ -407,7 +434,7 @@
             const shortTitle = post.title.length > 25 ? post.title.substring(0, 22) + '...' : post.title;
             return `
                 <a class="block px-3 py-2 rounded-md text-xs font-normal leading-normal text-[var(--text-muted-color)] hover:bg-gray-100 dark:hover:bg-gray-700 hover:text-[var(--text-color)] transition-colors truncate" 
-                   href="pages/${post.filename}" title="${post.title}">
+                   href="./pages/${post.filename}" title="${post.title}">
                     ${shortTitle}
                 </a>
             `;
@@ -432,6 +459,20 @@
                 console.log('✅ Blog posts loaded successfully with dynamic hero images');
             } catch (error) {
                 console.error('❌ Failed to load blog posts:', error);
+                // Fallback to static content using fallback data
+                const container = document.getElementById('blog-posts-container');
+                container.innerHTML = blogPosts.map(post => generatePostCard({
+                    ...post.fallback,
+                    filename: post.filename,
+                    id: post.id
+                })).join('');
+                
+                const sidebarMenu = document.getElementById('dropdown-menu');
+                sidebarMenu.innerHTML = blogPosts.map(post => generateSidebarItem({
+                    ...post.fallback,
+                    filename: post.filename,
+                    id: post.id
+                })).join('');
             }
         }
 
@@ -460,3 +501,54 @@
             
             themeToggleBtn.addEventListener('click', function() {
                 themeToggleDarkIcon.classList.toggle('hidden');
+                themeToggleLightIcon.classList.toggle('hidden');
+                
+                if (localStorage.getItem('color-theme')) {
+                    if (localStorage.getItem('color-theme') === 'light') {
+                        document.body.classList.add('dark-theme');
+                        document.body.classList.remove('light-theme');
+                        themeToggleText.textContent = 'Dark Mode';
+                        localStorage.setItem('color-theme', 'dark');
+                    } else {
+                        document.body.classList.add('light-theme');
+                        document.body.classList.remove('dark-theme');
+                        themeToggleText.textContent = 'Light Mode';
+                        localStorage.setItem('color-theme', 'light');
+                    }
+                } else {
+                    if (document.body.classList.contains('dark-theme')) {
+                        document.body.classList.remove('dark-theme');
+                        document.body.classList.add('light-theme');
+                        themeToggleText.textContent = 'Light Mode';
+                        localStorage.setItem('color-theme', 'light');
+                    } else {
+                        document.body.classList.remove('light-theme');
+                        document.body.classList.add('dark-theme');
+                        themeToggleText.textContent = 'Dark Mode';
+                        localStorage.setItem('color-theme', 'dark');
+                    }
+                }
+            });
+        }
+
+        // Dropdown toggle functionality
+        function initializeDropdown() {
+            const dropdownToggle = document.getElementById('dropdown-toggle');
+            const dropdownMenu = document.getElementById('dropdown-menu');
+            const dropdownIcon = document.getElementById('dropdown-icon');
+            
+            dropdownToggle.addEventListener('click', function() {
+                dropdownMenu.classList.toggle('open');
+                dropdownIcon.classList.toggle('rotate-180');
+            });
+        }
+
+        // Initialize on page load
+        document.addEventListener('DOMContentLoaded', function() {
+            initializeThemeToggle();
+            initializeDropdown();
+            loadBlogPosts();
+        });
+    </script>
+</body>
+</html>
