@@ -81,7 +81,7 @@
     <svg fill="none" height="20" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24" width="20" xmlns="http://www.w3.org/2000/svg">
     <path d="M4 19.5v-15A2.5 2.5 0 0 1 6.5 2H20v20H6.5a2.5 2.5 0 0 1 0-5H20"></path>
     </svg>
-                AI KnowledgeBase
+                Posts
               </div>
     <svg class="h-4 w-4 text-[var(--text-muted-color)] transition-transform duration-200 transform rotate-0" id="dropdown-icon" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
     <polyline points="6 9 12 15 18 9"></polyline>
@@ -90,10 +90,10 @@
     <div class="pl-6 space-y-1 sidebar-dropdown" id="dropdown-menu">
     <!-- Dynamic content will be loaded here -->
     <noscript>
-        <a class="block px-3 py-2 rounded-md text-xs font-normal leading-normal text-[var(--text-muted-color)] hover:bg-gray-100 dark:hover:bg-gray-700 hover:text-[var(--text-color)] transition-colors truncate" href="#post-parallel-internet">Parallel Internet</a>
-        <a class="block px-3 py-2 rounded-md text-xs font-normal leading-normal text-[var(--text-muted-color)] hover:bg-gray-100 dark:hover:bg-gray-700 hover:text-[var(--text-color)] transition-colors truncate" href="#post-agentic-trends">Agentic Trends</a>
-        <a class="block px-3 py-2 rounded-md text-xs font-normal leading-normal text-[var(--text-muted-color)] hover:bg-gray-100 dark:hover:bg-gray-700 hover:text-[var(--text-color)] transition-colors truncate" href="#post-ui-templates">UI Templates</a>
-        <a class="block px-3 py-2 rounded-md text-xs font-normal leading-normal text-[var(--text-muted-color)] hover:bg-gray-100 dark:hover:bg-gray-700 hover:text-[var(--text-color)] transition-colors truncate" href="#post-archive">Document Archive</a>
+        <a class="block px-3 py-2 rounded-md text-xs font-normal leading-normal text-[var(--text-muted-color)] hover:bg-gray-100 dark:hover:bg-gray-700 hover:text-[var(--text-color)] transition-colors truncate" href="pages/parellel_internet.html">Parallel Internet</a>
+        <a class="block px-3 py-2 rounded-md text-xs font-normal leading-normal text-[var(--text-muted-color)] hover:bg-gray-100 dark:hover:bg-gray-700 hover:text-[var(--text-color)] transition-colors truncate" href="pages/agentic protocol future trend.html">Agentic Trends</a>
+        <a class="block px-3 py-2 rounded-md text-xs font-normal leading-normal text-[var(--text-muted-color)] hover:bg-gray-100 dark:hover:bg-gray-700 hover:text-[var(--text-color)] transition-colors truncate" href="pages/template.html">UI Templates</a>
+        <a class="block px-3 py-2 rounded-md text-xs font-normal leading-normal text-[var(--text-muted-color)] hover:bg-gray-100 dark:hover:bg-gray-700 hover:text-[var(--text-color)] transition-colors truncate" href="pages/1.html">Document Archive</a>
     </noscript>
     </div>
     </div>
@@ -338,12 +338,12 @@
             `;
         }
 
-        // Generate sidebar navigation item
+        // Generate sidebar navigation item - NOW WITH DIRECT LINKS
         function generateSidebarItem(post) {
             const shortTitle = post.title.length > 25 ? post.title.substring(0, 22) + '...' : post.title;
             return `
                 <a class="block px-3 py-2 rounded-md text-xs font-normal leading-normal text-[var(--text-muted-color)] hover:bg-gray-100 dark:hover:bg-gray-700 hover:text-[var(--text-color)] transition-colors truncate" 
-                   href="#${post.id}" title="${post.title}">
+                   href="pages/${post.filename}" title="${post.title}">
                     ${shortTitle}
                 </a>
             `;
@@ -365,27 +365,10 @@
                 const sidebarMenu = document.getElementById('dropdown-menu');
                 sidebarMenu.innerHTML = posts.map(post => generateSidebarItem(post)).join('');
                 
-                // Re-initialize smooth scrolling for new elements
-                initializeSmoothScrolling();
-                
                 console.log('✅ Blog posts loaded successfully');
             } catch (error) {
                 console.error('❌ Failed to load blog posts:', error);
             }
-        }
-
-        // Initialize smooth scrolling for anchor links
-        function initializeSmoothScrolling() {
-            document.querySelectorAll('nav a[href^="#"]').forEach(anchor => {
-                anchor.addEventListener('click', function (e) {
-                    e.preventDefault();
-                    const targetId = this.getAttribute('href');
-                    const targetElement = document.querySelector(targetId);
-                    if (targetElement) {
-                        targetElement.scrollIntoView({ behavior: 'smooth' });
-                    }
-                });
-            });
         }
 
         // Theme toggle functionality
