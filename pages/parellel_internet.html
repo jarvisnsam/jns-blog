@@ -273,10 +273,23 @@
         .prose h1, .prose h2, .prose h3, .prose h4, .prose h5, .prose h6 {
             color: var(--text-color);
             font-family: "Newsreader", serif;
+            margin-top: 2rem;
+            margin-bottom: 1rem;
+        }
+        .prose h1 {
+            margin-top: 0;
         }
         .prose p, .prose ul, .prose ol, .prose blockquote {
             color: var(--text-muted-color);
-            line-height: 1.75;
+            line-height: 1.8;
+            margin-bottom: 1.5rem;
+        }
+        .prose ul, .prose ol {
+            margin-top: 1rem;
+            padding-left: 1.5rem;
+        }
+        .prose li {
+            margin-bottom: 0.5rem;
         }
         .prose a {
             color: #3b82f6;
@@ -373,8 +386,8 @@
                     </h1>
     
     <!-- Feature Image -->
-    <figure class="mb-6">
-        <img alt="Traditional vs Agentic Internet Comparison" class="w-full h-auto rounded-lg shadow-md" src="/img/tvsa.png"/>
+    <figure class="mb-6 flex flex-col items-center">
+        <img alt="Traditional vs Agentic Internet Comparison" class="w-[70%] h-auto rounded-lg shadow-md" src="/img/tvsa.png"/>
         <figcaption class="text-center text-sm text-[var(--text-muted-color)] mt-2">The evolution from traditional to agentic internet architecture</figcaption>
     </figure>
     
@@ -401,8 +414,8 @@
     
     <p>The image above captures the fundamental shift we're witnessing in internet architecture. On one side, we see the familiar traditional internet that has served us for decades. On the other, an emerging agentic internet where AI agents act as intelligent intermediaries. But as we'll explore, this isn't about one replacing the other—it's about both working in harmony.</p>
 
-    <div class="diagram-container">
-        <img src="/img/parellel_internet.svg" alt="Parallel Internet Architecture Diagram" class="w-full h-auto"/>
+    <div class="diagram-container flex justify-center">
+        <img src="/img/parellel_internet.svg" alt="Parallel Internet Architecture Diagram" class="w-[70%] h-auto"/>
     </div>
 
     <p>If you look at the detailed architectural diagram above, you'll notice something striking: we're not looking at one internet architecture, but two distinct yet interconnected systems. The top half shows the internet you use every day. The bottom half reveals its AI-powered future. And crucially, both will work together.</p>

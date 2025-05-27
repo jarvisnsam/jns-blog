@@ -273,10 +273,29 @@
         .prose h1, .prose h2, .prose h3, .prose h4, .prose h5, .prose h6 {
             color: var(--text-color);
             font-family: "Newsreader", serif;
+            margin-top: 2rem;
+            margin-bottom: 1rem;
+        }
+        .prose h1 {
+            margin-top: 0;
         }
         .prose p, .prose ul, .prose ol, .prose blockquote {
             color: var(--text-muted-color);
-            line-height: 1.75;
+            line-height: 1.8;
+            margin-bottom: 1.5rem;
+        }
+        .prose ul, .prose ol {
+            margin-top: 1rem;
+            padding-left: 1.5rem;
+        }
+        .prose li {
+            margin-bottom: 0.5rem;
+        }
+        .prose blockquote {
+            border-left: 4px solid var(--primary-color);
+            padding-left: 1.5rem;
+            margin: 2rem 0;
+            font-style: italic;
         }
         .prose a {
             color: #3b82f6;
@@ -348,8 +367,8 @@
                     </h1>
     
     <!-- Feature Image -->
-    <figure class="mb-6">
-        <img src="/img/agentic_protocol.png" alt="Agentic Protocol Architecture" class="w-full rounded-lg shadow-md"/>
+    <figure class="mb-6 flex flex-col items-center">
+        <img src="/img/agentic_protocol.png" alt="Agentic Protocol Architecture" class="w-[70%] rounded-lg shadow-md"/>
         <figcaption class="text-center text-sm text-[var(--text-muted-color)] mt-2">The evolving landscape of agentic protocols</figcaption>
     </figure>
     
