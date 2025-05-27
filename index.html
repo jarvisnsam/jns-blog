@@ -28,22 +28,22 @@
     
     <!-- Open Graph / Facebook -->
     <meta property="og:type" content="website" />
-    <meta property="og:url" content="https://jarvisnsam.com/jns-blog/" />
+    <meta property="og:url" content="https://tommykhs.github.io/jns-blog/" />
     <meta property="og:site_name" content="Jarvis and Sam Blog" />
     <meta property="og:locale" content="en_US" />
     <meta property="og:title" content="Blog - Jarvis and Sam | AI Solutions & Business Transformation" />
     <meta property="og:description" content="Explore insights on AI technologies, business transformation, and innovative solutions from Jarvis and Sam's expert blog." />
-    <meta property="og:image" content="https://jarvisnsam.com/jns-blog/img/jns_logo.png" />
+    <meta property="og:image" content="https://tommykhs.github.io/jns-blog/img/jns_logo.png" />
     <meta property="og:image:width" content="1200" />
     <meta property="og:image:height" content="630" />
     
     <!-- Twitter -->
     <meta property="twitter:card" content="summary_large_image" />
-    <meta property="twitter:url" content="https://jarvisnsam.com/jns-blog/" />
+    <meta property="twitter:url" content="https://tommykhs.github.io/jns-blog/" />
     <meta property="twitter:site" content="@jarvisnsam" />
     <meta property="twitter:title" content="Blog - Jarvis and Sam | AI Solutions & Business Transformation" />
     <meta property="twitter:description" content="Explore insights on AI technologies, business transformation, and innovative solutions from Jarvis and Sam's expert blog." />
-    <meta property="twitter:image" content="https://jarvisnsam.com/jns-blog/img/jns_logo.png" />
+    <meta property="twitter:image" content="https://tommykhs.github.io/jns-blog/img/jns_logo.png" />
     
     <!-- Fonts -->
     <link crossorigin="" href="https://fonts.gstatic.com/" rel="preconnect"/>
@@ -666,4 +666,120 @@
 
         // Clear all filters
         function clearFilters() {
-            const searchInput =
+            const searchInput = document.getElementById('search-input');
+            searchInput.value = '';
+            filterPosts('', '');
+        }
+
+        // Update URL with current filters
+        function updateURL() {
+            const url = new URL(window.location);
+            if (currentSearchTerm) {
+                url.searchParams.set('search', currentSearchTerm);
+            } else {
+                url.searchParams.delete('search');
+            }
+            if (currentTag) {
+                url.searchParams.set('tag', currentTag);
+            } else {
+                url.searchParams.delete('tag');
+            }
+            if (currentPage > 1) {
+                url.searchParams.set('page', currentPage);
+            } else {
+                url.searchParams.delete('page');
+            }
+            window.history.replaceState({}, '', url);
+        }
+
+        // Parse URL parameters on page load
+        function parseURLParams() {
+            const url = new URL(window.location);
+            const searchTerm = url.searchParams.get('search') || '';
+            const tag = url.searchParams.get('tag') || '';
+            const page = parseInt(url.searchParams.get('page')) || 1;
+            
+            if (searchTerm) {
+                document.getElementById('search-input').value = searchTerm;
+            }
+            
+            currentPage = page;
+            filterPosts(searchTerm, tag);
+        }
+
+        // Main initialization function
+        async function initializeBlog() {
+            try {
+                // Parse sitemap to get posts
+                const posts = await parseSitemap();
+                
+                if (posts.length === 0) {
+                    document.getElementById('blog-posts-container').innerHTML = `
+                        <div class="col-span-full text-center py-8">
+                            <p class="text-[var(--text-muted-color)]">No blog posts found.</p>
+                        </div>
+                    `;
+                    return;
+                }
+
+                // Fetch metadata for all posts
+                const postsWithMetadata = await Promise.all(
+                    posts.map(post => fetchPostMetadata(post))
+                );
+
+                // Sort posts by date (newest first)
+                allPosts = postsWithMetadata.sort((a, b) => 
+                    new Date(b.publishDate) - new Date(a.publishDate)
+                );
+                
+                // Initialize filtered posts
+                filteredPosts = [...allPosts];
+                
+                // Parse URL parameters and display posts
+                parseURLParams();
+                
+            } catch (error) {
+                console.error('Error initializing blog:', error);
+                document.getElementById('blog-posts-container').innerHTML = `
+                    <div class="col-span-full text-center py-8">
+                        <p class="text-[var(--text-muted-color)]">Error loading blog posts. Please try again later.</p>
+                    </div>
+                `;
+            }
+        }
+
+        // Event listeners
+        document.addEventListener('DOMContentLoaded', function() {
+            // Initialize blog
+            initializeBlog();
+            
+            // Search input event listener
+            const searchInput = document.getElementById('search-input');
+            let searchTimeout;
+            searchInput.addEventListener('input', function() {
+                clearTimeout(searchTimeout);
+                searchTimeout = setTimeout(() => {
+                    filterPosts(this.value, currentTag);
+                }, 300); // Debounce search
+            });
+            
+            // Clear filters button
+            document.getElementById('clear-filters').addEventListener('click', clearFilters);
+            
+            // Pagination event listeners
+            document.getElementById('prev-page').addEventListener('click', () => {
+                if (currentPage > 1) {
+                    goToPage(currentPage - 1);
+                }
+            });
+            
+            document.getElementById('next-page').addEventListener('click', () => {
+                const totalPages = Math.ceil(filteredPosts.length / POSTS_PER_PAGE);
+                if (currentPage < totalPages) {
+                    goToPage(currentPage + 1);
+                }
+            });
+        });
+    </script>
+</body>
+</html>

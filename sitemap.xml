@@ -1,19 +1,19 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
-    <loc>https://blog.jarvisnsam.com/</loc>
+    <loc>https://tommykhs.github.io/jns-blog/</loc>
     <lastmod>2025-05-27</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
   </url>
   <url>
-    <loc>https://blog.jarvisnsam.com/pages/parellel_internet.html</loc>
+    <loc>https://tommykhs.github.io/jns-blog/pages/parellel_internet.html</loc>
     <lastmod>2025-05-26</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://blog.jarvisnsam.com/pages/agentic protocol future trend.html</loc>
+    <loc>https://tommykhs.github.io/jns-blog/pages/agentic protocol future trend.html</loc>
     <lastmod>2025-05-27</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
