@@ -1,33 +1,267 @@
-<html><head>
+<!DOCTYPE html>
+<html lang="en"><head>
     <meta charset="utf-8"/>
+    <link rel="icon" type="image/png" href="/img/jns_logo.png" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Parallel Internet: Traditional vs Agentic Internet - Jarvis and Sam Blog</title>
+    
+    <!-- Initialize dataLayer -->
+    <script>
+      window.dataLayer = window.dataLayer || [];
+    </script>
+    
+    <!-- Google Tag Manager -->
+    <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+    new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+    j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+    'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+    })(window,document,'script','dataLayer','GTM-TRT4SWZC');</script>
+    <!-- End Google Tag Manager -->
+    
+    <!-- Primary Meta Tags -->
+    <meta name="description" content="A visual guide to understanding how AI agents are transforming—not replacing—the internet we know. Explore the parallel architecture of traditional and agentic internet." />
+    <meta name="keywords" content="parallel internet, agentic internet, AI agents, MCP protocol, NLweb, A2A protocol, internet architecture" />
+    <meta name="author" content="Zorro Cheng" />
+    
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="article" />
+    <meta property="og:url" content="https://jarvisnsam.com/jns-blog/pages/parellel_internet.html" />
+    <meta property="og:site_name" content="Jarvis and Sam Blog" />
+    <meta property="og:locale" content="en_US" />
+    <meta property="og:title" content="Parallel Internet: Traditional vs Agentic Internet" />
+    <meta property="og:description" content="A visual guide to understanding how AI agents are transforming—not replacing—the internet we know." />
+    <meta property="og:image" content="https://jarvisnsam.com/jns-blog/img/tvsa.png" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="article:published_time" content="2025-05-26" />
+    <meta property="article:author" content="Zorro Cheng" />
+    <meta name="article:tag" content="Internet Architecture" />
+    <meta name="article:tag" content="AI Agents" />
+    <meta name="article:tag" content="MCP Protocol" />
+    <meta name="article:tag" content="Future Tech" />
+    
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image" />
+    <meta property="twitter:url" content="https://jarvisnsam.com/jns-blog/pages/parellel_internet.html" />
+    <meta property="twitter:site" content="@jarvisnsam" />
+    <meta property="twitter:title" content="Parallel Internet: Traditional vs Agentic Internet" />
+    <meta property="twitter:description" content="A visual guide to understanding how AI agents are transforming—not replacing—the internet we know." />
+    <meta property="twitter:image" content="https://jarvisnsam.com/jns-blog/img/tvsa.png" />
+    
+    <!-- Fonts -->
     <link crossorigin="" href="https://fonts.gstatic.com/" rel="preconnect"/>
     <link as="style" href="https://fonts.googleapis.com/css2?display=swap&amp;family=Newsreader%3Awght%40400%3B500%3B600%3B700%3B800&amp;family=Noto+Sans%3Awght%40400%3B500%3B600%3B700%3B900" onload="this.rel='stylesheet'" rel="stylesheet"/>
-    <title>Parallel Internet: Traditional vs Agentic Internet</title>
-    <link href="data:image/x-icon;base64," rel="icon" type="image/x-icon"/>
+    
+    <!-- Styles -->
+    <link rel="stylesheet" href="/css/blog-common.css">
     <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
     <style>
-        .text-primary {
-          color: #111827;}
-        .bg-primary {
-          background-color: #111827;}
-        .border-primary {
-          border-color: #111827;}
-        .hover\:text-primary:hover {
-          color: #3b82f6;}
-        .hover\:bg-primary-dark:hover {
-          background-color: #0f172a;}
-        .active-link {
-          color: #3b82f6;font-weight: 600;
+        :root {
+          --primary-color: #3b82f6;
+          --primary-dark: #2563eb;
+          --text-primary: #111827;
+          --bg-primary: #111827;
+          --border-primary: #111827;
+        }
+        .gradient-text {
+          background: linear-gradient(90deg, #00BFFF, #FF3333);
+          -webkit-background-clip: text;
+          -webkit-text-fill-color: transparent;
+          background-clip: text;
         }
         .light-theme {
-          --bg-color: #f9fafb;--text-color: #1f2937;--text-muted-color: #6b7280;--border-color: #e5e7eb;--card-bg-color: #ffffff;}
+          --bg-color: #f9fafb;
+          --text-color: #1f2937;
+          --text-muted-color: #6b7280;
+          --border-color: #e5e7eb;
+          --card-bg-color: #ffffff;
+          --header-bg: #ffffff;
+        }
         .dark-theme {
-          --bg-color: #1f2937;--text-color: #f3f4f6;--text-muted-color: #9ca3af;--border-color: #374151;--card-bg-color: #374151;}
+          --bg-color: #1f2937;
+          --text-color: #f3f4f6;
+          --text-muted-color: #9ca3af;
+          --border-color: #374151;
+          --card-bg-color: #374151;
+          --header-bg: #111827;
+        }
         body {
           background-color: var(--bg-color);
           color: var(--text-color);
           font-family: "Noto Sans", sans-serif;
         }
+        
+        /* Header Styles */
+        .navbar-area {
+          background-color: var(--header-bg);
+          border-bottom: 1px solid var(--border-color);
+          transition: all 0.3s ease;
+        }
+        .navbar-area.sticky {
+          position: fixed;
+          top: 0;
+          left: 0;
+          right: 0;
+          z-index: 999;
+          box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        .navbar {
+          display: flex;
+          align-items: center;
+          justify-content: space-between;
+          padding: 1rem 0;
+        }
+        .navbar-brand {
+          display: flex;
+          align-items: center;
+          text-decoration: none;
+          gap: 0.75rem;
+        }
+        .navbar-brand img {
+          max-width: 50px;
+          max-height: 50px;
+          object-fit: contain;
+        }
+        .navbar-brand h2 {
+          font-size: 1.5rem;
+          font-weight: 700;
+          margin: 0;
+        }
+        .navbar-nav {
+          display: flex;
+          list-style: none;
+          margin: 0;
+          padding: 0;
+          gap: 2rem;
+        }
+        .nav-link {
+          color: var(--text-color);
+          text-decoration: none;
+          font-weight: 500;
+          transition: color 0.3s ease;
+          position: relative;
+        }
+        .nav-link:hover {
+          color: var(--primary-color);
+        }
+        .nav-link.active {
+          color: var(--primary-color);
+          font-weight: 600;
+        }
+        
+        /* Mobile Menu Styles */
+        .navbar-toggler {
+          display: none;
+          background: none;
+          border: none;
+          cursor: pointer;
+          padding: 0.5rem;
+        }
+        .burger-menu {
+          display: flex;
+          flex-direction: column;
+          gap: 4px;
+        }
+        .burger-menu span {
+          display: block;
+          width: 25px;
+          height: 3px;
+          background-color: var(--text-color);
+          transition: all 0.3s ease;
+        }
+        .offcanvas {
+          position: fixed;
+          top: 0;
+          left: -100%;
+          width: 280px;
+          height: 100vh;
+          background-color: var(--card-bg-color);
+          transition: left 0.3s ease;
+          z-index: 1050;
+          overflow-y: auto;
+        }
+        .offcanvas.show {
+          left: 0;
+        }
+        .offcanvas-backdrop {
+          position: fixed;
+          top: 0;
+          left: 0;
+          width: 100%;
+          height: 100%;
+          background-color: rgba(0, 0, 0, 0.5);
+          z-index: 1040;
+        }
+        .offcanvas-header {
+          display: flex;
+          align-items: center;
+          justify-content: space-between;
+          padding: 1rem 1.5rem;
+          border-bottom: 1px solid var(--border-color);
+        }
+        .offcanvas-close {
+          background: none;
+          border: none;
+          font-size: 1.5rem;
+          cursor: pointer;
+          color: var(--text-color);
+        }
+        .offcanvas-body {
+          padding: 1.5rem;
+        }
+        .mobile-nav {
+          list-style: none;
+          padding: 0;
+          margin: 0;
+        }
+        .mobile-nav .nav-link {
+          display: block;
+          padding: 0.75rem 0;
+          border-bottom: 1px solid var(--border-color);
+        }
+        
+        /* Footer Styles */
+        .footer-area {
+          background-color: var(--card-bg-color);
+          border-top: 1px solid var(--border-color);
+          margin-top: 4rem;
+        }
+        .footer-widget-info {
+          padding: 3rem 0;
+        }
+        .footer-widget h4 {
+          font-size: 1.25rem;
+          font-weight: 600;
+          margin-bottom: 1.5rem;
+          color: var(--text-color);
+        }
+        .footer-widget ul {
+          list-style: none;
+          padding: 0;
+          margin: 0;
+        }
+        .footer-widget ul li {
+          margin-bottom: 0.75rem;
+        }
+        .footer-widget a {
+          color: var(--text-muted-color);
+          text-decoration: none;
+          transition: color 0.3s ease;
+        }
+        .footer-widget a:hover {
+          color: var(--primary-color);
+        }
+        .footer-logo {
+          margin-bottom: 1rem;
+        }
+        .copy-right-area {
+          background-color: var(--bg-color);
+          padding: 1.5rem 0;
+          text-align: center;
+          border-top: 1px solid var(--border-color);
+        }
+        
+        /* Content Styles */
         .theme-toggle-button {
           background-color: var(--card-bg-color);
           color: var(--text-color);
@@ -97,70 +331,78 @@
             border-radius: 0.5rem;
             margin: 1rem 0;
         }
+        
+        /* Responsive Styles */
+        @media (max-width: 1024px) {
+          .navbar-nav {
+            gap: 1.5rem;
+          }
+        }
+        
+        @media (max-width: 768px) {
+          .navbar-nav {
+            display: none;
+          }
+          .navbar-toggler {
+            display: block;
+          }
+          .footer-widget-info .row {
+            gap: 2rem;
+          }
+        }
       </style>
     </head>
     <body class="light-theme">
+    <!-- Google Tag Manager (noscript) -->
+    <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-TRT4SWZC"
+    height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+    <!-- End Google Tag Manager (noscript) -->
+    
     <div class="relative flex size-full min-h-screen flex-col group/design-root overflow-x-hidden">
-    <header class="sticky top-0 z-50 w-full bg-[var(--card-bg-color)] border-b border-[var(--border-color)]">
-    <div class="container mx-auto px-4 sm:px-6 lg:px-8">
-    <div class="flex items-center justify-between h-16">
-    <a href="../index.html" class="flex items-center gap-3 hover:opacity-80 transition-opacity">
-    <div class="size-8 text-primary">
-    <svg fill="none" viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg">
-    <path clip-rule="evenodd" d="M24 4L10 12.6667V35.3333L24 44L38 35.3333V12.6667L24 4ZM12 15.0533L24 23.72V40.9467L12 32.28V15.0533ZM36 15.0533V32.28L24 40.9467V23.72L36 15.0533ZM24 6.72L34.8 12.6667L24 18.6133L13.2 12.6667L24 6.72Z" fill="currentColor" fill-rule="evenodd"></path>
-    </svg>
-    </div>
-    <h1 class="text-2xl font-bold tracking-tight" style="font-family: Newsreader, serif; color: var(--text-color);">AI KnowledgeBase</h1>
-    </a>
-    <div class="flex items-center gap-4">
-    <nav class="hidden sm:flex items-center space-x-6 text-sm font-medium">
-    <a class="text-[var(--text-muted-color)] hover:text-[var(--text-color)] transition-colors" href="../index.html">Home</a>
-    <a class="text-[var(--text-color)] font-semibold hover:text-blue-600 dark:hover:text-blue-400 transition-colors active-link" href="../index.html">Blog</a>
-    <a class="text-[var(--text-muted-color)] hover:text-[var(--text-color)] transition-colors" href="about.html">About</a>
-    <a class="text-[var(--text-muted-color)] hover:text-[var(--text-color)] transition-colors" href="mailto:zorro.cheng@hkmci.com">Contact</a>
-    </nav>
-    <button class="theme-toggle-button p-2 rounded-md text-sm font-medium leading-normal hover:bg-gray-100 dark:hover:bg-gray-700 transition-colors" id="theme-toggle">
-    <svg class="h-5 w-5" fill="none" id="theme-toggle-light-icon" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-    <path d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path>
-    </svg>
-    <svg class="h-5 w-5 hidden" fill="none" id="theme-toggle-dark-icon" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-    <path d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path>
-    </svg>
-    <span class="sr-only">Toggle theme</span>
-    </button>
-    </div>
-    </div>
-    </div>
-    </header>
+    
+    <!-- Header placeholder -->
+    <div id="blog-header"></div>
+    
     <main class="flex-1 bg-[var(--bg-color)]">
     <div class="px-4 md:px-6 lg:px-8 py-8">
     <article class="max-w-4xl mx-auto bg-[var(--card-bg-color)] rounded-lg shadow-md overflow-hidden border border-[var(--border-color)]">
     <div class="p-6 md:p-8 lg:p-10">
-    <header class="mb-8">
-    <h1 class="text-[var(--text-color)] text-3xl md:text-4xl lg:text-5xl font-bold leading-tight tracking-tight mb-4" style="font-family: Newsreader, serif;">
+    <header class="blog-post-header">
+    <h1 class="text-[var(--text-color)] text-3xl md:text-4xl lg:text-5xl font-bold leading-tight tracking-tight mb-6" style="font-family: Newsreader, serif;">
                       Parallel Internet: Traditional vs Agentic Internet
                     </h1>
-    <p class="text-[var(--text-muted-color)] text-xl mb-6">A visual guide to understanding how AI agents are transforming—not replacing—the internet we know</p>
-    <div class="flex items-center space-x-4 text-[var(--text-muted-color)] text-sm">
+    
+    <!-- Feature Image -->
+    <figure class="mb-6">
+        <img alt="Traditional vs Agentic Internet Comparison" class="w-full h-auto rounded-lg shadow-md" src="/img/tvsa.png"/>
+        <figcaption class="text-center text-sm text-[var(--text-muted-color)] mt-2">The evolution from traditional to agentic internet architecture</figcaption>
+    </figure>
+    
+    <div class="blog-post-meta">
+    <div class="flex flex-col sm:flex-row sm:items-center gap-3 text-[var(--text-muted-color)]">
+    <div class="author-date flex items-center gap-3">
     <div>
     <span>By </span>
-    <a class="text-blue-600 dark:text-blue-400 hover:underline" href="about.html">Zorro Cheng</a>
+    <a class="text-blue-600 dark:text-blue-400 hover:underline" href="https://www.jarvisnsam.com/#about">Zorro Cheng</a>
     </div>
     <span>•</span>
     <time datetime="2025-05-26">May 26, 2025</time>
     </div>
+                    <div class="post-tags">
+                    <a href="/?tag=Internet Architecture" class="tag clickable-tag">Internet Architecture</a>
+                    <a href="/?tag=AI Agents" class="tag clickable-tag">AI Agents</a>
+                    <a href="/?tag=MCP Protocol" class="tag clickable-tag">MCP Protocol</a>
+                    <a href="/?tag=Future Tech" class="tag clickable-tag">Future Tech</a>
+                    </div>
+    </div>
+    </div>
     </header>
     <div class="prose prose-lg max-w-none">
     
-    <figure class="my-8">
-        <img alt="Traditional vs Agentic Internet Comparison" class="w-full h-auto rounded-lg shadow-md" src="../img/tvsa.png"/>
-        <figcaption class="text-center text-sm text-[var(--text-muted-color)] mt-2">The evolution from traditional to agentic internet architecture</figcaption>
-    </figure>
-
     <p>The image above captures the fundamental shift we're witnessing in internet architecture. On one side, we see the familiar traditional internet that has served us for decades. On the other, an emerging agentic internet where AI agents act as intelligent intermediaries. But as we'll explore, this isn't about one replacing the other—it's about both working in harmony.</p>
 
     <div class="diagram-container">
-        <img src="../img/parellel_internet.svg" alt="Parallel Internet Architecture Diagram" class="w-full h-auto"/>
+        <img src="/img/parellel_internet.svg" alt="Parallel Internet Architecture Diagram" class="w-full h-auto"/>
     </div>
 
     <p>If you look at the detailed architectural diagram above, you'll notice something striking: we're not looking at one internet architecture, but two distinct yet interconnected systems. The top half shows the internet you use every day. The bottom half reveals its AI-powered future. And crucially, both will work together.</p>
@@ -350,7 +592,7 @@
     </article>
     <div class="max-w-4xl mx-auto mt-12">
     <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
-    <a class="block p-6 bg-[var(--card-bg-color)] rounded-lg shadow-md hover:shadow-lg transition-shadow border border-[var(--border-color)]" href="../index.html">
+    <a class="block p-6 bg-[var(--card-bg-color)] rounded-lg shadow-md hover:shadow-lg transition-shadow border border-[var(--border-color)]" href="/index.html">
     <div class="flex items-center text-sm text-[var(--text-muted-color)] mb-2">
     <svg class="mr-1" fill="none" height="16" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24" width="16" xmlns="http://www.w3.org/2000/svg">
     <line x1="19" x2="5" y1="12" y2="12"></line>
@@ -374,61 +616,24 @@
     </div>
     </div>
     </main>
-    <footer class="bg-[var(--card-bg-color)] border-t border-[var(--border-color)] mt-12">
-    <div class="max-w-screen-lg mx-auto px-5 py-8">
-    <p class="text-[var(--text-muted-color)] text-sm font-normal leading-normal text-center">© 2025 Zorro Cheng. All rights reserved.</p>
+    
+    <!-- Footer placeholder -->
+    <div id="blog-footer"></div>
     </div>
-    </footer>
-    </div>
+    
+    <!-- Load common JS -->
+    <script src="/js/blog-common.js"></script>
+    
+    <!-- Page specific script for copy link -->
     <script>
-        const themeToggleBtn = document.getElementById('theme-toggle');
-        const themeToggleDarkIcon = document.getElementById('theme-toggle-dark-icon');
-        const themeToggleLightIcon = document.getElementById('theme-toggle-light-icon');
-        // Check for saved theme preference or use system preference
-        if (localStorage.getItem('color-theme') === 'dark' || (!('color-theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
-          document.body.classList.add('dark-theme');
-          document.body.classList.remove('light-theme');
-          themeToggleLightIcon.classList.add('hidden');
-          themeToggleDarkIcon.classList.remove('hidden');
-        } else {
-          document.body.classList.add('light-theme');
-          document.body.classList.remove('dark-theme');
-          themeToggleDarkIcon.classList.add('hidden');
-          themeToggleLightIcon.classList.remove('hidden');
-        }
-        themeToggleBtn.addEventListener('click', function() {
-          themeToggleDarkIcon.classList.toggle('hidden');
-          themeToggleLightIcon.classList.toggle('hidden');
-          if (localStorage.getItem('color-theme')) {
-            if (localStorage.getItem('color-theme') === 'light') {
-              document.body.classList.add('dark-theme');
-              document.body.classList.remove('light-theme');
-              localStorage.setItem('color-theme', 'dark');
-            } else {
-              document.body.classList.add('light-theme');
-              document.body.classList.remove('dark-theme');
-              localStorage.setItem('color-theme', 'light');
-            }
-          } else {
-            if (document.body.classList.contains('dark-theme')) {
-              document.body.classList.remove('dark-theme');
-              document.body.classList.add('light-theme');
-              localStorage.setItem('color-theme', 'light');
-            } else {
-              document.body.classList.remove('light-theme');
-              document.body.classList.add('dark-theme');
-              localStorage.setItem('color-theme', 'dark');
-            }
-          }
-        });
         function copyLink() {
-          const url = window.location.href;
-          navigator.clipboard.writeText(url).then(function() {
-            alert('Link copied to clipboard!');
-          }, function(err) {
-            console.error('Could not copy text: ', err);
-            alert('Failed to copy link.');
-          });
+            const url = window.location.href;
+            navigator.clipboard.writeText(url).then(function() {
+                alert('Link copied to clipboard!');
+            }, function(err) {
+                console.error('Could not copy text: ', err);
+                alert('Failed to copy link.');
+            });
         }
-      </script>
+    </script>
     </body></html>

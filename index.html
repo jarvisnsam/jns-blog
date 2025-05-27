@@ -1,49 +1,83 @@
 <!DOCTYPE html>
 <html lang="en"><head>
     <meta charset="utf-8"/>
+    <link rel="icon" type="image/png" href="/img/jns_logo.png" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Blog - Jarvis and Sam | AI Solutions & Business Transformation</title>
+    
+    <!-- Initialize dataLayer -->
+    <script>
+      window.dataLayer = window.dataLayer || [];
+    </script>
+    
+    <!-- Google Tag Manager -->
+    <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+    new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+    j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+    'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+    })(window,document,'script','dataLayer','GTM-TRT4SWZC');</script>
+    <!-- End Google Tag Manager -->
+    
+    <!-- Primary Meta Tags -->
+    <meta name="description" content="Explore insights on AI technologies, business transformation, and innovative solutions from Jarvis and Sam's expert blog." />
+    <meta name="keywords" content="AI blog, business transformation, AI agents, automation insights, data analysis, workflow optimization" />
+    <meta name="author" content="Jarvis and Sam" />
+    
+    <!-- RSS Feed Auto-discovery -->
+    <link rel="alternate" type="application/rss+xml" title="Jarvis and Sam AI Blog RSS Feed" href="/feed.xml" />
+    
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://jarvisnsam.com/jns-blog/" />
+    <meta property="og:site_name" content="Jarvis and Sam Blog" />
+    <meta property="og:locale" content="en_US" />
+    <meta property="og:title" content="Blog - Jarvis and Sam | AI Solutions & Business Transformation" />
+    <meta property="og:description" content="Explore insights on AI technologies, business transformation, and innovative solutions from Jarvis and Sam's expert blog." />
+    <meta property="og:image" content="https://jarvisnsam.com/jns-blog/img/jns_logo.png" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image" />
+    <meta property="twitter:url" content="https://jarvisnsam.com/jns-blog/" />
+    <meta property="twitter:site" content="@jarvisnsam" />
+    <meta property="twitter:title" content="Blog - Jarvis and Sam | AI Solutions & Business Transformation" />
+    <meta property="twitter:description" content="Explore insights on AI technologies, business transformation, and innovative solutions from Jarvis and Sam's expert blog." />
+    <meta property="twitter:image" content="https://jarvisnsam.com/jns-blog/img/jns_logo.png" />
+    
+    <!-- Fonts -->
     <link crossorigin="" href="https://fonts.gstatic.com/" rel="preconnect"/>
     <link as="style" href="https://fonts.googleapis.com/css2?display=swap&amp;family=Newsreader%3Awght%40400%3B500%3B600%3B700%3B800&amp;family=Noto+Sans%3Awght%40400%3B500%3B600%3B700%3B900" onload="this.rel='stylesheet'" rel="stylesheet"/>
-    <title>AI KnowledgeBase - Home</title>
-    <link href="data:image/x-icon;base64," rel="icon" type="image/x-icon"/>
+    
+    <!-- Styles -->
+    <link rel="stylesheet" href="/css/blog-common.css">
     <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
     <style>
-        .text-primary {
-          color: #111827;}
-        .bg-primary {
-          background-color: #111827;}
-        .border-primary {
-          border-color: #111827;}
-        .hover\:text-primary:hover {
-          color: #3b82f6;}
-        .hover\:bg-primary-dark:hover {
-          background-color: #0f172a;}
-        .active-link {
-          color: #3b82f6;font-weight: 600;
+        /* Container max-width matching blog-common.css */
+        .container {
+          width: 100%;
+          padding-right: 15px;
+          padding-left: 15px;
+          margin-right: auto;
+          margin-left: auto;
         }
-        .light-theme {
-          --bg-color: #f9fafb;--text-color: #1f2937;--text-muted-color: #6b7280;--border-color: #e5e7eb;--card-bg-color: #ffffff;}
-        .dark-theme {
-          --bg-color: #1f2937;--text-color: #f3f4f6;--text-muted-color: #9ca3af;--border-color: #374151;--card-bg-color: #374151;}
-        body {
-          background-color: var(--bg-color);
-          color: var(--text-color);
-          font-family: "Noto Sans", sans-serif;
+        @media (min-width: 576px) {
+          .container { max-width: 540px; }
         }
-        .theme-toggle-button {
-          background-color: var(--card-bg-color);
-          color: var(--text-color);
-          border: 1px solid var(--border-color);
+        @media (min-width: 768px) {
+          .container { max-width: 720px; }
         }
-        .sidebar-dropdown {
-          max-height: 0;
-          overflow: hidden;
-          transition: max-height 0.3s ease-out;
+        @media (min-width: 992px) {
+          .container { max-width: 960px; }
         }
-        .sidebar-dropdown.open {
-          max-height: 200px;
-          transition: max-height 0.3s ease-in;
+        @media (min-width: 1200px) {
+          .container { max-width: 1200px; }
         }
+        @media (min-width: 1400px) {
+          .container { max-width: 1200px; }
+        }
+        
+        /* Content Styles */
         .loading-placeholder {
           animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
         }
@@ -60,164 +94,170 @@
           object-fit: cover;
           object-position: center;
         }
+        
+        /* Line clamp utilities for consistent card heights */
+        .line-clamp-2 {
+          display: -webkit-box;
+          -webkit-line-clamp: 2;
+          -webkit-box-orient: vertical;
+          overflow: hidden;
+          text-overflow: ellipsis;
+          line-height: 1.4;
+          max-height: 2.8em; /* 2 lines * 1.4 line-height */
+        }
+        
+        .line-clamp-3 {
+          display: -webkit-box;
+          -webkit-line-clamp: 3;
+          -webkit-box-orient: vertical;
+          overflow: hidden;
+          text-overflow: ellipsis;
+          line-height: 1.5;
+          max-height: 4.5em; /* 3 lines * 1.5 line-height */
+        }
+        
+        /* Ensure main content area respects max-width */
+        .layout-content-container {
+          max-width: 1200px;
+          margin: 0 auto;
+        }
       </style>
     </head>
     <body class="light-theme">
-    <div class="relative flex size-full min-h-screen flex-row group/design-root overflow-x-hidden">
-    <aside class="fixed top-0 left-0 z-40 w-64 h-screen transition-transform -translate-x-full sm:translate-x-0 bg-[var(--card-bg-color)] border-r border-[var(--border-color)] flex flex-col">
-    <div class="flex items-center gap-3 p-6 border-b border-[var(--border-color)]">
-    <div class="size-8 text-primary">
-    <svg fill="none" viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg">
-    <path clip-rule="evenodd" d="M24 4L10 12.6667V35.3333L24 44L38 35.3333V12.6667L24 4ZM12 15.0533L24 23.72V40.9467L12 32.28V15.0533ZM36 15.0533V32.28L24 40.9467V23.72L36 15.0533ZM24 6.72L34.8 12.6667L24 18.6133L13.2 12.6667L24 6.72Z" fill="currentColor" fill-rule="evenodd"></path>
-    </svg>
-    </div>
-    <h1 class="text-2xl font-bold tracking-tight" style="font-family: Newsreader, serif; color: var(--text-color);">AI KnowledgeBase</h1>
-    </div>
-    <nav class="flex-grow p-4 space-y-1 overflow-y-auto">
-    <a class="flex items-center gap-3 px-3 py-2 rounded-md text-sm font-medium leading-normal hover:bg-gray-100 dark:hover:bg-gray-700 transition-colors text-[var(--text-muted-color)] hover:text-[var(--text-color)]" href="#">
-    <svg fill="none" height="20" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24" width="20" xmlns="http://www.w3.org/2000/svg">
-    <path d="m3 9 9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path>
-    <polyline points="9 22 9 12 15 12 15 22"></polyline>
-    </svg>
-              Home
-            </a>
-    <div class="space-y-1">
-    <button class="flex items-center justify-between w-full gap-3 px-3 py-2 rounded-md text-sm font-medium leading-normal hover:bg-gray-100 dark:hover:bg-gray-700 transition-colors active-link" type="button" id="dropdown-toggle">
-    <div class="flex items-center gap-3">
-    <svg fill="none" height="20" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24" width="20" xmlns="http://www.w3.org/2000/svg">
-    <path d="M4 19.5v-15A2.5 2.5 0 0 1 6.5 2H20v20H6.5a2.5 2.5 0 0 1 0-5H20"></path>
-    </svg>
-                Posts
+    <!-- Google Tag Manager (noscript) -->
+    <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-TRT4SWZC"
+    height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+    <!-- End Google Tag Manager (noscript) -->
+    
+    <!-- Header placeholder -->
+    <div id="blog-header"></div>
+    
+    <div class="relative flex size-full min-h-screen flex-col group/design-root overflow-x-hidden">
+      <main class="flex-1 bg-[var(--bg-color)]">
+        <div class="container py-8">
+          <div class="layout-content-container flex flex-col">
+            <!-- Search and Filter Section -->
+            <div class="mb-8">
+              <div class="relative max-w-md mx-auto">
+                <input 
+                  type="text" 
+                  id="search-input" 
+                  placeholder="Search posts by title, content, or tags..." 
+                  class="w-full px-6 py-3 pr-12 rounded-full border border-[var(--border-color)] bg-[var(--card-bg-color)] text-[var(--text-color)] placeholder-[var(--text-muted-color)] focus:outline-none focus:ring-2 focus:ring-[var(--primary-color)] focus:border-transparent transition-all"
+                />
+                <div class="absolute inset-y-0 right-0 flex items-center pr-4">
+                  <svg class="w-5 h-5 text-[var(--text-muted-color)]" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path>
+                  </svg>
+                </div>
               </div>
-    <svg class="h-4 w-4 text-[var(--text-muted-color)] transition-transform duration-200 transform rotate-0" id="dropdown-icon" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-    <polyline points="6 9 12 15 18 9"></polyline>
-    </svg>
-    </button>
-    <div class="pl-6 space-y-1 sidebar-dropdown" id="dropdown-menu">
-    <!-- Dynamic content will be loaded here -->
-    <noscript>
-        <a class="block px-3 py-2 rounded-md text-xs font-normal leading-normal text-[var(--text-muted-color)] hover:bg-gray-100 dark:hover:bg-gray-700 hover:text-[var(--text-color)] transition-colors truncate" href="./pages/parellel_internet.html">Parallel Internet</a>
-        <a class="block px-3 py-2 rounded-md text-xs font-normal leading-normal text-[var(--text-muted-color)] hover:bg-gray-100 dark:hover:bg-gray-700 hover:text-[var(--text-color)] transition-colors truncate" href="./pages/agentic protocol future trend.html">Agentic Trends</a>
-        <a class="block px-3 py-2 rounded-md text-xs font-normal leading-normal text-[var(--text-muted-color)] hover:bg-gray-100 dark:hover:bg-gray-700 hover:text-[var(--text-color)] transition-colors truncate" href="./pages/template.html">UI Templates</a>
-        <a class="block px-3 py-2 rounded-md text-xs font-normal leading-normal text-[var(--text-muted-color)] hover:bg-gray-100 dark:hover:bg-gray-700 hover:text-[var(--text-color)] transition-colors truncate" href="./pages/1.html">Document Archive</a>
-    </noscript>
-    </div>
-    </div>
-    <a class="flex items-center gap-3 px-3 py-2 rounded-md text-sm font-medium leading-normal hover:bg-gray-100 dark:hover:bg-gray-700 transition-colors text-[var(--text-muted-color)] hover:text-[var(--text-color)]" href="./pages/about.html">
-    <svg fill="none" height="20" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24" width="20" xmlns="http://www.w3.org/2000/svg">
-    <circle cx="12" cy="12" r="10"></circle>
-    <path d="M12 16v-4"></path>
-    <path d="M12 8h.01"></path>
-    </svg>
-              About
-            </a>
-    <a class="flex items-center gap-3 px-3 py-2 rounded-md text-sm font-medium leading-normal hover:bg-gray-100 dark:hover:bg-gray-700 transition-colors text-[var(--text-muted-color)] hover:text-[var(--text-color)]" href="mailto:zorro.cheng@hkmci.com">
-    <svg fill="none" height="20" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24" width="20" xmlns="http://www.w3.org/2000/svg">
-    <rect height="16" rx="2" width="20" x="2" y="4"></rect>
-    <path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"></path>
-    </svg>
-              Contact
-            </a>
-    </nav>
-    <div class="p-4 border-t border-[var(--border-color)]">
-    <button class="theme-toggle-button w-full flex items-center justify-center gap-2 px-3 py-2 rounded-md text-sm font-medium leading-normal hover:bg-gray-100 dark:hover:bg-gray-700 transition-colors" id="theme-toggle">
-    <svg class="h-5 w-5" fill="none" id="theme-toggle-light-icon" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-    <path d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path>
-    </svg>
-    <svg class="h-5 w-5 hidden" fill="none" id="theme-toggle-dark-icon" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-    <path d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path>
-    </svg>
-    <span id="theme-toggle-text">Light Mode</span>
-    </button>
-    </div>
-    </aside>
-    <div class="flex-1 sm:ml-64">
-    <main class="flex-1 bg-[var(--bg-color)]">
-    <div class="px-4 md:px-6 lg:px-8 py-8">
-    <div class="layout-content-container flex flex-col max-w-screen-lg mx-auto">
-    <h2 class="text-[var(--text-color)] text-3xl font-bold leading-tight tracking-tight pb-6 pt-2" style="font-family: Newsreader, serif;">AI KnowledgeBase</h2>
-    <div class="grid grid-cols-1 md:grid-cols-2 gap-6" id="blog-posts-container">
-    
-    <!-- Loading placeholders - will be replaced by dynamic content -->
-    <article class="flex flex-col bg-[var(--card-bg-color)] rounded-lg shadow-md overflow-hidden border border-[var(--border-color)] loading-placeholder">
-    <div class="w-full aspect-[16/10] bg-[var(--border-color)]"></div>
-    <div class="p-5">
-    <div class="h-6 bg-[var(--border-color)] rounded mb-2"></div>
-    <div class="h-4 bg-[var(--border-color)] rounded mb-2"></div>
-    <div class="h-4 bg-[var(--border-color)] rounded w-3/4"></div>
-    </div>
-    </article>
-    
-    <article class="flex flex-col bg-[var(--card-bg-color)] rounded-lg shadow-md overflow-hidden border border-[var(--border-color)] loading-placeholder">
-    <div class="w-full aspect-[16/10] bg-[var(--border-color)]"></div>
-    <div class="p-5">
-    <div class="h-6 bg-[var(--border-color)] rounded mb-2"></div>
-    <div class="h-4 bg-[var(--border-color)] rounded mb-2"></div>
-    <div class="h-4 bg-[var(--border-color)] rounded w-3/4"></div>
-    </div>
-    </article>
+              
+              <!-- Filter Status -->
+              <div id="filter-status" class="text-center mt-4 hidden">
+                <span class="text-sm text-[var(--text-muted-color)]" id="filter-text"></span>
+                <button id="clear-filters" class="ml-2 text-sm text-[var(--primary-color)] hover:underline">Clear filters</button>
+              </div>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6" id="blog-posts-container">
+              
+              <!-- Loading placeholders - will be replaced by dynamic content -->
+              <article class="flex flex-col bg-[var(--card-bg-color)] rounded-lg shadow-md overflow-hidden border border-[var(--border-color)] loading-placeholder">
+                <div class="w-full aspect-[16/10] bg-[var(--border-color)]"></div>
+                <div class="p-5">
+                  <div class="h-4 bg-[var(--border-color)] rounded mb-3 w-32"></div>
+                  <div class="h-6 bg-[var(--border-color)] rounded mb-2"></div>
+                  <div class="h-4 bg-[var(--border-color)] rounded mb-2"></div>
+                  <div class="h-4 bg-[var(--border-color)] rounded w-3/4"></div>
+                </div>
+              </article>
+              
+              <article class="flex flex-col bg-[var(--card-bg-color)] rounded-lg shadow-md overflow-hidden border border-[var(--border-color)] loading-placeholder">
+                <div class="w-full aspect-[16/10] bg-[var(--border-color)]"></div>
+                <div class="p-5">
+                  <div class="h-4 bg-[var(--border-color)] rounded mb-3 w-32"></div>
+                  <div class="h-6 bg-[var(--border-color)] rounded mb-2"></div>
+                  <div class="h-4 bg-[var(--border-color)] rounded mb-2"></div>
+                  <div class="h-4 bg-[var(--border-color)] rounded w-3/4"></div>
+                </div>
+              </article>
 
-    <!-- Fallback content for no-JS -->
-    <noscript>
-        <article class="flex flex-col bg-[var(--card-bg-color)] rounded-lg shadow-md overflow-hidden hover:shadow-xl transition-shadow duration-300 border border-[var(--border-color)]">
-        <a class="block" href="./pages/parellel_internet.html">
-        <div class="w-full bg-center bg-no-repeat aspect-[16/10] bg-cover bg-gradient-to-br from-blue-500 via-purple-600 to-teal-500 flex items-center justify-center">
-        <div class="text-white text-center p-4">
-        <div class="text-sm font-semibold">Internet Architecture</div>
-        </div>
-        </div>
-        </a>
-        <div class="p-5 flex flex-col flex-grow">
-        <h3 class="text-[var(--text-color)] text-xl font-semibold leading-snug mb-2" style="font-family: Newsreader, serif;">
-        <a class="hover:text-blue-600 dark:hover:text-blue-400 transition-colors" href="./pages/parellel_internet.html">Parallel Internet</a>
-        </h3>
-        <p class="text-[var(--text-muted-color)] text-sm font-normal leading-relaxed flex-grow">Exploring internet architecture concepts.</p>
-        <a class="text-blue-600 dark:text-blue-400 text-sm font-semibold mt-4 inline-block hover:underline" href="./pages/parellel_internet.html">Read article →</a>
-        </div>
-        </article>
-    </noscript>
-
+            </div>
+            
+            <!-- Pagination -->
+            <div id="pagination-container" class="mt-12 flex justify-center items-center space-x-2 hidden">
+              <button id="prev-page" class="px-4 py-2 text-sm font-medium text-[var(--text-muted-color)] bg-[var(--card-bg-color)] border border-[var(--border-color)] rounded-lg hover:bg-[var(--border-color)] transition-colors disabled:opacity-50 disabled:cursor-not-allowed">
+                Previous
+              </button>
+              <div id="page-numbers" class="flex space-x-1"></div>
+              <button id="next-page" class="px-4 py-2 text-sm font-medium text-[var(--text-muted-color)] bg-[var(--card-bg-color)] border border-[var(--border-color)] rounded-lg hover:bg-[var(--border-color)] transition-colors disabled:opacity-50 disabled:cursor-not-allowed">
+                Next
+              </button>
+            </div>
+          </div>
+        </main>
+        
+        <!-- Footer placeholder -->
+        <div id="blog-footer"></div>
+      </div>
     </div>
-    </div>
-    </div>
-    </main>
-    <footer class="bg-[var(--card-bg-color)] border-t border-[var(--border-color)]">
-    <div class="max-w-screen-lg mx-auto px-5 py-8">
-    <p class="text-[var(--text-muted-color)] text-sm font-normal leading-normal text-center">© 2025 Zorro Cheng. All rights reserved.</p>
-    </div>
-    </footer>
-    </div>
-    </div>
+    
+    <!-- Load common JS -->
+    <script src="/js/blog-common.js"></script>
+    
     <script>
-        // Blog post configuration and metadata
-        const blogPosts = [
-            {
-                filename: 'parellel_internet.html',
-                id: 'post-parallel-internet',
-                fallback: {
-                    title: 'Parallel Internet: Traditional vs Agentic Internet',
-                    description: 'A visual guide to understanding how AI agents are transforming—not replacing—the internet we know.',
-                    category: 'Internet Architecture',
-                    gradient: 'from-blue-500 via-purple-600 to-teal-500',
-                    icon: `<path d="M12 2L13.09 8.26L19 7L14.74 12L19 17L13.09 15.74L12 22L10.91 15.74L5 17L9.26 12L5 7L10.91 8.26L12 2Z"/>`
-                }
-            },
-            {
-                filename: 'agentic protocol future trend.html',
-                id: 'post-agentic-trends',
-                fallback: {
-                    title: 'Agentic Protocol Future Trends',
-                    description: 'Exploring protocols, trends, and trajectories in AI agent communication.',
-                    category: 'Protocol Analysis',
-                    gradient: 'from-orange-500 via-pink-500 to-purple-600',
-                    icon: `<path d="M12 2C13.1 2 14 2.9 14 4C14 5.1 13.1 6 12 6C10.9 6 10 5.1 10 4C10 2.9 10.9 2 12 2ZM21 9V7L15 1H5C3.9 1 3 1.9 3 3V21C3 22.1 3.9 23 5 23H19C20.1 23 21 22.1 21 21V9Z"/>`
-                }
-            },
-        ];
-
         // Cache for parsed post metadata
         const postCache = new Map();
         const CACHE_DURATION = 24 * 60 * 60 * 1000; // 24 hours
+
+        // Parse sitemap XML to get list of pages
+        async function parseSitemap() {
+            try {
+                const response = await fetch('/sitemap.xml');
+                if (!response.ok) {
+                    throw new Error('Failed to fetch sitemap');
+                }
+                
+                const text = await response.text();
+                const parser = new DOMParser();
+                const doc = parser.parseFromString(text, 'text/xml');
+                
+                // Get all URLs from sitemap
+                const urls = Array.from(doc.querySelectorAll('url'))
+                    .map(url => {
+                        const loc = url.querySelector('loc')?.textContent;
+                        const lastmod = url.querySelector('lastmod')?.textContent;
+                        return { loc, lastmod };
+                    })
+                    .filter(url => url.loc && url.loc.includes('/pages/'))
+                    .map(url => ({
+                        ...url,
+                        filename: url.loc.split('/pages/')[1]
+                    }));
+                
+                return urls;
+            } catch (error) {
+                console.error('Error parsing sitemap:', error);
+                // Fallback: try to discover files directly
+                return discoverFilesDirectly();
+            }
+        }
+
+        // Fallback method to discover files
+        async function discoverFilesDirectly() {
+            // This is a fallback - in production, sitemap should always work
+            // But for local development, we can try known files
+            const knownFiles = [
+                'parellel_internet.html',
+                'agentic protocol future trend.html'
+            ];
+            
+            return knownFiles.map(filename => ({
+                filename,
+                loc: `/pages/${filename}`,
+                lastmod: new Date().toISOString().split('T')[0]
+            }));
+        }
 
         // Extract metadata AND hero images from HTML content
         function extractPostMetadata(htmlContent, filename) {
@@ -225,7 +265,7 @@
             const doc = parser.parseFromString(htmlContent, 'text/html');
             
             // Extract title (try multiple sources)
-            let title = doc.querySelector('title')?.textContent?.replace(' - AI KnowledgeBase', '') ||
+            let title = doc.querySelector('title')?.textContent?.replace(' - AI KnowledgeBase', '')?.replace(' - Jarvis and Sam Blog', '') ||
                        doc.querySelector('article h1')?.textContent ||
                        doc.querySelector('h1')?.textContent ||
                        filename.replace('.html', '');
@@ -236,17 +276,35 @@
                              doc.querySelector('p')?.textContent ||
                              'No description available';
             
-            // Clean and truncate description
+            // Clean and truncate description for 3-row max display
             description = description.replace(/\s+/g, ' ').trim();
-            if (description.length > 150) {
-                description = description.substring(0, 147) + '...';
+            if (description.length > 120) {
+                description = description.substring(0, 117) + '...';
             }
             
             // Extract publication date
             const dateElement = doc.querySelector('time[datetime]');
             const publishDate = dateElement?.getAttribute('datetime') || 
+                               doc.querySelector('meta[name="article:published_time"]')?.content ||
                                dateElement?.textContent || 
                                new Date().toISOString().split('T')[0];
+            
+            // Extract tags
+            const tags = [];
+            
+            // From meta keywords
+            const keywords = doc.querySelector('meta[name="keywords"]')?.content;
+            if (keywords) {
+                tags.push(...keywords.split(',').map(t => t.trim()));
+            }
+            
+            // From article:tag meta tags
+            const articleTags = doc.querySelectorAll('meta[name="article:tag"]');
+            articleTags.forEach(tag => tags.push(tag.content));
+            
+            // From .tag elements in content
+            const tagElements = doc.querySelectorAll('.tag');
+            tagElements.forEach(tag => tags.push(tag.textContent.trim()));
             
             // Extract hero image - try multiple selectors for different blog post structures
             let heroImage = null;
@@ -268,18 +326,15 @@
                 if (imgElement) {
                     let src = imgElement.getAttribute('src');
                     if (src) {
-                        // Handle relative paths - convert to work with GitHub Pages
+                        // Handle relative paths - convert to work with root serving
                         if (src.startsWith('../img/')) {
-                            src = src.replace('../img/', './img/');
+                            src = src.replace('../img/', '/img/');
+                        } else if (src.startsWith('./img/')) {
+                            src = src.replace('./img/', '/img/');
                         } else if (src.startsWith('img/')) {
-                            // Make relative path explicit for GitHub Pages
-                            src = './' + src;
-                        } else if (src.startsWith('/')) {
-                            // Convert absolute path to relative for GitHub Pages
-                            src = '.' + src;
-                        } else if (!src.startsWith('http') && !src.startsWith('./')) {
-                            // Relative path, assume it's in img folder
-                            src = './img/' + src;
+                            src = '/' + src;
+                        } else if (!src.startsWith('/') && !src.startsWith('http')) {
+                            src = '/img/' + src;
                         }
                         
                         heroImage = src;
@@ -288,7 +343,20 @@
                 }
             }
             
-            return { title, description, publishDate, heroImage };
+            return { 
+                title, 
+                description, 
+                publishDate,
+                tags: [...new Set(tags)], // Remove duplicates
+                heroImage 
+            };
+        }
+
+        // Format date for display
+        function formatDate(dateStr) {
+            const date = new Date(dateStr);
+            const options = { year: 'numeric', month: 'long', day: 'numeric' };
+            return date.toLocaleDateString('en-US', options);
         }
 
         // Fetch and parse post metadata
@@ -305,7 +373,8 @@
                 // Try multiple path variations for GitHub Pages compatibility
                 const possiblePaths = [
                     `./pages/${post.filename}`,
-                    `pages/${post.filename}`
+                    `pages/${post.filename}`,
+                    `/pages/${post.filename}`
                 ];
                 
                 let response;
@@ -330,12 +399,11 @@
                 
                 const metadata = extractPostMetadata(htmlContent, post.filename);
                 
-                // Merge with fallback data
+                // Merge with post data
                 const result = {
-                    ...post.fallback,
                     ...metadata,
                     filename: post.filename,
-                    id: post.id
+                    lastmod: post.lastmod
                 };
                 
                 // Cache the result
@@ -347,18 +415,48 @@
                 return result;
             } catch (error) {
                 console.warn(`Failed to fetch ${post.filename}:`, error);
-                // Return fallback data when fetch fails
+                // Return minimal data when fetch fails
                 return {
-                    ...post.fallback,
-                    filename: post.filename,
-                    id: post.id
+                    title: post.filename.replace('.html', '').replace(/-/g, ' '),
+                    description: 'Unable to load description',
+                    publishDate: post.lastmod || new Date().toISOString().split('T')[0],
+                    tags: [],
+                    heroImage: null,
+                    filename: post.filename
                 };
             }
         }
 
+        // Generate gradient based on index
+        function getGradient(index) {
+            const gradients = [
+                'from-blue-500 via-purple-600 to-teal-500',
+                'from-orange-500 via-pink-500 to-purple-600',
+                'from-green-500 via-teal-500 to-blue-600',
+                'from-red-500 via-orange-500 to-yellow-500',
+                'from-indigo-500 via-purple-500 to-pink-500'
+            ];
+            return gradients[index % gradients.length];
+        }
+
+        // Capitalize first letter of each word (title case)
+        function toTitleCase(str) {
+            return str.replace(/\w\S*/g, (txt) => 
+                txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase()
+            );
+        }
+
         // Generate post card HTML with dynamic hero images
-        function generatePostCard(post) {
+        function generatePostCard(post, index) {
             const shortTitle = post.title.length > 60 ? post.title.substring(0, 57) + '...' : post.title;
+            const formattedDate = formatDate(post.publishDate);
+            
+            // Generate tags HTML with title case and click handlers
+            const tagsHtml = post.tags.length > 0 
+                ? post.tags.slice(0, 3).map(tag => 
+                    `<span class="tag clickable-tag" data-tag="${tag}" onclick="filterByTag('${tag}')">${toTitleCase(tag)}</span>`
+                  ).join('')
+                : '';
             
             // Use hero image if available, otherwise use gradient fallback
             let heroContent;
@@ -366,168 +464,206 @@
                 heroContent = `
                     <img src="${post.heroImage}" alt="${post.title}" class="w-full h-full hero-image" 
                          onerror="this.style.display='none'; this.nextElementSibling.style.display='block';" />
-                    <div class="w-full h-full bg-gradient-to-br ${post.gradient} flex items-center justify-center" style="display: none;">
+                    <div class="w-full h-full bg-gradient-to-br ${getGradient(index)} flex items-center justify-center" style="display: none;">
                         <div class="text-white text-center p-4">
-                            <svg class="w-16 h-16 mx-auto mb-2" fill="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                                ${post.icon}
-                            </svg>
-                            <div class="text-sm font-semibold">${post.category}</div>
+                            <div class="text-6xl mb-2">📄</div>
+                            <div class="text-sm font-semibold">Blog Post</div>
                         </div>
                     </div>
                 `;
             } else {
                 heroContent = `
-                    <div class="w-full h-full bg-gradient-to-br ${post.gradient} flex items-center justify-center">
+                    <div class="w-full h-full bg-gradient-to-br ${getGradient(index)} flex items-center justify-center">
                         <div class="text-white text-center p-4">
-                            <svg class="w-16 h-16 mx-auto mb-2" fill="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                                ${post.icon}
-                            </svg>
-                            <div class="text-sm font-semibold">${post.category}</div>
+                            <div class="text-6xl mb-2">📄</div>
+                            <div class="text-sm font-semibold">Blog Post</div>
                         </div>
                     </div>
                 `;
             }
             
             return `
-                <article class="flex flex-col bg-[var(--card-bg-color)] rounded-lg shadow-md overflow-hidden hover:shadow-xl transition-shadow duration-300 border border-[var(--border-color)]" id="${post.id}">
+                <article class="flex flex-col bg-[var(--card-bg-color)] rounded-lg shadow-md overflow-hidden hover:shadow-xl transition-shadow duration-300 border border-[var(--border-color)]" data-tags="${post.tags.join(',')}" data-title="${post.title.toLowerCase()}" data-description="${post.description.toLowerCase()}">
                     <a class="block" href="./pages/${post.filename}">
                         <div class="w-full aspect-[16/10] overflow-hidden">
                             ${heroContent}
                         </div>
                     </a>
                     <div class="p-5 flex flex-col flex-grow">
-                        <h3 class="text-[var(--text-color)] text-xl font-semibold leading-snug mb-2" style="font-family: Newsreader, serif;">
+                        <h3 class="text-[var(--text-color)] text-xl font-semibold leading-snug mb-2 line-clamp-2" style="font-family: Newsreader, serif;">
                             <a class="hover:text-blue-600 dark:hover:text-blue-400 transition-colors" href="./pages/${post.filename}">${shortTitle}</a>
                         </h3>
-                        <p class="text-[var(--text-muted-color)] text-sm font-normal leading-relaxed flex-grow">
+                        <p class="text-[var(--text-muted-color)] text-xs font-normal leading-relaxed flex-grow mb-2 line-clamp-3">
                             ${post.description}
                         </p>
-                        <a class="text-blue-600 dark:text-blue-400 text-sm font-semibold mt-4 inline-block hover:underline" href="./pages/${post.filename}">Read article →</a>
+                        ${tagsHtml ? `<div class="post-tags mb-2">${tagsHtml}</div>` : ''}
+                        <div class="flex items-center justify-between mt-auto">
+                            <a class="text-blue-600 dark:text-blue-400 text-sm font-semibold hover:underline" href="./pages/${post.filename}">Read article →</a>
+                            <time class="text-[var(--text-muted-color)] text-xs">
+                                ${formattedDate}
+                            </time>
+                        </div>
                     </div>
                 </article>
             `;
         }
 
-        // Generate sidebar navigation item
-        function generateSidebarItem(post) {
-            const shortTitle = post.title.length > 25 ? post.title.substring(0, 22) + '...' : post.title;
-            return `
-                <a class="block px-3 py-2 rounded-md text-xs font-normal leading-normal text-[var(--text-muted-color)] hover:bg-gray-100 dark:hover:bg-gray-700 hover:text-[var(--text-color)] transition-colors truncate" 
-                   href="./pages/${post.filename}" title="${post.title}">
-                    ${shortTitle}
-                </a>
-            `;
-        }
+        // Global variables for filtering and pagination
+        let allPosts = [];
+        let filteredPosts = [];
+        let currentSearchTerm = '';
+        let currentTag = '';
+        let currentPage = 1;
+        const POSTS_PER_PAGE = 12;
 
-        // Load and render all blog posts
-        async function loadBlogPosts() {
-            try {
-                // Fetch all post metadata
-                const posts = await Promise.all(
-                    blogPosts.map(post => fetchPostMetadata(post))
-                );
-                
-                // Update main content
-                const container = document.getElementById('blog-posts-container');
-                container.innerHTML = posts.map(post => generatePostCard(post)).join('');
-                
-                // Update sidebar navigation
-                const sidebarMenu = document.getElementById('dropdown-menu');
-                sidebarMenu.innerHTML = posts.map(post => generateSidebarItem(post)).join('');
-                
-                console.log('✅ Blog posts loaded successfully with dynamic hero images');
-            } catch (error) {
-                console.error('❌ Failed to load blog posts:', error);
-                // Fallback to static content using fallback data
-                const container = document.getElementById('blog-posts-container');
-                container.innerHTML = blogPosts.map(post => generatePostCard({
-                    ...post.fallback,
-                    filename: post.filename,
-                    id: post.id
-                })).join('');
-                
-                const sidebarMenu = document.getElementById('dropdown-menu');
-                sidebarMenu.innerHTML = blogPosts.map(post => generateSidebarItem({
-                    ...post.fallback,
-                    filename: post.filename,
-                    id: post.id
-                })).join('');
-            }
-        }
+        // Pagination functions
+        function renderPagination(totalPosts) {
+            const totalPages = Math.ceil(totalPosts / POSTS_PER_PAGE);
+            const paginationContainer = document.getElementById('pagination-container');
+            const pageNumbers = document.getElementById('page-numbers');
+            const prevButton = document.getElementById('prev-page');
+            const nextButton = document.getElementById('next-page');
 
-        // Theme toggle functionality
-        function initializeThemeToggle() {
-            const themeToggleBtn = document.getElementById('theme-toggle');
-            const themeToggleDarkIcon = document.getElementById('theme-toggle-dark-icon');
-            const themeToggleLightIcon = document.getElementById('theme-toggle-light-icon');
-            const themeToggleText = document.getElementById('theme-toggle-text');
-            
-            // Check for saved theme preference
-            if (localStorage.getItem('color-theme') === 'dark' || 
-                (!('color-theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
-                document.body.classList.add('dark-theme');
-                document.body.classList.remove('light-theme');
-                themeToggleLightIcon.classList.add('hidden');
-                themeToggleDarkIcon.classList.remove('hidden');
-                themeToggleText.textContent = 'Dark Mode';
-            } else {
-                document.body.classList.add('light-theme');
-                document.body.classList.remove('dark-theme');
-                themeToggleDarkIcon.classList.add('hidden');
-                themeToggleLightIcon.classList.remove('hidden');
-                themeToggleText.textContent = 'Light Mode';
+            if (totalPages <= 1) {
+                paginationContainer.classList.add('hidden');
+                return;
             }
+
+            paginationContainer.classList.remove('hidden');
+
+            // Update prev/next buttons
+            prevButton.disabled = currentPage === 1;
+            nextButton.disabled = currentPage === totalPages;
+
+            // Generate page numbers
+            pageNumbers.innerHTML = '';
             
-            themeToggleBtn.addEventListener('click', function() {
-                themeToggleDarkIcon.classList.toggle('hidden');
-                themeToggleLightIcon.classList.toggle('hidden');
-                
-                if (localStorage.getItem('color-theme')) {
-                    if (localStorage.getItem('color-theme') === 'light') {
-                        document.body.classList.add('dark-theme');
-                        document.body.classList.remove('light-theme');
-                        themeToggleText.textContent = 'Dark Mode';
-                        localStorage.setItem('color-theme', 'dark');
-                    } else {
-                        document.body.classList.add('light-theme');
-                        document.body.classList.remove('dark-theme');
-                        themeToggleText.textContent = 'Light Mode';
-                        localStorage.setItem('color-theme', 'light');
-                    }
-                } else {
-                    if (document.body.classList.contains('dark-theme')) {
-                        document.body.classList.remove('dark-theme');
-                        document.body.classList.add('light-theme');
-                        themeToggleText.textContent = 'Light Mode';
-                        localStorage.setItem('color-theme', 'light');
-                    } else {
-                        document.body.classList.remove('light-theme');
-                        document.body.classList.add('dark-theme');
-                        themeToggleText.textContent = 'Dark Mode';
-                        localStorage.setItem('color-theme', 'dark');
-                    }
+            // Show page numbers with ellipsis for large page counts
+            const maxVisiblePages = 5;
+            let startPage = Math.max(1, currentPage - Math.floor(maxVisiblePages / 2));
+            let endPage = Math.min(totalPages, startPage + maxVisiblePages - 1);
+            
+            if (endPage - startPage + 1 < maxVisiblePages) {
+                startPage = Math.max(1, endPage - maxVisiblePages + 1);
+            }
+
+            // First page
+            if (startPage > 1) {
+                pageNumbers.appendChild(createPageButton(1));
+                if (startPage > 2) {
+                    pageNumbers.appendChild(createEllipsis());
                 }
-            });
+            }
+
+            // Visible pages
+            for (let i = startPage; i <= endPage; i++) {
+                pageNumbers.appendChild(createPageButton(i));
+            }
+
+            // Last page
+            if (endPage < totalPages) {
+                if (endPage < totalPages - 1) {
+                    pageNumbers.appendChild(createEllipsis());
+                }
+                pageNumbers.appendChild(createPageButton(totalPages));
+            }
         }
 
-        // Dropdown toggle functionality
-        function initializeDropdown() {
-            const dropdownToggle = document.getElementById('dropdown-toggle');
-            const dropdownMenu = document.getElementById('dropdown-menu');
-            const dropdownIcon = document.getElementById('dropdown-icon');
+        function createPageButton(pageNum) {
+            const button = document.createElement('button');
+            button.textContent = pageNum;
+            button.className = `px-3 py-2 text-sm font-medium rounded-lg transition-colors ${
+                pageNum === currentPage 
+                    ? 'bg-[var(--primary-color)] text-white' 
+                    : 'text-[var(--text-muted-color)] bg-[var(--card-bg-color)] border border-[var(--border-color)] hover:bg-[var(--border-color)]'
+            }`;
+            button.onclick = () => goToPage(pageNum);
+            return button;
+        }
+
+        function createEllipsis() {
+            const span = document.createElement('span');
+            span.textContent = '...';
+            span.className = 'px-3 py-2 text-sm text-[var(--text-muted-color)]';
+            return span;
+        }
+
+        function goToPage(page) {
+            currentPage = page;
+            displayCurrentPage();
+        }
+
+        function displayCurrentPage() {
+            const startIndex = (currentPage - 1) * POSTS_PER_PAGE;
+            const endIndex = startIndex + POSTS_PER_PAGE;
+            const postsToShow = filteredPosts.slice(startIndex, endIndex);
             
-            dropdownToggle.addEventListener('click', function() {
-                dropdownMenu.classList.toggle('open');
-                dropdownIcon.classList.toggle('rotate-180');
-            });
+            const container = document.getElementById('blog-posts-container');
+            if (postsToShow.length === 0) {
+                container.innerHTML = `
+                    <div class="col-span-full text-center py-8">
+                        <p class="text-[var(--text-muted-color)]">No posts found matching your criteria.</p>
+                    </div>
+                `;
+            } else {
+                container.innerHTML = postsToShow.map((post, index) => generatePostCard(post, startIndex + index)).join('');
+            }
+            
+            renderPagination(filteredPosts.length);
         }
 
-        // Initialize on page load
-        document.addEventListener('DOMContentLoaded', function() {
-            initializeThemeToggle();
-            initializeDropdown();
-            loadBlogPosts();
-        });
-    </script>
-</body>
-</html>
+        // Filter posts by search term and/or tag with pagination
+        function filterPosts(searchTerm = '', selectedTag = '') {
+            const filterStatus = document.getElementById('filter-status');
+            const filterText = document.getElementById('filter-text');
+            
+            // Update global state
+            currentSearchTerm = searchTerm.toLowerCase();
+            currentTag = selectedTag;
+            currentPage = 1; // Reset to first page when filtering
+            
+            // Filter posts
+            filteredPosts = allPosts.filter(post => {
+                const matchesSearch = !currentSearchTerm || 
+                    post.title.toLowerCase().includes(currentSearchTerm) ||
+                    post.description.toLowerCase().includes(currentSearchTerm) ||
+                    post.tags.some(tag => tag.toLowerCase().includes(currentSearchTerm));
+                
+                const matchesTag = !currentTag || 
+                    post.tags.some(tag => tag.toLowerCase() === currentTag.toLowerCase());
+                
+                return matchesSearch && matchesTag;
+            });
+            
+            // Display current page
+            displayCurrentPage();
+            
+            // Update filter status
+            if (currentSearchTerm || currentTag) {
+                let statusText = `Showing ${filteredPosts.length} post${filteredPosts.length !== 1 ? 's' : ''}`;
+                if (currentSearchTerm && currentTag) {
+                    statusText += ` for "${currentSearchTerm}" in "${toTitleCase(currentTag)}"`;
+                } else if (currentSearchTerm) {
+                    statusText += ` for "${currentSearchTerm}"`;
+                } else if (currentTag) {
+                    statusText += ` tagged "${toTitleCase(currentTag)}"`;
+                }
+                filterText.textContent = statusText;
+                filterStatus.classList.remove('hidden');
+            } else {
+                filterStatus.classList.add('hidden');
+            }
+            
+            // Update URL
+            updateURL();
+        }
+
+        // Filter by tag (called from tag clicks)
+        function filterByTag(tag) {
+            const searchInput = document.getElementById('search-input');
+            filterPosts(searchInput.value, tag);
+        }
+
+        // Clear all filters
+        function clearFilters() {
+            const searchInput =

@@ -1,261 +1,230 @@
-<html><head>
-  <meta charset="utf-8"/>
-  <link crossorigin="" href="https://fonts.gstatic.com/" rel="preconnect"/>
-  <link as="style" href="https://fonts.googleapis.com/css2?display=swap&amp;family=Newsreader%3Awght%40400%3B500%3B600%3B700%3B800&amp;family=Noto+Sans%3Awght%40400%3B500%3B600%3B700%3B900" onload="this.rel='stylesheet'" rel="stylesheet"/>
-  <title>Blog Post Template</title>
-  <link href="data:image/x-icon;base64," rel="icon" type="image/x-icon"/>
-  <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
-  <style>
-      .text-primary {
-        color: #111827;}
-      .bg-primary {
-        background-color: #111827;}
-      .border-primary {
-        border-color: #111827;}
-      .hover\:text-primary:hover {
-        color: #3b82f6;}
-      .hover\:bg-primary-dark:hover {
-        background-color: #0f172a;}
-      .active-link {
-        color: #3b82f6;font-weight: 600;
-      }
-      .light-theme {
-        --bg-color: #f9fafb;--text-color: #1f2937;--text-muted-color: #6b7280;--border-color: #e5e7eb;--card-bg-color: #ffffff;}
-      .dark-theme {
-        --bg-color: #1f2937;--text-color: #f3f4f6;--text-muted-color: #9ca3af;--border-color: #374151;--card-bg-color: #374151;}
-      body {
-        background-color: var(--bg-color);
-        color: var(--text-color);
-        font-family: "Noto Sans", sans-serif;
-      }
-      .theme-toggle-button {
-        background-color: var(--card-bg-color);
-        color: var(--text-color);
-        border: 1px solid var(--border-color);
-      }
-      .prose {
-          color: var(--text-color);
-      }
-      .prose h1, .prose h2, .prose h3, .prose h4, .prose h5, .prose h6 {
-          color: var(--text-color);
-          font-family: "Newsreader", serif;
-      }
-      .prose p, .prose ul, .prose ol, .prose blockquote {
-          color: var(--text-muted-color);
-          line-height: 1.75;
-      }
-      .prose a {
-          color: #3b82f6;
-          text-decoration: none;
-      }
-      .prose a:hover {
-          text-decoration: underline;
-      }
-      .prose strong {
-          color: var(--text-color);
-      }
-      .prose code {
-          background-color: var(--border-color);
-          padding: 0.2em 0.4em;
-          border-radius: 0.25rem;
-          font-size: 0.9em;
-          color: var(--text-color);
-      }
-      .prose pre {
-          background-color: var(--border-color);
-          padding: 1rem;
-          border-radius: 0.375rem;
-          overflow-x: auto;
-      }
-      .prose pre code {
-          background-color: transparent;
-          padding: 0;
-          border-radius: 0;
-      }
-    </style>
-  </head>
-  <body class="light-theme">
-  <div class="relative flex size-full min-h-screen flex-col group/design-root overflow-x-hidden">
-  <header class="sticky top-0 z-50 w-full bg-[var(--card-bg-color)] border-b border-[var(--border-color)]">
-  <div class="container mx-auto px-4 sm:px-6 lg:px-8">
-  <div class="flex items-center justify-between h-16">
-  <a href="../index.html" class="flex items-center gap-3 hover:opacity-80 transition-opacity">
-  <div class="size-8 text-primary">
-  <svg fill="none" viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg">
-  <path clip-rule="evenodd" d="M24 4L10 12.6667V35.3333L24 44L38 35.3333V12.6667L24 4ZM12 15.0533L24 23.72V40.9467L12 32.28V15.0533ZM36 15.0533V32.28L24 40.9467V23.72L36 15.0533ZM24 6.72L34.8 12.6667L24 18.6133L13.2 12.6667L24 6.72Z" fill="currentColor" fill-rule="evenodd"></path>
-  </svg>
-  </div>
-  <h1 class="text-2xl font-bold tracking-tight" style="font-family: Newsreader, serif; color: var(--text-color);">AI KnowledgeBase</h1>
-  </a>
-  <div class="flex items-center gap-4">
-  <nav class="hidden sm:flex items-center space-x-6 text-sm font-medium">
-  <a class="text-[var(--text-muted-color)] hover:text-[var(--text-color)] transition-colors" href="../index.html">Home</a>
-  <a class="text-[var(--text-color)] font-semibold hover:text-blue-600 dark:hover:text-blue-400 transition-colors active-link" href="../index.html">Blog</a>
-  <a class="text-[var(--text-muted-color)] hover:text-[var(--text-color)] transition-colors" href="about.html">About</a>
-  <a class="text-[var(--text-muted-color)] hover:text-[var(--text-color)] transition-colors" href="mailto:zorro.cheng@hkmci.com">Contact</a>
-  </nav>
-  <button class="theme-toggle-button p-2 rounded-md text-sm font-medium leading-normal hover:bg-gray-100 dark:hover:bg-gray-700 transition-colors" id="theme-toggle">
-  <svg class="h-5 w-5" fill="none" id="theme-toggle-light-icon" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-  <path d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path>
-  </svg>
-  <svg class="h-5 w-5 hidden" fill="none" id="theme-toggle-dark-icon" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-  <path d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path>
-  </svg>
-  <span class="sr-only">Toggle theme</span>
-  </button>
-  </div>
-  </div>
-  </div>
-  </header>
-  <main class="flex-1 bg-[var(--bg-color)]">
-  <div class="px-4 md:px-6 lg:px-8 py-8">
-  <article class="max-w-3xl mx-auto bg-[var(--card-bg-color)] rounded-lg shadow-md overflow-hidden border border-[var(--border-color)]">
-  <div class="p-6 md:p-8 lg:p-10">
-  <header class="mb-8">
-  <h1 class="text-[var(--text-color)] text-3xl md:text-4xl lg:text-5xl font-bold leading-tight tracking-tight mb-4" style="font-family: Newsreader, serif;">
-                    Blog Post Title
-                  </h1>
-  <div class="flex items-center space-x-4 text-[var(--text-muted-color)] text-sm">
-  <div>
-  <span>By </span>
-  <a class="text-blue-600 dark:text-blue-400 hover:underline" href="about.html">Zorro Cheng</a>
-  </div>
-  <span>•</span>
-  <time datetime="YYYY-MM-DD">Publication Date</time>
-  </div>
-  </header>
-  <div class="prose prose-lg max-w-none">
-  <p>
-                      This is a placeholder for the main content of the blog post. It can include paragraphs, lists, images, and other elements to convey information to the reader. The actual content will be filled in when a specific blog post is created using this template.
-                  </p>
-  <figure class="my-8">
-  <div class="w-full aspect-video bg-gray-200 dark:bg-gray-700 rounded-lg flex items-center justify-center">
-  <p class="text-[var(--text-muted-color)]">Featured Image Placeholder</p>
-  </div>
-  <figcaption class="text-center text-sm text-[var(--text-muted-color)] mt-2">Optional image caption.</figcaption>
-  </figure>
-  <h2>Subheading for a Section</h2>
-  <p>
-                    This section can contain more detailed information, examples, or arguments related to the subheading. It can be structured with multiple paragraphs.
-                  </p>
-  <ul>
-  <li>List item one.</li>
-  <li>List item two.</li>
-  <li>List item three, which might be a bit longer to demonstrate wrapping.</li>
-  </ul>
-  <blockquote>
-  <p>"A relevant quote can be placed here to emphasize a point or provide context."</p>
-  </blockquote>
-  <p>
-                    Continue with more content as needed to develop the topic of the blog post. This template provides a flexible structure for various types of articles.
-                  </p>
-  </div>
-  </div>
-  <div class="px-6 md:px-8 lg:px-10 py-6 border-t border-[var(--border-color)]">
-  <h3 class="text-[var(--text-color)] text-lg font-semibold mb-3" style="font-family: Newsreader, serif;">Share this post:</h3>
-  <div class="flex items-center space-x-3">
-  <a class="flex items-center justify-center w-10 h-10 rounded-full bg-gray-100 hover:bg-gray-200 dark:bg-gray-700 dark:hover:bg-gray-600 text-gray-600 dark:text-gray-300 transition-colors" href="mailto:?subject=Check%20out%20this%20article&amp;body=[POST_TITLE]%20-%20[POST_URL]" target="_blank" title="Share via Email">
-  <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
-  <path d="M2.003 5.884L10 9.882l7.997-3.998A2 2 0 0016 4H4a2 2 0 00-1.997 1.884z"></path>
-  <path d="M18 8.118l-8 4-8-4V14a2 2 0 002 2h12a2 2 0 002-2V8.118z"></path>
-  </svg>
-  </a>
-  <a class="flex items-center justify-center w-10 h-10 rounded-full bg-gray-100 hover:bg-gray-200 dark:bg-gray-700 dark:hover:bg-gray-600 text-gray-600 dark:text-gray-300 transition-colors" href="https://api.whatsapp.com/send?text=[POST_TITLE]%20-%20[POST_URL]" target="_blank" title="Share on WhatsApp">
-  <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-  <path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981zm11.387-5.464c-.074-.124-.272-.198-.57-.347-.297-.149-1.758-.868-2.031-.967-.272-.099-.47-.149-.669.149-.198.297-.768.967-.941 1.165-.173.198-.347.223-.644.074-.297-.149-1.255-.462-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.521.151-.172.2-.296.3-.495.099-.198.05-.372-.025-.521-.075-.148-.669-1.611-.916-2.206-.242-.579-.487-.501-.669-.51l-.57-.01c-.198 0-.52.074-.792.372s-1.04 1.016-1.04 2.479 1.065 2.876 1.213 3.074c.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.626.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.695.248-1.289.173-1.413z"></path>
-  </svg>
-  </a>
-  <button class="flex items-center justify-center w-10 h-10 rounded-full bg-gray-100 hover:bg-gray-200 dark:bg-gray-700 dark:hover:bg-gray-600 text-gray-600 dark:text-gray-300 transition-colors" onclick="copyLink()" title="Copy link">
-  <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
-  <path d="M8 3a1 1 0 011-1h2a1 1 0 110 2H9a1 1 0 01-1-1z"></path>
-  <path d="M6 3a2 2 0 00-2 2v11a2 2 0 002 2h8a2 2 0 002-2V5a2 2 0 00-2-2 3 3 0 01-3 3H9a3 3 0 01-3-3z"></path>
-  </svg>
-  <span class="sr-only">Copy link</span>
-  </button>
-  </div>
-  </div>
-  </article>
-  <div class="max-w-3xl mx-auto mt-12">
-  <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
-  <a class="block p-6 bg-[var(--card-bg-color)] rounded-lg shadow-md hover:shadow-lg transition-shadow border border-[var(--border-color)]" href="#">
-  <div class="flex items-center text-sm text-[var(--text-muted-color)] mb-2">
-  <svg class="mr-1" fill="none" height="16" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24" width="16" xmlns="http://www.w3.org/2000/svg">
-  <line x1="19" x2="5" y1="12" y2="12"></line>
-  <polyline points="12 19 5 12 12 5"></polyline>
-  </svg>
-  <span>Previous Post</span>
-  </div>
-  <h4 class="text-[var(--text-color)] text-lg font-semibold" style="font-family: Newsreader, serif;">Title of Previous Post</h4>
-  </a>
-  <a class="block p-6 bg-[var(--card-bg-color)] rounded-lg shadow-md hover:shadow-lg transition-shadow border border-[var(--border-color)]" href="#">
-  <div class="flex items-center justify-end text-sm text-[var(--text-muted-color)] mb-2">
-  <span>Next Post</span>
-  <svg class="ml-1" fill="none" height="16" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24" width="16" xmlns="http://www.w3.org/2000/svg">
-  <line x1="5" x2="19" y1="12" y2="12"></line>
-  <polyline points="12 5 19 12 12 19"></polyline>
-  </svg>
-  </div>
-  <h4 class="text-[var(--text-color)] text-lg font-semibold text-right" style="font-family: Newsreader, serif;">Title of Next Post</h4>
-  </a>
-  </div>
-  </div>
-  </div>
-  </main>
-  <footer class="bg-[var(--card-bg-color)] border-t border-[var(--border-color)] mt-12">
-  <div class="max-w-screen-lg mx-auto px-5 py-8">
-  <p class="text-[var(--text-muted-color)] text-sm font-normal leading-normal text-center">© 2024 Site Name. All rights reserved.</p>
-  </div>
-  </footer>
-  </div>
-  <script>
-      const themeToggleBtn = document.getElementById('theme-toggle');
-      const themeToggleDarkIcon = document.getElementById('theme-toggle-dark-icon');
-      const themeToggleLightIcon = document.getElementById('theme-toggle-light-icon');
-      // Check for saved theme preference or use system preference
-      if (localStorage.getItem('color-theme') === 'dark' || (!('color-theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
-        document.body.classList.add('dark-theme');
-        document.body.classList.remove('light-theme');
-        themeToggleLightIcon.classList.add('hidden');
-        themeToggleDarkIcon.classList.remove('hidden');
-      } else {
-        document.body.classList.add('light-theme');
-        document.body.classList.remove('dark-theme');
-        themeToggleDarkIcon.classList.add('hidden');
-        themeToggleLightIcon.classList.remove('hidden');
-      }
-      themeToggleBtn.addEventListener('click', function() {
-        themeToggleDarkIcon.classList.toggle('hidden');
-        themeToggleLightIcon.classList.toggle('hidden');
-        if (localStorage.getItem('color-theme')) {
-          if (localStorage.getItem('color-theme') === 'light') {
-            document.body.classList.add('dark-theme');
-            document.body.classList.remove('light-theme');
-            localStorage.setItem('color-theme', 'dark');
-          } else {
-            document.body.classList.add('light-theme');
-            document.body.classList.remove('dark-theme');
-            localStorage.setItem('color-theme', 'light');
-          }
-        } else {
-          if (document.body.classList.contains('dark-theme')) {
-            document.body.classList.remove('dark-theme');
-            document.body.classList.add('light-theme');
-            localStorage.setItem('color-theme', 'light');
-          } else {
-            document.body.classList.remove('light-theme');
-            document.body.classList.add('dark-theme');
-            localStorage.setItem('color-theme', 'dark');
-          }
-        }
-      });
-      function copyLink() {
-        const url = window.location.href; // Or use a placeholder like "[POST_URL]" if this is truly a template
-        navigator.clipboard.writeText(url).then(function() {
-          alert('Link copied to clipboard!');
-        }, function(err) {
-          console.error('Could not copy text: ', err);
-          alert('Failed to copy link.');
-        });
-      }
+<!DOCTYPE html>
+<html lang="en"><head>
+    <meta charset="utf-8"/>
+    <link rel="icon" type="image/png" href="/img/jns_logo.png" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>{{title}} - Jarvis and Sam Blog</title>
+    
+    <!-- Initialize dataLayer -->
+    <script>
+      window.dataLayer = window.dataLayer || [];
     </script>
-  </body></html>
+    
+    <!-- Google Tag Manager -->
+    <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+    new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+    j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+    'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+    })(window,document,'script','dataLayer','GTM-TRT4SWZC');</script>
+    <!-- End Google Tag Manager -->
+    
+    <!-- Primary Meta Tags -->
+    <meta name="description" content="{{description}}" />
+    <meta name="keywords" content="{{keywords}}" />
+    <meta name="author" content="{{author}}" />
+    
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="article" />
+    <meta property="og:url" content="{{url}}" />
+    <meta property="og:site_name" content="Jarvis and Sam Blog" />
+    <meta property="og:locale" content="en_US" />
+    <meta property="og:title" content="{{title}}" />
+    <meta property="og:description" content="{{description}}" />
+    <meta property="og:image" content="{{og_image}}" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="article:published_time" content="{{publish_date}}" />
+    <meta property="article:author" content="{{author}}" />
+    
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image" />
+    <meta property="twitter:url" content="{{url}}" />
+    <meta property="twitter:site" content="@jarvisnsam" />
+    <meta property="twitter:title" content="{{title}}" />
+    <meta property="twitter:description" content="{{description}}" />
+    <meta property="twitter:image" content="{{og_image}}" />
+    
+    <!-- Fonts -->
+    <link crossorigin="" href="https://fonts.gstatic.com/" rel="preconnect"/>
+    <link as="style" href="https://fonts.googleapis.com/css2?display=swap&amp;family=Newsreader%3Awght%40400%3B500%3B600%3B700%3B800&amp;family=Noto+Sans%3Awght%40400%3B500%3B600%3B700%3B900" onload="this.rel='stylesheet'" rel="stylesheet"/>
+    
+    <!-- Styles -->
+    <link rel="stylesheet" href="/css/blog-common.css">
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <style>
+        /* Additional page-specific styles can go here */
+        .prose {
+            color: var(--text-color);
+        }
+        .prose h1, .prose h2, .prose h3, .prose h4, .prose h5, .prose h6 {
+            color: var(--text-color);
+            font-family: "Newsreader", serif;
+        }
+        .prose p, .prose ul, .prose ol, .prose blockquote {
+            color: var(--text-muted-color);
+            line-height: 1.75;
+        }
+        .prose a {
+            color: #3b82f6;
+            text-decoration: none;
+        }
+        .prose a:hover {
+            text-decoration: underline;
+        }
+        .prose strong {
+            color: var(--text-color);
+        }
+        .prose code {
+            background-color: var(--border-color);
+            padding: 0.2em 0.4em;
+            border-radius: 0.25rem;
+            font-size: 0.9em;
+            color: var(--text-color);
+        }
+        .prose pre {
+            background-color: var(--border-color);
+            padding: 1rem;
+            border-radius: 0.375rem;
+            overflow-x: auto;
+        }
+        .prose pre code {
+            background-color: transparent;
+            padding: 0;
+            border-radius: 0;
+        }
+    </style>
+    </head>
+    <body class="light-theme">
+    <!-- Google Tag Manager (noscript) -->
+    <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-TRT4SWZC"
+    height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+    <!-- End Google Tag Manager (noscript) -->
+    
+    <div class="relative flex size-full min-h-screen flex-col group/design-root overflow-x-hidden">
+    
+    <!-- Header placeholder -->
+    <div id="blog-header"></div>
+    
+    <main class="flex-1 bg-[var(--bg-color)]">
+    <div class="px-4 md:px-6 lg:px-8 py-8">
+    <article class="max-w-4xl mx-auto bg-[var(--card-bg-color)] rounded-lg shadow-md overflow-hidden border border-[var(--border-color)]">
+    <div class="p-6 md:p-8 lg:p-10">
+    <header class="mb-8">
+    <h1 class="text-[var(--text-color)] text-3xl md:text-4xl lg:text-5xl font-bold leading-tight tracking-tight mb-4" style="font-family: Newsreader, serif;">
+                      {{title}}
+                    </h1>
+    <p class="text-[var(--text-muted-color)] text-xl mb-6">{{subtitle}}</p>
+    <div class="flex items-center space-x-4 text-[var(--text-muted-color)] text-sm">
+    <div>
+    <span>By </span>
+    <a class="text-blue-600 dark:text-blue-400 hover:underline" href="https://www.jarvisnsam.com/#about">{{author}}</a>
+    </div>
+    <span>•</span>
+    <time datetime="{{publish_date}}">{{display_date}}</time>
+    </div>
+    </header>
+    <div class="prose prose-lg max-w-none">
+    
+    <!-- Main content goes here -->
+    {{content}}
+    
+    </div>
+    </div>
+    <div class="px-6 md:px-8 lg:px-10 py-6 border-t border-[var(--border-color)]">
+    <h3 class="text-[var(--text-color)] text-lg font-semibold mb-3" style="font-family: Newsreader, serif;">Share this post:</h3>
+    <div class="flex items-center space-x-3">
+    <a class="flex items-center justify-center w-10 h-10 rounded-full bg-gray-100 hover:bg-gray-200 dark:bg-gray-700 dark:hover:bg-gray-600 text-gray-600 dark:text-gray-300 transition-colors" href="mailto:?subject=Check%20out%20this%20article&amp;body={{encoded_title}}%20-%20{{encoded_url}}" target="_blank" title="Share via Email">
+    <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+    <path d="M2.003 5.884L10 9.882l7.997-3.998A2 2 0 0016 4H4a2 2 0 00-1.997 1.884z"></path>
+    <path d="M18 8.118l-8 4-8-4V14a2 2 0 002 2h12a2 2 0 002-2V8.118z"></path>
+    </svg>
+    </a>
+    <a class="flex items-center justify-center w-10 h-10 rounded-full bg-gray-100 hover:bg-gray-200 dark:bg-gray-700 dark:hover:bg-gray-600 text-gray-600 dark:text-gray-300 transition-colors" href="https://api.whatsapp.com/send?text={{encoded_title}}%20-%20{{encoded_url}}" target="_blank" title="Share on WhatsApp">
+    <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+    <path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981zm11.387-5.464c-.074-.124-.272-.198-.57-.347-.297-.149-1.758-.868-2.031-.967-.272-.099-.47-.149-.669.149-.198.297-.768.967-.941 1.165-.173.198-.347.223-.644.074-.297-.149-1.255-.462-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.521.151-.172.2-.296.3-.495.099-.198.05-.372-.025-.521-.075-.148-.669-1.611-.916-2.206-.242-.579-.487-.501-.669-.51l-.57-.01c-.198 0-.52.074-.792.372s-1.04 1.016-1.04 2.479 1.065 2.876 1.213 3.074c.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.626.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.695.248-1.289.173-1.413z"></path>
+    </svg>
+    </a>
+    <button class="flex items-center justify-center w-10 h-10 rounded-full bg-gray-100 hover:bg-gray-200 dark:bg-gray-700 dark:hover:bg-gray-600 text-gray-600 dark:text-gray-300 transition-colors" onclick="copyLink()" title="Copy link">
+    <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+    <path d="M8 3a1 1 0 011-1h2a1 1 0 110 2H9a1 1 0 01-1-1z"></path>
+    <path d="M6 3a2 2 0 00-2 2v11a2 2 0 002 2h8a2 2 0 002-2V5a2 2 0 00-2-2 3 3 0 01-3 3H9a3 3 0 01-3-3z"></path>
+    </svg>
+    <span class="sr-only">Copy link</span>
+    </button>
+    </div>
+    </div>
+    </article>
+    <div class="max-w-4xl mx-auto mt-12">
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+    {{#if previous_post}}
+    <a class="block p-6 bg-[var(--card-bg-color)] rounded-lg shadow-md hover:shadow-lg transition-shadow border border-[var(--border-color)]" href="{{previous_post.url}}">
+    <div class="flex items-center text-sm text-[var(--text-muted-color)] mb-2">
+    <svg class="mr-1" fill="none" height="16" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24" width="16" xmlns="http://www.w3.org/2000/svg">
+    <line x1="19" x2="5" y1="12" y2="12"></line>
+    <polyline points="12 19 5 12 12 5"></polyline>
+    </svg>
+    <span>Previous Post</span>
+    </div>
+    <h4 class="text-[var(--text-color)] text-lg font-semibold" style="font-family: Newsreader, serif;">{{previous_post.title}}</h4>
+    </a>
+    {{else}}
+    <a class="block p-6 bg-[var(--card-bg-color)] rounded-lg shadow-md hover:shadow-lg transition-shadow border border-[var(--border-color)]" href="/index.html">
+    <div class="flex items-center text-sm text-[var(--text-muted-color)] mb-2">
+    <svg class="mr-1" fill="none" height="16" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24" width="16" xmlns="http://www.w3.org/2000/svg">
+    <line x1="19" x2="5" y1="12" y2="12"></line>
+    <polyline points="12 19 5 12 12 5"></polyline>
+    </svg>
+    <span>Back to Home</span>
+    </div>
+    <h4 class="text-[var(--text-color)] text-lg font-semibold" style="font-family: Newsreader, serif;">AI Knowledge Base</h4>
+    </a>
+    {{/if}}
+    
+    {{#if next_post}}
+    <a class="block p-6 bg-[var(--card-bg-color)] rounded-lg shadow-md hover:shadow-lg transition-shadow border border-[var(--border-color)]" href="{{next_post.url}}">
+    <div class="flex items-center justify-end text-sm text-[var(--text-muted-color)] mb-2">
+    <span>Next Post</span>
+    <svg class="ml-1" fill="none" height="16" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24" width="16" xmlns="http://www.w3.org/2000/svg">
+    <line x1="5" x2="19" y1="12" y2="12"></line>
+    <polyline points="12 5 19 12 12 19"></polyline>
+    </svg>
+    </div>
+    <h4 class="text-[var(--text-color)] text-lg font-semibold text-right" style="font-family: Newsreader, serif;">{{next_post.title}}</h4>
+    </a>
+    {{else}}
+    <a class="block p-6 bg-[var(--card-bg-color)] rounded-lg shadow-md hover:shadow-lg transition-shadow border border-[var(--border-color)]" href="/index.html">
+    <div class="flex items-center justify-end text-sm text-[var(--text-muted-color)] mb-2">
+    <span>Back to Blog</span>
+    <svg class="ml-1" fill="none" height="16" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24" width="16" xmlns="http://www.w3.org/2000/svg">
+    <line x1="5" x2="19" y1="12" y2="12"></line>
+    <polyline points="12 5 19 12 12 19"></polyline>
+    </svg>
+    </div>
+    <h4 class="text-[var(--text-color)] text-lg font-semibold text-right" style="font-family: Newsreader, serif;">All Posts</h4>
+    </a>
+    {{/if}}
+    </div>
+    </div>
+    </div>
+    </main>
+    
+    <!-- Footer placeholder -->
+    <div id="blog-footer"></div>
+    </div>
+    
+    <!-- Load common JS -->
+    <script src="/js/blog-common.js"></script>
+    
+    <!-- Page specific script for copy link -->
+    <script>
+        function copyLink() {
+            const url = window.location.href;
+            navigator.clipboard.writeText(url).then(function() {
+                alert('Link copied to clipboard!');
+            }, function(err) {
+                console.error('Could not copy text: ', err);
+                alert('Failed to copy link.');
+            });
+        }
+    </script>
+    </body></html>

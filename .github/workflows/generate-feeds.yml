@@ -1,0 +1,234 @@
+name: Generate Sitemap and RSS Feed
+
+on:
+  push:
+    branches: [ main ]
+    paths:
+      - 'pages/**'
+      - 'index.html'
+  workflow_dispatch:
+
+jobs:
+  generate-feeds:
+    runs-on: ubuntu-latest
+    
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v3
+      with:
+        token: ${{ secrets.GITHUB_TOKEN }}
+    
+    - name: Set up Node.js
+      uses: actions/setup-node@v3
+      with:
+        node-version: '18'
+    
+    - name: Generate sitemap and RSS feed
+      run: |
+        cat > generate-feeds.js << 'EOF'
+        const fs = require('fs');
+        const path = require('path');
+
+        // Configuration
+        const DOMAIN = 'https://blog.jarvisnsam.com';
+        const PAGES_DIR = './pages';
+        const SITEMAP_FILE = './sitemap.xml';
+        const RSS_FILE = './feed.xml';
+        const BLOG_TITLE = 'Jarvis and Sam AI Blog';
+        const BLOG_DESCRIPTION = 'AI Solutions & Business Transformation Insights';
+        const BLOG_LANGUAGE = 'en-us';
+        const BLOG_AUTHOR = 'blog@jarvisnsam.com (Jarvis and Sam)';
+
+        // Get all HTML files from pages directory
+        function getHtmlFiles(dir) {
+          const files = fs.readdirSync(dir);
+          return files
+            .filter(file => file.endsWith('.html'))
+            .map(file => ({
+              path: file,
+              fullPath: path.join(dir, file),
+              stats: fs.statSync(path.join(dir, file))
+            }));
+        }
+
+        // Extract metadata from HTML file
+        function extractMetadata(filePath) {
+          const content = fs.readFileSync(filePath, 'utf-8');
+          
+          // Extract title
+          const titleMatch = content.match(/<title>(.*?)<\/title>/i);
+          const title = titleMatch ? titleMatch[1].replace(' - AI KnowledgeBase', '').trim() : '';
+          
+          // Extract description
+          const descMatch = content.match(/<meta\s+name="description"\s+content="([^"]+)"/i);
+          const description = descMatch ? descMatch[1] : '';
+          
+          // Extract date from datetime attribute or content
+          const dateMatch = content.match(/<time[^>]*datetime="([^"]+)"/i) || 
+                           content.match(/<time[^>]*>([^<]+)<\/time>/i) ||
+                           content.match(/<meta\s+name="article:published_time"\s+content="([^"]+)"/i);
+          const date = dateMatch ? dateMatch[1] : new Date().toISOString().split('T')[0];
+          
+          // Extract tags/keywords
+          const tags = [];
+          
+          // From meta keywords
+          const keywordsMatch = content.match(/<meta\s+name="keywords"\s+content="([^"]+)"/i);
+          if (keywordsMatch) {
+            tags.push(...keywordsMatch[1].split(',').map(t => t.trim()));
+          }
+          
+          // From article:tag meta tags
+          const tagMatches = content.matchAll(/<meta\s+name="article:tag"\s+content="([^"]+)"/gi);
+          for (const match of tagMatches) {
+            tags.push(match[1]);
+          }
+          
+          // From .tag elements in content
+          const tagElementMatches = content.matchAll(/<span\s+class="tag">([^<]+)<\/span>/gi);
+          for (const match of tagElementMatches) {
+            tags.push(match[1].trim());
+          }
+          
+          // Extract content excerpt (first 300 chars of paragraph text)
+          const paragraphMatch = content.match(/<p[^>]*>([^<]+)<\/p>/i);
+          let excerpt = paragraphMatch ? paragraphMatch[1] : description;
+          excerpt = excerpt.replace(/\s+/g, ' ').trim();
+          if (excerpt.length > 300) {
+            excerpt = excerpt.substring(0, 297) + '...';
+          }
+          
+          return { 
+            title, 
+            description, 
+            date,
+            tags: [...new Set(tags)], // Remove duplicates
+            excerpt
+          };
+        }
+
+        // Format date for RSS
+        function formatRSSDate(dateStr) {
+          const date = new Date(dateStr);
+          return date.toUTCString();
+        }
+
+        // Escape XML special characters
+        function escapeXml(unsafe) {
+          return unsafe.replace(/[<>&'"]/g, function (c) {
+            switch (c) {
+              case '<': return '&lt;';
+              case '>': return '&gt;';
+              case '&': return '&amp;';
+              case '\'': return '&apos;';
+              case '"': return '&quot;';
+            }
+          });
+        }
+
+        // Generate sitemap XML
+        function generateSitemap() {
+          const htmlFiles = getHtmlFiles(PAGES_DIR);
+          
+          let xml = '<?xml version="1.0" encoding="UTF-8"?>\n';
+          xml += '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n';
+          
+          // Add homepage
+          xml += '  <url>\n';
+          xml += `    <loc>${DOMAIN}/</loc>\n`;
+          xml += `    <lastmod>${new Date().toISOString().split('T')[0]}</lastmod>\n`;
+          xml += '    <changefreq>weekly</changefreq>\n';
+          xml += '    <priority>1.0</priority>\n';
+          xml += '  </url>\n';
+          
+          // Add all pages
+          htmlFiles.forEach(file => {
+            const metadata = extractMetadata(file.fullPath);
+            xml += '  <url>\n';
+            xml += `    <loc>${DOMAIN}/pages/${file.path}</loc>\n`;
+            xml += `    <lastmod>${metadata.date}</lastmod>\n`;
+            xml += '    <changefreq>monthly</changefreq>\n';
+            xml += '    <priority>0.8</priority>\n';
+            xml += '  </url>\n';
+          });
+          
+          xml += '</urlset>';
+          
+          return xml;
+        }
+
+        // Generate RSS feed
+        function generateRSSFeed() {
+          const htmlFiles = getHtmlFiles(PAGES_DIR);
+          
+          // Sort files by date (newest first)
+          const sortedFiles = htmlFiles.map(file => ({
+            ...file,
+            metadata: extractMetadata(file.fullPath)
+          })).sort((a, b) => new Date(b.metadata.date) - new Date(a.metadata.date));
+          
+          let rss = '<?xml version="1.0" encoding="UTF-8"?>\n';
+          rss += '<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">\n';
+          rss += '  <channel>\n';
+          rss += `    <title>${escapeXml(BLOG_TITLE)}</title>\n`;
+          rss += `    <description>${escapeXml(BLOG_DESCRIPTION)}</description>\n`;
+          rss += `    <link>${DOMAIN}</link>\n`;
+          rss += `    <language>${BLOG_LANGUAGE}</language>\n`;
+          rss += `    <lastBuildDate>${formatRSSDate(new Date())}</lastBuildDate>\n`;
+          rss += `    <atom:link href="${DOMAIN}/feed.xml" rel="self" type="application/rss+xml" />\n`;
+          
+          // Add all posts as items
+          sortedFiles.forEach(file => {
+            const { title, description, date, tags, excerpt } = file.metadata;
+            const url = `${DOMAIN}/pages/${file.path}`;
+            
+            rss += '    <item>\n';
+            rss += `      <title>${escapeXml(title)}</title>\n`;
+            rss += `      <description>${escapeXml(excerpt || description)}</description>\n`;
+            rss += `      <link>${url}</link>\n`;
+            rss += `      <guid isPermaLink="true">${url}</guid>\n`;
+            rss += `      <pubDate>${formatRSSDate(date)}</pubDate>\n`;
+            rss += `      <author>${escapeXml(BLOG_AUTHOR)}</author>\n`;
+            
+            // Add categories/tags
+            tags.forEach(tag => {
+              rss += `      <category>${escapeXml(tag)}</category>\n`;
+            });
+            
+            rss += '    </item>\n';
+          });
+          
+          rss += '  </channel>\n';
+          rss += '</rss>';
+          
+          return rss;
+        }
+
+        // Main execution
+        try {
+          // Generate and save sitemap
+          const sitemap = generateSitemap();
+          fs.writeFileSync(SITEMAP_FILE, sitemap);
+          console.log('Sitemap generated successfully!');
+          
+          // Generate and save RSS feed
+          const rssFeed = generateRSSFeed();
+          fs.writeFileSync(RSS_FILE, rssFeed);
+          console.log('RSS feed generated successfully!');
+          
+          const htmlFiles = getHtmlFiles(PAGES_DIR);
+          console.log(`Total pages: ${htmlFiles.length + 1}`);
+        } catch (error) {
+          console.error('Error generating feeds:', error);
+          process.exit(1);
+        }
+        EOF
+        
+        node generate-feeds.js
+    
+    - name: Commit and push if changed
+      run: |
+        git config --local user.email "action@github.com"
+        git config --local user.name "GitHub Action"
+        git add sitemap.xml feed.xml
+        git diff --quiet && git diff --staged --quiet || (git commit -m "Update sitemap.xml and feed.xml [skip ci]" && git push)
