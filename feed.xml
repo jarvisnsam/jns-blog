@@ -5,27 +5,60 @@
     <description>AI Solutions &amp; Business Transformation Insights</description>
     <link>https://blog.jarvisnsam.com</link>
     <language>en-us</language>
-    <lastBuildDate>Tue, 27 May 2025 08:05:48 GMT</lastBuildDate>
+    <lastBuildDate>Thu, 29 May 2025 08:41:06 GMT</lastBuildDate>
     <atom:link href="https://blog.jarvisnsam.com/feed.xml" rel="self" type="application/rss+xml" />
     <item>
-      <title>Agentic Protocol Future Trends</title>
+      <title>Agentic Protocol Future Trends - Jarvis and Sam Blog</title>
       <description>As we stand at the cusp of a new era in artificial intelligence, agentic protocols are emerging as the foundation for how AI systems will communicate, collaborate, and create value in the future. This article explores the key trends shaping this transformation.</description>
-      <link>https://blog.jarvisnsam.com/pages/agentic protocol future trend.html</link>
-      <guid isPermaLink="true">https://blog.jarvisnsam.com/pages/agentic protocol future trend.html</guid>
-      <pubDate>Mon, 27 May 2025 00:00:00 GMT</pubDate>
+      <link>https://blog.jarvisnsam.com/pages/agentic-protocol-future-trend.html</link>
+      <guid isPermaLink="true">https://blog.jarvisnsam.com/pages/agentic-protocol-future-trend.html</guid>
+      <pubDate>Tue, 27 May 2025 00:00:00 GMT</pubDate>
       <author>blog@jarvisnsam.com (Jarvis and Sam)</author>
+      <category>agentic protocols</category>
+      <category>AI agents</category>
+      <category>A2A communication</category>
+      <category>MCP</category>
+      <category>NLweb</category>
+      <category>AI collaboration</category>
+      <category>future trends</category>
       <category>AI Protocols</category>
       <category>Future Trends</category>
       <category>AI Collaboration</category>
       <category>A2A Communication</category>
     </item>
     <item>
-      <title>Parallel Internet: Traditional vs Agentic Internet</title>
-      <description>The image above captures the fundamental shift we&apos;re witnessing in internet architecture. On one side, we see the familiar traditional internet that has served us for decades. On the other, an emerging agentic internet where AI agents act as intelligent intermediaries. But as we&apos;ll explore, this isn&apos;t about one replacing the other—it&apos;s about both working in harmony.</description>
-      <link>https://blog.jarvisnsam.com/pages/parellel_internet.html</link>
-      <guid isPermaLink="true">https://blog.jarvisnsam.com/pages/parellel_internet.html</guid>
-      <pubDate>Sun, 26 May 2025 00:00:00 GMT</pubDate>
+      <title>MCP vs A2A: Understanding Modern AI Communication Protocols - Jarvis and Sam Blog</title>
+      <description>As AI systems become more sophisticated and interconnected, the protocols governing their communication are evolving from traditional client-server architectures to more distributed, agent-based models. Today, we&apos;re diving deep into two fundamental approaches that represent this evolution: the Mo...</description>
+      <link>https://blog.jarvisnsam.com/pages/mcp-vs-a2a-protocols.html</link>
+      <guid isPermaLink="true">https://blog.jarvisnsam.com/pages/mcp-vs-a2a-protocols.html</guid>
+      <pubDate>Tue, 27 May 2025 00:00:00 GMT</pubDate>
       <author>blog@jarvisnsam.com (Jarvis and Sam)</author>
+      <category>MCP protocol</category>
+      <category>A2A protocol</category>
+      <category>AI communication</category>
+      <category>agent protocols</category>
+      <category>Model Context Protocol</category>
+      <category>Agent-to-Agent</category>
+      <category>AI architecture</category>
+      <category>MCP Protocol</category>
+      <category>A2A Protocol</category>
+      <category>AI Communication</category>
+      <category>Protocol Architecture</category>
+    </item>
+    <item>
+      <title>Parallel Internet: Traditional vs Agentic Internet - Jarvis and Sam Blog</title>
+      <description>The image above captures the fundamental shift we&apos;re witnessing in internet architecture. On one side, we see the familiar traditional internet that has served us for decades. On the other, an emerging agentic internet where AI agents act as intelligent intermediaries. But as we&apos;ll explore, this ...</description>
+      <link>https://blog.jarvisnsam.com/pages/parallel-internet.html</link>
+      <guid isPermaLink="true">https://blog.jarvisnsam.com/pages/parallel-internet.html</guid>
+      <pubDate>Mon, 26 May 2025 00:00:00 GMT</pubDate>
+      <author>blog@jarvisnsam.com (Jarvis and Sam)</author>
+      <category>parallel internet</category>
+      <category>agentic internet</category>
+      <category>AI agents</category>
+      <category>MCP protocol</category>
+      <category>NLweb</category>
+      <category>A2A protocol</category>
+      <category>internet architecture</category>
       <category>Internet Architecture</category>
       <category>AI Agents</category>
       <category>MCP Protocol</category>
