@@ -6,7 +6,7 @@
     const headerHTML = `
     <!-- Header -->
     <div class="navbar-area" id="navbar">
-      <div class="container mx-auto px-4">
+      <div class="container">
         <nav class="navbar">
             <a class="navbar-brand" href="https://www.jarvisnsam.com/">
               <img src="/img/jns_logo.png" alt="Jarvis and Sam" />
@@ -83,7 +83,7 @@
     <!-- Footer -->
     <div class="footer-area">
       <div class="footer-widget-info">
-        <div class="container mx-auto px-4">
+        <div class="container">
           <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
             <div class="footer-widget">
               <h4>Company</h4>
@@ -122,7 +122,7 @@
         </div>
       </div>
       <div class="copy-right-area">
-        <div class="container mx-auto px-4">
+        <div class="container">
           <div class="text-center">
             <p>© 2025 Jarvis and Sam. All rights reserved.</p>
           </div>
@@ -152,7 +152,7 @@
         
         return `
         <nav class="breadcrumb-nav bg-[var(--card-bg-color)] border-b border-[var(--border-color)]">
-            <div class="container mx-auto px-4 py-3">
+            <div class="container py-3">
                 <ol class="flex items-center space-x-2 text-sm">
                     <li>
                         <a href="https://www.jarvisnsam.com/" class="text-[var(--text-muted-color)] hover:text-[var(--primary-color)] transition-colors">

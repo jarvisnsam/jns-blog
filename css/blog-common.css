@@ -41,14 +41,15 @@ body {
   font-family: "Noto Sans", sans-serif;
 }
 
-/* Container max-width constraint - Updated to 1200px */
+/* Container max-width constraint - Updated to 1200px with responsive padding */
 .container {
-  width: 100%;
-  max-width: 1200px;
-  padding-right: 15px;
-  padding-left: 15px;
-  margin-right: auto;
-  margin-left: auto;
+  width: 100% !important;
+  max-width: 1200px !important;
+  padding-right: min(6vw, 60px) !important;
+  padding-left: min(6vw, 60px) !important;
+  margin-right: auto !important;
+  margin-left: auto !important;
+  box-sizing: border-box !important;
 }
 
 /* Responsive container breakpoints */
@@ -73,6 +74,8 @@ body {
   background-color: var(--header-bg);
   border-bottom: 1px solid var(--border-color);
   transition: all 0.3s ease;
+  max-width: 1200px;
+  margin: 0 auto;
 }
 .navbar-area.sticky {
   position: fixed;
@@ -207,6 +210,9 @@ body {
   background-color: var(--card-bg-color);
   border-top: 1px solid var(--border-color);
   margin-top: 4rem;
+  max-width: 1200px;
+  margin-left: auto;
+  margin-right: auto;
 }
 .footer-widget-info {
   padding: 3rem 0;
@@ -241,6 +247,9 @@ body {
   padding: 1.5rem 0;
   text-align: center;
   border-top: 1px solid var(--border-color);
+  max-width: 1200px;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 /* Theme Toggle Button */
@@ -320,6 +329,12 @@ body {
 }
 
 @media (max-width: 768px) {
+  /* Responsive padding for mobile devices */
+  .container {
+    padding-right: min(4vw, 30px);
+    padding-left: min(4vw, 30px);
+  }
+  
   .navbar-nav {
     display: none;
   }
