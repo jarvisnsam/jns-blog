@@ -5,10 +5,10 @@
     <description>AI Solutions &amp; Business Transformation Insights</description>
     <link>https://blog.jarvisnsam.com</link>
     <language>en-us</language>
-    <lastBuildDate>Fri, 06 Jun 2025 05:54:27 GMT</lastBuildDate>
+    <lastBuildDate>Fri, 06 Jun 2025 06:32:16 GMT</lastBuildDate>
     <atom:link href="https://blog.jarvisnsam.com/feed.xml" rel="self" type="application/rss+xml" />
     <item>
-      <title>Building A2A-Compatible Agents: A Complete Guide for n8n Developers</title>
+      <title>Building A2A-Compatible Agents: A Complete Guide for n8n Developers - Jarvis and Sam Blog</title>
       <description>The Agent-to-Agent (A2A) protocol is revolutionizing how AI systems communicate and exchange files. If you&apos;re developing agents that need to handle documents, images, or other files, this guide will walk you through everything you need to know to make your n8n workflows A2A-compatible.</description>
       <link>https://blog.jarvisnsam.com/pages/a2a-agent-setup-guide-n8n-developers.html</link>
       <guid isPermaLink="true">https://blog.jarvisnsam.com/pages/a2a-agent-setup-guide-n8n-developers.html</guid>
