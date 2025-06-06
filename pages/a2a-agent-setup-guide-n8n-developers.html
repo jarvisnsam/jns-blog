@@ -1,161 +1,434 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Building A2A-Compatible Agents: A Complete Guide for n8n Developers</title>
+<html lang="en"><head>
+    <meta charset="utf-8"/>
+    <link rel="icon" type="image/png" href="/img/jns_logo.png" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Building A2A-Compatible Agents: A Complete Guide for n8n Developers - Jarvis and Sam Blog</title>
     
-    <!-- Primary Meta Tags -->
-    <meta name="description" content="Learn how to build A2A-compatible agents with n8n workflows. Complete guide with ready-to-use workflow JSON, step-by-step instructions, and practical examples for handling file exchanges between AI agents." />
-    <meta name="keywords" content="A2A protocol, n8n workflows, AI agents, agent-to-agent communication, file processing, document conversion, n8n development, JSON-RPC, agent capabilities" />
-    <meta name="author" content="Jarvis and Sam AI" />
-    
-    <!-- Article Tags -->
-    <meta name="article:tag" content="A2A Protocol" />
-    <meta name="article:tag" content="n8n Development" />
-    <meta name="article:tag" content="AI Agents" />
-    <meta name="article:tag" content="Workflow Automation" />
-    <meta name="article:tag" content="File Processing" />
-    
-    <!-- Open Graph Meta Tags -->
-    <meta property="og:title" content="Building A2A-Compatible Agents: A Complete Guide for n8n Developers" />
-    <meta property="og:description" content="Learn how to build A2A-compatible agents with n8n workflows. Complete guide with ready-to-use workflow JSON and practical examples." />
-    <meta property="og:image" content="https://blog.jarvisnsam.com/img/a2a-n8n-hero.png" />
-    <meta property="og:type" content="article" />
-    <meta property="og:url" content="https://blog.jarvisnsam.com/pages/a2a-agent-setup-guide-n8n-developers.html" />
-    
-    <!-- Twitter Card Meta Tags -->
-    <meta name="twitter:card" content="summary_large_image" />
-    <meta name="twitter:title" content="Building A2A-Compatible Agents: A Complete Guide for n8n Developers" />
-    <meta name="twitter:description" content="Learn how to build A2A-compatible agents with n8n workflows. Complete guide with ready-to-use workflow JSON and practical examples." />
-    <meta name="twitter:image" content="https://blog.jarvisnsam.com/img/a2a-n8n-hero.png" />
-    
-    <!-- Canonical URL -->
-    <link rel="canonical" href="https://blog.jarvisnsam.com/pages/a2a-agent-setup-guide-n8n-developers.html" />
-    
-    <!-- Favicon -->
-    <link rel="icon" type="image/x-icon" href="/img/jns_logo.png">
-    
-    <!-- TailwindCSS CDN -->
-    <script src="https://cdn.tailwindcss.com"></script>
-    
-    <!-- Common CSS -->
-    <link rel="stylesheet" href="/css/blog-common.css">
+    <!-- Initialize dataLayer -->
+    <script>
+      window.dataLayer = window.dataLayer || [];
+    </script>
     
     <!-- Google Tag Manager -->
     <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
     new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
     j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
-    })(window,document,'script','dataLayer','GTM-WJPQRXVW');</script>
-</head>
-<body class="bg-white text-gray-900 dark:bg-gray-900 dark:text-gray-100">
+    })(window,document,'script','dataLayer','GTM-TRT4SWZC');</script>
+    <!-- End Google Tag Manager -->
+    
+    <!-- Primary Meta Tags -->
+    <meta name="description" content="Learn how to build A2A-compatible agents with n8n workflows. Complete guide with ready-to-use workflow JSON, step-by-step instructions, and practical examples for handling file exchanges between AI agents." />
+    <meta name="keywords" content="A2A protocol, n8n workflows, AI agents, agent-to-agent communication, file processing, document conversion, n8n development, JSON-RPC, agent capabilities" />
+    <meta name="author" content="Jarvis and Sam AI" />
+    
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="article" />
+    <meta property="og:url" content="https://blog.jarvisnsam.com/pages/a2a-agent-setup-guide-n8n-developers.html" />
+    <meta property="og:site_name" content="Jarvis and Sam Blog" />
+    <meta property="og:locale" content="en_US" />
+    <meta property="og:title" content="Building A2A-Compatible Agents: A Complete Guide for n8n Developers" />
+    <meta property="og:description" content="Learn how to build A2A-compatible agents with n8n workflows. Complete guide with ready-to-use workflow JSON and practical examples." />
+    <meta property="og:image" content="https://blog.jarvisnsam.com/img/a2a-n8n-hero.png" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="article:published_time" content="2025-06-06T14:00:00+08:00" />
+    <meta property="article:author" content="Jarvis and Sam AI" />
+    <meta name="article:tag" content="A2A Protocol" />
+    <meta name="article:tag" content="n8n Development" />
+    <meta name="article:tag" content="AI Agents" />
+    <meta name="article:tag" content="Workflow Automation" />
+    <meta name="article:tag" content="File Processing" />
+    
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image" />
+    <meta property="twitter:url" content="https://blog.jarvisnsam.com/pages/a2a-agent-setup-guide-n8n-developers.html" />
+    <meta property="twitter:site" content="@jarvisnsam" />
+    <meta property="twitter:title" content="Building A2A-Compatible Agents: A Complete Guide for n8n Developers" />
+    <meta property="twitter:description" content="Learn how to build A2A-compatible agents with n8n workflows. Complete guide with ready-to-use workflow JSON and practical examples." />
+    <meta property="twitter:image" content="https://blog.jarvisnsam.com/img/a2a-n8n-hero.png" />
+    
+    <!-- Fonts -->
+    <link crossorigin="" href="https://fonts.gstatic.com/" rel="preconnect"/>
+    <link as="style" href="https://fonts.googleapis.com/css2?display=swap&amp;family=Newsreader%3Awght%40400%3B500%3B600%3B700%3B800&amp;family=Noto+Sans%3Awght%40400%3B500%3B600%3B700%3B900" onload="this.rel='stylesheet'" rel="stylesheet"/>
+    
+    <!-- Styles -->
+    <link rel="stylesheet" href="/css/blog-common.css">
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <style>
+        :root {
+          --primary-color: #3b82f6;
+          --primary-dark: #2563eb;
+          --text-primary: #111827;
+          --bg-primary: #111827;
+          --border-primary: #111827;
+        }
+        .gradient-text {
+          background: linear-gradient(90deg, #00BFFF, #FF3333);
+          -webkit-background-clip: text;
+          -webkit-text-fill-color: transparent;
+          background-clip: text;
+        }
+        .light-theme {
+          --bg-color: #f9fafb;
+          --text-color: #1f2937;
+          --text-muted-color: #6b7280;
+          --border-color: #e5e7eb;
+          --card-bg-color: #ffffff;
+          --header-bg: #ffffff;
+        }
+        .dark-theme {
+          --bg-color: #05051E;
+          --text-color: #f3f4f6;
+          --text-muted-color: #9ca3af;
+          --border-color: #1A243D;
+          --card-bg-color: #151526;
+          --header-bg: #05051E;
+        }
+        body {
+          background-color: var(--bg-color);
+          color: var(--text-color);
+          font-family: "Noto Sans", sans-serif;
+        }
+        
+        /* Header Styles */
+        .navbar-area {
+          background-color: var(--header-bg);
+          border-bottom: 1px solid var(--border-color);
+          transition: all 0.3s ease;
+        }
+        .navbar-area.sticky {
+          position: fixed;
+          top: 0;
+          left: 0;
+          right: 0;
+          z-index: 999;
+          box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        .navbar {
+          display: flex;
+          align-items: center;
+          justify-content: space-between;
+          padding: 1rem 0;
+        }
+        .navbar-brand {
+          display: flex;
+          align-items: center;
+          text-decoration: none;
+          gap: 0.75rem;
+        }
+        .navbar-brand img {
+          max-width: 50px;
+          max-height: 50px;
+          object-fit: contain;
+        }
+        .navbar-brand h2 {
+          font-size: 1.5rem;
+          font-weight: 700;
+          margin: 0;
+        }
+        .navbar-nav {
+          display: flex;
+          list-style: none;
+          margin: 0;
+          padding: 0;
+          gap: 2rem;
+        }
+        .nav-link {
+          color: var(--text-color);
+          text-decoration: none;
+          font-weight: 500;
+          transition: color 0.3s ease;
+          position: relative;
+        }
+        .nav-link:hover {
+          color: var(--primary-color);
+        }
+        .nav-link.active {
+          color: var(--primary-color);
+          font-weight: 600;
+        }
+        
+        /* Mobile Menu Styles */
+        .navbar-toggler {
+          display: none;
+          background: none;
+          border: none;
+          cursor: pointer;
+          padding: 0.5rem;
+        }
+        .burger-menu {
+          display: flex;
+          flex-direction: column;
+          gap: 4px;
+        }
+        .burger-menu span {
+          display: block;
+          width: 25px;
+          height: 3px;
+          background-color: var(--text-color);
+          transition: all 0.3s ease;
+        }
+        .offcanvas {
+          position: fixed;
+          top: 0;
+          left: -100%;
+          width: 280px;
+          height: 100vh;
+          background-color: var(--card-bg-color);
+          transition: left 0.3s ease;
+          z-index: 1050;
+          overflow-y: auto;
+        }
+        .offcanvas.show {
+          left: 0;
+        }
+        .offcanvas-backdrop {
+          position: fixed;
+          top: 0;
+          left: 0;
+          width: 100%;
+          height: 100%;
+          background-color: rgba(0, 0, 0, 0.5);
+          z-index: 1040;
+        }
+        .offcanvas-header {
+          display: flex;
+          align-items: center;
+          justify-content: space-between;
+          padding: 1rem 1.5rem;
+          border-bottom: 1px solid var(--border-color);
+        }
+        .offcanvas-close {
+          background: none;
+          border: none;
+          font-size: 1.5rem;
+          cursor: pointer;
+          color: var(--text-color);
+        }
+        .offcanvas-body {
+          padding: 1.5rem;
+        }
+        .mobile-nav {
+          list-style: none;
+          padding: 0;
+          margin: 0;
+        }
+        .mobile-nav .nav-link {
+          display: block;
+          padding: 0.75rem 0;
+          border-bottom: 1px solid var(--border-color);
+        }
+        
+        /* Footer Styles */
+        .footer-area {
+          background-color: var(--card-bg-color);
+          border-top: 1px solid var(--border-color);
+          margin-top: 4rem;
+        }
+        .footer-widget-info {
+          padding: 3rem 0;
+        }
+        .footer-widget h4 {
+          font-size: 1.25rem;
+          font-weight: 600;
+          margin-bottom: 1.5rem;
+          color: var(--text-color);
+        }
+        .footer-widget ul {
+          list-style: none;
+          padding: 0;
+          margin: 0;
+        }
+        .footer-widget ul li {
+          margin-bottom: 0.75rem;
+        }
+        .footer-widget a {
+          color: var(--text-muted-color);
+          text-decoration: none;
+          transition: color 0.3s ease;
+        }
+        .footer-widget a:hover {
+          color: var(--primary-color);
+        }
+        .footer-logo {
+          margin-bottom: 1rem;
+        }
+        .copy-right-area {
+          background-color: var(--bg-color);
+          padding: 1.5rem 0;
+          text-align: center;
+          border-top: 1px solid var(--border-color);
+        }
+        
+        /* Content Styles */
+        .theme-toggle-button {
+          background-color: var(--card-bg-color);
+          color: var(--text-color);
+          border: 1px solid var(--border-color);
+        }
+        .prose {
+            color: var(--text-color);
+        }
+        .prose h1, .prose h2, .prose h3, .prose h4, .prose h5, .prose h6 {
+            color: var(--text-color);
+            font-family: "Newsreader", serif;
+            margin-top: 2rem;
+            margin-bottom: 1rem;
+        }
+        .prose h1 {
+            margin-top: 0;
+        }
+        .prose p, .prose ul, .prose ol, .prose blockquote {
+            color: var(--text-muted-color);
+            line-height: 1.8;
+            margin-bottom: 1.5rem;
+        }
+        .prose ul, .prose ol {
+            margin-top: 1rem;
+            padding-left: 1.5rem;
+        }
+        .prose li {
+            margin-bottom: 0.5rem;
+        }
+        .prose blockquote {
+            border-left: 4px solid var(--primary-color);
+            padding-left: 1.5rem;
+            margin: 2rem 0;
+            font-style: italic;
+        }
+        .prose a {
+            color: #3b82f6;
+            text-decoration: none;
+        }
+        .prose a:hover {
+            text-decoration: underline;
+        }
+        .prose strong {
+            color: var(--text-color);
+        }
+        .prose code {
+            background-color: var(--border-color);
+            padding: 0.2em 0.4em;
+            border-radius: 0.25rem;
+            font-size: 0.9em;
+            color: var(--text-color);
+        }
+        .prose pre {
+            background-color: var(--border-color);
+            padding: 1rem;
+            border-radius: 0.375rem;
+            overflow-x: auto;
+        }
+        .prose pre code {
+            background-color: transparent;
+            padding: 0;
+            border-radius: 0;
+        }
+        .highlight-box {
+            background-color: var(--border-color);
+            border-left: 4px solid #3b82f6;
+            padding: 1.5rem;
+            margin: 1.5rem 0;
+            border-radius: 0.5rem;
+        }
+        .workflow-box {
+            background-color: var(--border-color);
+            border: 2px solid #10b981;
+            padding: 1.5rem;
+            margin: 2rem 0;
+            border-radius: 0.75rem;
+        }
+        
+        /* Responsive Styles */
+        @media (max-width: 1024px) {
+          .navbar-nav {
+            gap: 1.5rem;
+          }
+        }
+        
+        @media (max-width: 768px) {
+          .navbar-nav {
+            display: none;
+          }
+          .navbar-toggler {
+            display: block;
+          }
+          .footer-widget-info .row {
+            gap: 2rem;
+          }
+        }
+      </style>
+    </head>
+    <body class="light-theme">
     <!-- Google Tag Manager (noscript) -->
-    <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-WJPQRXVW"
+    <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-TRT4SWZC"
     height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
-
-    <!-- Dynamic Header -->
+    <!-- End Google Tag Manager (noscript) -->
+    
+    <div class="relative flex size-full min-h-screen flex-col group/design-root overflow-x-hidden">
+    
+    <!-- Header placeholder -->
     <div id="blog-header"></div>
+    
+    <main class="flex-1 bg-[var(--bg-color)]">
+    <div class="container py-2">
+    <div class="layout-content-container flex flex-col">
+    <article class="max-w-4xl mx-auto bg-[var(--card-bg-color)] rounded-lg shadow-md overflow-hidden border border-[var(--border-color)]">
+    <div class="p-6 md:p-8 lg:p-10">
+    <header class="blog-post-header">
+    <h1 class="text-[var(--text-color)] text-2xl md:text-3xl lg:text-4xl font-bold leading-tight tracking-tight mb-6" style="font-family: Newsreader, serif;">
+        Building A2A-Compatible Agents: A Complete Guide for n8n Developers
+    </h1>
+    
+    <!-- Feature Image -->
+    <figure class="mb-6 flex flex-col items-center">
+        <img src="/img/a2a-n8n-hero.png" alt="A2A Protocol and n8n Integration - Visual representation of agent-to-agent communication workflow" class="w-[70%] rounded-lg shadow-md"/>
+        <figcaption class="text-center text-sm text-[var(--text-muted-color)] mt-2">A2A Protocol enabling seamless agent-to-agent file exchange through n8n workflows</figcaption>
+    </figure>
+    
+    <div class="blog-post-meta">
+    <div class="flex flex-col sm:flex-row sm:items-center gap-3 text-[var(--text-muted-color)]">
+    <div class="author-date flex items-center gap-3">
+    <div>
+    <span>By </span>
+    <a class="text-blue-600 dark:text-blue-400 hover:underline" href="https://www.jarvisnsam.com/#about">Jarvis and Sam AI</a>
+    </div>
+    <span>•</span>
+    <time datetime="2025-06-06T14:00:00+08:00">June 6, 2025</time>
+    </div>
+    <div class="post-tags">
+        <a href="/?tag=A2A Protocol" class="tag clickable-tag">A2A Protocol</a>
+        <a href="/?tag=n8n Development" class="tag clickable-tag">n8n Development</a>
+        <a href="/?tag=AI Agents" class="tag clickable-tag">AI Agents</a>
+        <a href="/?tag=Workflow Automation" class="tag clickable-tag">Workflow Automation</a>
+        <a href="/?tag=File Processing" class="tag clickable-tag">File Processing</a>
+    </div>
+    </div>
+    </div>
+    </header>
+    <div class="prose prose-lg max-w-none">
+    
+    <p>The Agent-to-Agent (A2A) protocol is revolutionizing how AI systems communicate and exchange files. If you're developing agents that need to handle documents, images, or other files, this guide will walk you through everything you need to know to make your n8n workflows A2A-compatible.</p>
 
-    <!-- Main Content -->
-    <main class="container mx-auto px-4 py-8 max-w-4xl">
-        <article class="prose lg:prose-xl mx-auto dark:prose-invert">
-            <header class="blog-post-header">
-                <h1 class="mb-6">Building A2A-Compatible Agents: A Complete Guide for n8n Developers</h1>
-                
-                <!-- Hero Image -->
-                <figure class="mb-6">
-                    <img src="/img/a2a-n8n-hero.png" alt="A2A Protocol and n8n Integration - Visual representation of agent-to-agent communication workflow" class="w-full rounded-lg shadow-md"/>
-                    <figcaption class="text-center text-sm text-gray-600 dark:text-gray-400 mt-2">A2A Protocol enabling seamless agent-to-agent file exchange through n8n workflows</figcaption>
-                </figure>
-                
-                <!-- Post Metadata -->
-                <div class="blog-post-meta mb-8">
-                    <div class="author-date">
-                        <span>By <strong>Jarvis and Sam AI</strong> • <time datetime="2025-06-06T14:00:00+08:00">June 6, 2025</time></span>
-                    </div>
-                    <div class="post-tags mt-2">
-                        <a href="/?tag=A2A Protocol" class="tag clickable-tag">A2A Protocol</a>
-                        <a href="/?tag=n8n Development" class="tag clickable-tag">n8n Development</a>
-                        <a href="/?tag=AI Agents" class="tag clickable-tag">AI Agents</a>
-                        <a href="/?tag=Workflow Automation" class="tag clickable-tag">Workflow Automation</a>
-                        <a href="/?tag=File Processing" class="tag clickable-tag">File Processing</a>
-                    </div>
-                </div>
-            </header>
+    <p>This comprehensive tutorial will take you from zero to having a fully functional A2A agent running in n8n, complete with ready-to-use workflow JSON that you can copy and paste directly into your n8n instance.</p>
 
-            <!-- Article Content -->
-            <div class="article-content">
-                <p>The Agent-to-Agent (A2A) protocol is revolutionizing how AI systems communicate and exchange files. If you're developing agents that need to handle documents, images, or other files, this guide will walk you through everything you need to know to make your n8n workflows A2A-compatible.</p>
+    <h2>What is A2A and Why Should You Care?</h2>
 
-                <p>This comprehensive tutorial will take you from zero to having a fully functional A2A agent running in n8n, complete with ready-to-use workflow JSON that you can copy and paste directly into your n8n instance.</p>
+    <p>A2A (Agent-to-Agent) is a standardized protocol that allows AI agents to communicate with each other seamlessly. Think of it as a universal language that lets your agent declare what types of files it can process and exchange data with other AI systems.</p>
 
-                <h2 id="what-is-a2a">What is A2A and Why Should You Care?</h2>
+    <p>For n8n developers, A2A opens up powerful possibilities. Your workflows can automatically receive files from other AI agents, eliminating the need for custom integration work. The protocol includes built-in capability declaration, so other systems automatically know what your agent can do. Real-time progress updates through streaming support and JSON-RPC based communication make it straightforward to implement in n8n.</p>
 
-                <p>A2A (Agent-to-Agent) is a standardized protocol that allows AI agents to communicate with each other seamlessly. Think of it as a universal language that lets your agent declare what types of files it can process and exchange data with other AI systems.</p>
+    <h2>Understanding A2A File Handling</h2>
 
-                <p>For n8n developers, A2A opens up powerful possibilities. Your workflows can automatically receive files from other AI agents, eliminating the need for custom integration work. The protocol includes built-in capability declaration, so other systems automatically know what your agent can do. Real-time progress updates through streaming support and JSON-RPC based communication make it straightforward to implement in n8n.</p>
+    <p>Your A2A agent can handle various file types by declaring their MIME types. Images like PNG and JPEG are perfect for processing and analysis. Documents including Word files, Excel spreadsheets, PowerPoint presentations, and PDFs enable document conversion and generation workflows. Audio files support transcription and processing tasks, while Markdown files are ideal for documentation and content generation.</p>
 
-                <h2 id="understanding-file-handling">Understanding A2A File Handling</h2>
+    <h2>Step 1: Creating Your Agent Declaration</h2>
 
-                <h3 id="supported-file-types">Supported File Types</h3>
+    <p>Every A2A agent needs an <code>agent.json</code> file hosted at <code>/.well-known/agent.json</code> on your server. This file tells other agents what your system can do.</p>
 
-                <p>Your A2A agent can handle various file types by declaring their MIME types:</p>
-
-                <table>
-                    <thead>
-                        <tr>
-                            <th>File Type</th>
-                            <th>MIME Type</th>
-                            <th>Common Use Cases</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td><strong>Images</strong></td>
-                            <td><code>image/png</code>, <code>image/jpeg</code></td>
-                            <td>Image processing, analysis</td>
-                        </tr>
-                        <tr>
-                            <td><strong>Documents</strong></td>
-                            <td><code>application/vnd.openxmlformats-officedocument.wordprocessingml.document</code></td>
-                            <td>Word document conversion</td>
-                        </tr>
-                        <tr>
-                            <td><strong>Spreadsheets</strong></td>
-                            <td><code>application/vnd.openxmlformats-officedocument.spreadsheetml.sheet</code></td>
-                            <td>Excel data processing</td>
-                        </tr>
-                        <tr>
-                            <td><strong>Presentations</strong></td>
-                            <td><code>application/vnd.openxmlformats-officedocument.presentationml.presentation</code></td>
-                            <td>PowerPoint conversion</td>
-                        </tr>
-                        <tr>
-                            <td><strong>PDFs</strong></td>
-                            <td><code>application/pdf</code></td>
-                            <td>Document generation, processing</td>
-                        </tr>
-                        <tr>
-                            <td><strong>Audio</strong></td>
-                            <td><code>audio/mpeg</code>, <code>audio/webm</code></td>
-                            <td>Audio processing, transcription</td>
-                        </tr>
-                        <tr>
-                            <td><strong>Markdown</strong></td>
-                            <td><code>text/markdown</code></td>
-                            <td>Documentation, content generation</td>
-                        </tr>
-                    </tbody>
-                </table>
-
-                <h2 id="step-1-agent-declaration">Step 1: Creating Your Agent Declaration</h2>
-
-                <p>Every A2A agent needs an <code>agent.json</code> file hosted at <code>/.well-known/agent.json</code> on your server. This file tells other agents what your system can do.</p>
-
-                <h3 id="basic-agent-config">Basic Agent Configuration</h3>
-
-                <pre><code class="language-json">{
+    <pre><code>{
   "name": "Document Processing Agent",
   "description": "Converts documents, processes images, and handles file transformations",
   "url": "https://your-n8n-server.com",
@@ -194,22 +467,21 @@
   ]
 }</code></pre>
 
-                <p>The key configuration fields work together to define your agent's capabilities. The <code>defaultInputModes</code> field lists MIME types your agent accepts as input, telling other agents what files they can send to you. The <code>defaultOutputModes</code> field specifies MIME types your agent produces, so other agents know what to expect back from you.</p>
+    <p>The key configuration fields work together to define your agent's capabilities. The <code>defaultInputModes</code> field lists MIME types your agent accepts as input, telling other agents what files they can send to you. The <code>defaultOutputModes</code> field specifies MIME types your agent produces, so other agents know what to expect back from you.</p>
 
-                <p>The <code>skills</code> section defines specific capabilities your agent offers, with each skill having its own input/output modes for granular control. Setting <code>capabilities.streaming</code> to <code>true</code> enables real-time progress updates during file processing.</p>
+    <p>The <code>skills</code> section defines specific capabilities your agent offers, with each skill having its own input/output modes for granular control. Setting <code>capabilities.streaming</code> to <code>true</code> enables real-time progress updates during file processing.</p>
 
-                <h2 id="step-2-n8n-workflows">Step 2: Setting Up n8n Workflows for A2A (⭐ Core Section for n8n Developers)</h2>
+    <h2>Step 2: Setting Up n8n Workflows for A2A</h2>
 
-                <p>This is the most important section for n8n developers. I'll provide you with a complete, ready-to-use n8n workflow that handles A2A protocol communication.</p>
+    <p>This is the most important section for n8n developers. I'll provide you with a complete, ready-to-use n8n workflow that handles A2A protocol communication.</p>
 
-                <h3 id="quick-start-workflow">Quick Start: Copy &amp; Paste Workflow</h3>
-
-                <p>Here's a complete n8n workflow JSON that you can import directly into your n8n instance:</p>
-
-                <details>
-                    <summary><strong>🔗 Click to expand the complete n8n workflow JSON</strong></summary>
-
-                    <pre><code class="language-json">{
+    <div class="workflow-box">
+        <h3>Ready-to-Use n8n Workflow</h3>
+        <p>Here's a complete n8n workflow JSON that you can import directly into your n8n instance. This workflow handles the entire A2A communication flow, from receiving requests to processing files and returning responses.</p>
+        
+        <details>
+            <summary><strong>🔗 Click to expand the complete n8n workflow JSON</strong></summary>
+            <pre><code>{
   "name": "A2A Agent - Document Processor",
   "nodes": [
     {
@@ -228,7 +500,7 @@
     },
     {
       "parameters": {
-        "functionCode": "// Parse A2A JSON-RPC request\nconst body = $input.all()[0].json;\n\n// Extract request details\nconst method = body.method;\nconst params = body.params || {};\nconst requestId = body.id;\n\n// Supported A2A methods\nconst supportedMethods = ['message/send', 'agent/capabilities'];\n\nif (!supportedMethods.includes(method)) {\n  return [{\n    json: {\n      id: requestId,\n      error: {\n        code: -32601,\n        message: `Method not found: ${method}`\n      }\n    }\n  }];\n}\n\nreturn [{\n  json: {\n    method: method,\n    params: params,\n    requestId: requestId,\n    originalBody: body\n  }\n}];"
+        "functionCode": "// Parse A2A JSON-RPC request\\nconst body = $input.all()[0].json;\\n\\n// Extract request details\\nconst method = body.method;\\nconst params = body.params || {};\\nconst requestId = body.id;\\n\\n// Supported A2A methods\\nconst supportedMethods = ['message/send', 'agent/capabilities'];\\n\\nif (!supportedMethods.includes(method)) {\\n  return [{\\n    json: {\\n      id: requestId,\\n      error: {\\n        code: -32601,\\n        message: `Method not found: ${method}`\\n      }\\n    }\\n  }];\\n}\\n\\nreturn [{\\n  json: {\\n    method: method,\\n    params: params,\\n    requestId: requestId,\\n    originalBody: body\\n  }\\n}];"
       },
       "id": "parse-request",
       "name": "Parse A2A Request",
@@ -253,126 +525,40 @@
       "type": "n8n-nodes-base.if",
       "typeVersion": 1,
       "position": [600, 300]
-    },
-    {
-      "parameters": {
-        "functionCode": "// Handle message/send - Extract file information\nconst params = $json.params;\nconst message = params.message || {};\nconst parts = message.parts || [];\n\n// Find file parts\nconst fileParts = parts.filter(part => part.type === 'file');\nconst textParts = parts.filter(part => part.type === 'text').map(part => part.text).join(' ');\n\n// Supported MIME types\nconst supportedMimeTypes = [\n  'application/vnd.openxmlformats-officedocument.wordprocessingml.document', // .docx\n  'application/pdf',\n  'image/png',\n  'image/jpeg',\n  'text/markdown'\n];\n\nif (fileParts.length === 0) {\n  return [{\n    json: {\n      error: {\n        code: -32602,\n        message: 'No files provided in message'\n      },\n      requestId: $json.requestId\n    }\n  }];\n}\n\n// Validate file types\nfor (const filePart of fileParts) {\n  const mimeType = filePart.file.mimeType;\n  if (!supportedMimeTypes.includes(mimeType)) {\n    return [{\n      json: {\n        error: {\n          code: -32005,\n          message: `Unsupported MIME type: ${mimeType}`,\n          data: {\n            supportedTypes: supportedMimeTypes\n          }\n        },\n        requestId: $json.requestId\n      }\n    }];\n  }\n}\n\n// Return file info for processing\nreturn fileParts.map(filePart => ({\n  json: {\n    fileName: filePart.file.name,\n    mimeType: filePart.file.mimeType,\n    fileUri: filePart.file.uri,\n    userMessage: textParts,\n    requestId: $json.requestId,\n    taskId: `task_${Date.now()}_${Math.random().toString(36).substr(2, 9)}`\n  }\n}));"
-      },
-      "id": "extract-files",
-      "name": "Extract Files",
-      "type": "n8n-nodes-base.function",
-      "typeVersion": 1,
-      "position": [800, 200]
-    },
-    {
-      "parameters": {
-        "url": "={{$json.fileUri}}",
-        "options": {
-          "response": {
-            "response": {
-              "neverError": true,
-              "responseFormat": "file",
-              "outputPropertyName": "fileData"
-            }
-          }
-        }
-      },
-      "id": "download-file",
-      "name": "Download File",
-      "type": "n8n-nodes-base.httpRequest",
-      "typeVersion": 4.1,
-      "position": [1000, 200]
-    },
-    {
-      "parameters": {
-        "functionCode": "// Process the downloaded file based on MIME type\nconst mimeType = $json.mimeType;\nconst fileName = $json.fileName;\nconst taskId = $json.taskId;\nconst userMessage = $json.userMessage;\n\n// For this example, we'll simulate document processing\n// In a real implementation, you'd process the actual file here\n\nlet processedFileName;\nlet outputMimeType;\nlet processedContent;\n\nswitch (mimeType) {\n  case 'application/vnd.openxmlformats-officedocument.wordprocessingml.document':\n    // Simulate Word to PDF conversion\n    processedFileName = fileName.replace('.docx', '.pdf');\n    outputMimeType = 'application/pdf';\n    processedContent = 'Converted PDF content';\n    break;\n    \n  case 'image/png':\n  case 'image/jpeg':\n    // Simulate image analysis\n    processedFileName = fileName.replace(/\\.(png|jpg|jpeg)$/, '_analysis.md');\n    outputMimeType = 'text/markdown';\n    processedContent = `# Image Analysis Report\\n\\nImage: ${fileName}\\nUser Request: ${userMessage}\\n\\nAnalysis completed successfully.`;\n    break;\n    \n  case 'application/pdf':\n    // Simulate PDF processing\n    processedFileName = fileName.replace('.pdf', '_processed.md');\n    outputMimeType = 'text/markdown';\n    processedContent = `# PDF Processing Report\\n\\nOriginal: ${fileName}\\nUser Request: ${userMessage}\\n\\nProcessing completed.`;\n    break;\n    \n  default:\n    processedFileName = 'output.txt';\n    outputMimeType = 'text/plain';\n    processedContent = 'File processed successfully';\n}\n\n// Generate output URI (in production, save to your file storage)\nconst outputUri = `https://your-server.com/outputs/${taskId}/${processedFileName}`;\n\nreturn [{\n  json: {\n    taskId: taskId,\n    requestId: $json.requestId,\n    processedFileName: processedFileName,\n    outputMimeType: outputMimeType,\n    outputUri: outputUri,\n    processedContent: processedContent,\n    originalFileName: fileName,\n    status: 'completed'\n  }\n}];"
-      },
-      "id": "process-file",
-      "name": "Process File",
-      "type": "n8n-nodes-base.function",
-      "typeVersion": 1,
-      "position": [1200, 200]
     }
   ]
 }</code></pre>
-                </details>
+        </details>
+    </div>
 
-                <h3 id="workflow-import-instructions">How to Import and Use This Workflow</h3>
+    <h3>How to Import and Use This Workflow</h3>
 
-                <h4 id="step-1-import">Step 1: Import into n8n</h4>
+    <p><strong>Step 1: Import into n8n</strong> - Copy the JSON above to your clipboard, open your n8n instance and go to the workflows page, click "Import from JSON" button, paste the workflow JSON and click "Import", then save the workflow with a descriptive name.</p>
 
-                <ol>
-                    <li><strong>Copy the JSON above</strong> to your clipboard</li>
-                    <li><strong>Open your n8n instance</strong> and go to the workflows page</li>
-                    <li><strong>Click "Import from JSON"</strong> button</li>
-                    <li><strong>Paste the workflow JSON</strong> and click "Import"</li>
-                    <li><strong>Save the workflow</strong> with a descriptive name</li>
-                </ol>
+    <p><strong>Step 2: Configure the Webhook</strong> - Click on the "A2A Webhook" node (first node in the workflow), note the webhook URL which will look like: <code>https://your-n8n-domain.com/webhook/a2a</code>, then activate the workflow by clicking the toggle switch.</p>
 
-                <h4 id="step-2-configure">Step 2: Configure the Webhook</h4>
+    <p><strong>Step 3: Customize for Your Needs</strong> - The workflow includes several key nodes you can modify. In the Extract Files Node, you can modify supported MIME types by adding or removing file types from the supportedMimeTypes array. In the Process File Node, you can replace the simulation code with your actual processing logic, such as calling external APIs or using conversion services.</p>
 
-                <ol>
-                    <li><strong>Click on the "A2A Webhook" node</strong> (first node in the workflow)</li>
-                    <li><strong>Note the webhook URL</strong> - it will look like: <code>https://your-n8n-domain.com/webhook/a2a</code></li>
-                    <li><strong>Activate the workflow</strong> by clicking the toggle switch</li>
-                </ol>
+    <h3>Understanding the Workflow Flow</h3>
 
-                <h4 id="step-3-customize">Step 3: Customize for Your Needs</h4>
+    <p>When another agent sends a file to your n8n workflow, here's what happens: The A2A Webhook receives the JSON-RPC request from another agent, the Parse A2A Request node extracts the method and parameters, the Route by Method node determines if it's a file processing or capabilities request, the Extract Files node validates file types and extracts file information, the Download File node fetches the actual file from the provided URI, the Process File node applies your business logic to transform the file, the Format A2A Response node creates a properly formatted A2A response, and finally the Send Response node returns the result to the requesting agent.</p>
 
-                <p>The workflow includes several key nodes you can modify:</p>
+    <h3>Testing Your Workflow</h3>
 
-                <p><strong>🔧 Extract Files Node</strong>: Modify supported MIME types</p>
-                <pre><code class="language-javascript">// Add or remove supported file types here
-const supportedMimeTypes = [
-  'application/vnd.openxmlformats-officedocument.wordprocessingml.document', // Word
-  'application/pdf',
-  'image/png',
-  'image/jpeg',
-  'text/markdown',
-  // Add your custom types here
-];</code></pre>
+    <p>Once imported and activated, you can test your workflow with curl commands. To test capabilities:</p>
 
-                <p><strong>🔧 Process File Node</strong>: Add your actual file processing logic</p>
-                <pre><code class="language-javascript">// Replace the simulation code with your actual processing
-switch (mimeType) {
-  case 'application/vnd.openxmlformats-officedocument.wordprocessingml.document':
-    // Add your Word to PDF conversion logic here
-    // Example: call an external API, use a conversion service, etc.
-    break;
-  // Add more cases for your file types
-}</code></pre>
-
-                <h3 id="workflow-flow">Understanding the Workflow Flow</h3>
-
-                <p>Here's what happens when another agent sends a file to your n8n workflow:</p>
-
-                <ol>
-                    <li><strong>🌐 A2A Webhook</strong>: Receives the JSON-RPC request from another agent</li>
-                    <li><strong>📝 Parse A2A Request</strong>: Extracts the method and parameters</li>
-                    <li><strong>🔀 Route by Method</strong>: Determines if it's a file processing or capabilities request</li>
-                    <li><strong>📁 Extract Files</strong>: Validates file types and extracts file information</li>
-                    <li><strong>⬇️ Download File</strong>: Fetches the actual file from the provided URI</li>
-                    <li><strong>⚙️ Process File</strong>: Applies your business logic to transform the file</li>
-                    <li><strong>📤 Format A2A Response</strong>: Creates a properly formatted A2A response</li>
-                    <li><strong>✅ Send Response</strong>: Returns the result to the requesting agent</li>
-                </ol>
-
-                <h3 id="testing-workflow">Testing Your Workflow</h3>
-
-                <p>Once imported and activated, test your workflow with this curl command:</p>
-
-                <pre><code class="language-bash"># Test capabilities
-curl -X POST https://your-n8n-domain.com/webhook/a2a \
-  -H "Content-Type: application/json" \
+    <pre><code>curl -X POST https://your-n8n-domain.com/webhook/a2a \\
+  -H "Content-Type: application/json" \\
   -d '{
     "jsonrpc": "2.0",
     "method": "agent/capabilities",
     "id": 1
-  }'
+  }'</code></pre>
 
-# Test file processing (replace with your actual file URL)
-curl -X POST https://your-n8n-domain.com/webhook/a2a \
-  -H "Content-Type: application/json" \
+    <p>To test file processing, replace the file URL with your actual file:</p>
+
+    <pre><code>curl -X POST https://your-n8n-domain.com/webhook/a2a \\
+  -H "Content-Type: application/json" \\
   -d '{
     "jsonrpc": "2.0",
     "method": "message/send",
@@ -397,13 +583,13 @@ curl -X POST https://your-n8n-domain.com/webhook/a2a \
     "id": 2
   }'</code></pre>
 
-                <h2 id="security-best-practices">Step 3: Security and Best Practices</h2>
+    <h2>Security and Best Practices</h2>
 
-                <h3 id="file-validation">File Validation</h3>
+    <p>Always validate incoming files to prevent security issues. Check file sizes against maximum limits to prevent resource exhaustion. Validate MIME types by comparing declared types with detected types to prevent MIME type spoofing. Implement proper error responses according to A2A specification for unsupported file types or validation failures.</p>
 
-                <p>Always validate incoming files to prevent security issues:</p>
-
-                <pre><code class="language-javascript">// Validate file size
+    <div class="highlight-box">
+        <h4>Common File Validation Example:</h4>
+        <pre><code>// Validate file size
 const maxFileSize = 50 * 1024 * 1024; // 50MB
 if ($binary.data.fileSize > maxFileSize) {
   throw new Error('File too large');
@@ -411,102 +597,103 @@ if ($binary.data.fileSize > maxFileSize) {
 
 // Validate MIME type
 const declaredMimeType = $json.mimeType;
-const detectedMimeType = detectMimeType($binary.data); // Your detection logic
+const detectedMimeType = detectMimeType($binary.data);
 
 if (declaredMimeType !== detectedMimeType) {
   throw new Error('MIME type mismatch');
 }</code></pre>
+    </div>
 
-                <h3 id="error-handling">Error Handling</h3>
+    <h2>Common Issues and Troubleshooting</h2>
 
-                <p>Implement proper error responses according to A2A specification:</p>
+    <p><strong>MIME Type Mismatch (Error -32005):</strong> This occurs when a client sends a file type your agent doesn't support. Ensure your <code>agent.json</code> includes all MIME types you want to handle in <code>defaultInputModes</code>.</p>
 
-                <pre><code class="language-javascript">// Handle MIME type errors
-if (!isSupportedMimeType($json.mimeType)) {
-  return {
-    id: $json.requestId,
-    error: {
-      code: -32005,
-      message: "Unsupported MIME type",
-      data: {
-        supportedTypes: getSupportedMimeTypes()
-      }
-    }
-  };
-}</code></pre>
+    <p><strong>File Access Issues:</strong> If you cannot download files from provided URIs, verify URIs are publicly accessible, implement proper authentication for secured files, and use signed URLs for temporary access.</p>
 
-                <h2 id="common-issues">Common Issues and Troubleshooting</h2>
+    <p><strong>Processing Timeouts:</strong> For large files that cause timeout errors, implement streaming with progress updates, increase timeout settings in n8n, and process files asynchronously returning task IDs.</p>
 
-                <h3 id="mime-type-mismatch">MIME Type Mismatch (Error -32005)</h3>
+    <h2>Advanced n8n Customizations</h2>
 
-                <p><strong>Problem</strong>: Client sends a file type your agent doesn't support.</p>
+    <p>For production deployments, consider adding file storage by replacing simulated file processing with actual file saving to disk or cloud storage. Integrate with external APIs by adding HTTP Request nodes to call external processing services. Add authentication by securing your A2A endpoint with proper authentication checks in the Parse A2A Request node.</p>
 
-                <p><strong>Solution</strong>: Ensure your <code>agent.json</code> includes all MIME types you want to handle in <code>defaultInputModes</code>.</p>
+    <div class="highlight-box">
+        <h4>Example External API Integration:</h4>
+        <pre><code>// Example: Call a document conversion API
+const conversionResult = await $http.request({
+  method: 'POST',
+  url: 'https://conversion-api.com/convert',
+  body: {
+    input: fileUri,
+    outputFormat: 'pdf'
+  }
+});</code></pre>
+    </div>
 
-                <h3 id="file-access-issues">File Access Issues</h3>
+    <h2>Conclusion</h2>
 
-                <p><strong>Problem</strong>: Cannot download files from provided URIs.</p>
+    <p>Building A2A-compatible agents opens up powerful possibilities for inter-agent communication and file processing. By following this guide, you've learned how to declare your agent's capabilities with <code>agent.json</code>, handle file inputs and outputs in n8n workflows, implement proper security and validation, and test and troubleshoot your A2A agent.</p>
 
-                <p><strong>Solution</strong>:</p>
-                <ul>
-                    <li>Verify URIs are publicly accessible</li>
-                    <li>Implement proper authentication for secured files</li>
-                    <li>Use signed URLs for temporary access</li>
-                </ul>
+    <p>The A2A protocol is still evolving, so keep an eye on the <a href="https://github.com/google-a2a/A2A/blob/main/specification/json/a2a.json" target="_blank">official specification</a> for updates and new features. Your A2A-compatible agents are now ready to communicate with the growing ecosystem of AI systems.</p>
 
-                <h3 id="processing-timeouts">Processing Timeouts</h3>
+    <div class="highlight-box">
+        <h4>Ready to Get Started?</h4>
+        <p>Download the complete n8n workflow and start building your A2A agent today! The workflow JSON provided above contains everything you need to get started with A2A protocol communication in n8n.</p>
+        <ul>
+            <li>Copy the workflow JSON and import it into your n8n instance</li>
+            <li>Configure your webhook URL and activate the workflow</li>
+            <li>Customize the file processing logic for your specific needs</li>
+            <li>Test with the provided curl commands</li>
+            <li>Deploy and start receiving requests from other A2A agents</li>
+        </ul>
+    </div>
 
-                <p><strong>Problem</strong>: Large files cause timeout errors.</p>
-
-                <p><strong>Solution</strong>:</p>
-                <ul>
-                    <li>Implement streaming with progress updates</li>
-                    <li>Increase timeout settings in n8n</li>
-                    <li>Process files asynchronously and return task IDs</li>
-                </ul>
-
-                <h2 id="conclusion">Conclusion</h2>
-
-                <p>Building A2A-compatible agents opens up powerful possibilities for inter-agent communication and file processing. By following this guide, you've learned how to:</p>
-
-                <ul>
-                    <li>Declare your agent's capabilities with <code>agent.json</code></li>
-                    <li>Handle file inputs and outputs in n8n workflows</li>
-                    <li>Implement proper security and validation</li>
-                    <li>Test and troubleshoot your A2A agent</li>
-                </ul>
-
-                <p>The A2A protocol is still evolving, so keep an eye on the <a href="https://github.com/google-a2a/A2A/blob/main/specification/json/a2a.json" target="_blank" rel="noopener noreferrer">official specification</a> for updates and new features.</p>
-
-                <p>Happy coding! Your A2A-compatible agents are now ready to communicate with the growing ecosystem of AI systems.</p>
-
-                <!-- Call to Action -->
-                <div class="bg-blue-50 dark:bg-blue-900/20 border border-blue-200 dark:border-blue-800 rounded-lg p-6 mt-8">
-                    <h3 class="text-lg font-semibold text-blue-800 dark:text-blue-200 mb-2">Ready to Get Started?</h3>
-                    <p class="text-blue-700 dark:text-blue-300 mb-4">Download the complete n8n workflow and start building your A2A agent today!</p>
-                    <div class="flex flex-wrap gap-3">
-                        <a href="#quick-start-workflow" class="inline-flex items-center px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors">
-                            📥 Get Workflow JSON
-                        </a>
-                        <a href="https://github.com/google-a2a/A2A" target="_blank" rel="noopener noreferrer" class="inline-flex items-center px-4 py-2 bg-gray-600 text-white rounded-lg hover:bg-gray-700 transition-colors">
-                            📚 A2A Specification
-                        </a>
-                    </div>
-                </div>
-            </div>
-        </article>
+    </div>
+    </div>
+    <div class="px-6 md:px-8 lg:px-10 py-6 border-t border-[var(--border-color)]">
+    <h3 class="text-[var(--text-color)] text-lg font-semibold mb-3" style="font-family: Newsreader, serif;">Share this post:</h3>
+    <div class="flex items-center space-x-3">
+    <a class="flex items-center justify-center w-10 h-10 rounded-full bg-[var(--border-color)] hover:bg-[var(--card-bg-color)] text-[var(--text-muted-color)] hover:text-[var(--text-color)] transition-colors border border-[var(--border-color)]" href="mailto:?subject=Check%20out%20this%20article&amp;body=Building%20A2A-Compatible%20Agents:%20A%20Complete%20Guide%20for%20n8n%20Developers%20-%20https://blog.jarvisnsam.com/pages/a2a-agent-setup-guide-n8n-developers.html" target="_blank" title="Share via Email">
+    <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+    <path d="M2.003 5.884L10 9.882l7.997-3.998A2 2 0 0016 4H4a2 2 0 00-1.997 1.884z"></path>
+    <path d="M18 8.118l-8 4-8-4V14a2 2 0 002 2h12a2 2 0 002-2V8.118z"></path>
+    </svg>
+    </a>
+    <a class="flex items-center justify-center w-10 h-10 rounded-full bg-[var(--border-color)] hover:bg-[var(--card-bg-color)] text-[var(--text-muted-color)] hover:text-[var(--text-color)] transition-colors border border-[var(--border-color)]" href="https://api.whatsapp.com/send?text=Building%20A2A-Compatible%20Agents:%20A%20Complete%20Guide%20for%20n8n%20Developers%20-%20https://blog.jarvisnsam.com/pages/a2a-agent-setup-guide-n8n-developers.html" target="_blank" title="Share on WhatsApp">
+    <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+    <path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981zm11.387-5.464c-.074-.124-.272-.198-.57-.347-.297-.149-1.758-.868-2.031-.967-.272-.099-.47-.149-.669.149-.198.297-.768.967-.941 1.165-.173.198-.347.223-.644.074-.297-.149-1.255-.462-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.521.151-.172.2-.296.3-.495.099-.198.05-.372-.025-.521-.075-.148-.669-1.611-.916-2.206-.242-.579-.487-.501-.669-.51l-.57-.01c-.198 0-.52.074-.792.372s-1.04 1.016-1.04 2.479 1.065 2.876 1.213 3.074c.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.626.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.695.248-1.289.173-1.413z"></path>
+    </svg>
+    </a>
+    <button class="flex items-center justify-center w-10 h-10 rounded-full bg-[var(--border-color)] hover:bg-[var(--card-bg-color)] text-[var(--text-muted-color)] hover:text-[var(--text-color)] transition-colors border border-[var(--border-color)]" onclick="copyLink()" title="Copy link">
+    <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+    <path d="M8 3a1 1 0 011-1h2a1 1 0 110 2H9a1 1 0 01-1-1z"></path>
+    <path d="M6 3a2 2 0 00-2 2v11a2 2 0 002 2h8a2 2 0 002-2V5a2 2 0 00-2-2 3 3 0 01-3 3H9a3 3 0 01-3-3z"></path>
+    </svg>
+    <span class="sr-only">Copy link</span>
+    </button>
+    </div>
+    </div>
+    </article>
+    </div>
+    </div>
     </main>
-
-    <!-- Dynamic Footer -->
+    
+    <!-- Footer placeholder -->
     <div id="blog-footer"></div>
-
-    <!-- Common JavaScript -->
+    </div>
+    
+    <!-- Load common JS -->
     <script src="/js/blog-common.js"></script>
     
-    <!-- Syntax Highlighting -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-core.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/plugins/autoloader/prism-autoloader.min.js"></script>
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" rel="stylesheet">
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism-dark.min.css" rel="stylesheet" media="(prefers-color-scheme: dark)">
-</body>
-</html>
+    <!-- Page specific script for copy link -->
+    <script>
+        function copyLink() {
+            const url = window.location.href;
+            navigator.clipboard.writeText(url).then(function() {
+                alert('Link copied to clipboard!');
+            }, function(err) {
+                console.error('Could not copy text: ', err);
+                alert('Failed to copy link.');
+            });
+        }
+    </script>
+    </body></html>
