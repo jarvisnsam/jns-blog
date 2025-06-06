@@ -95,6 +95,43 @@ Add these meta tags in the `<head>` section:
        <figcaption class="text-center text-sm text-[var(--text-muted-color)] mt-2">Image caption</figcaption>
    </figure>
    ```
+4. Here is a prompt template for generate a consistent image style for the hero image for each blog
+
+```
+Create a futuristic, cyber-tech style blog hero image visualizing the concept of a "Parallel Internet" powered by agentic networks beyond the traditional browser.
+
+1. **Visual Theme:**
+   - Two or more abstract humanoid AI agents communicating across a split or mirrored digital plane
+   - One side showing traditional internet (browser tabs, web icons, URLs)
+   - The other side representing a futuristic agentic layer (JSON nodes, API chains, AI flows)
+   - Visualize data passing across this divide in the form of glowing packets, binary, or file icons
+   - Include elements like smart contracts, knowledge graphs, or AI node clusters
+
+2. **Color Palette:**
+   - Dark navy or black background
+   - Neon blue (#00D4FF) and electric purple (#8B5CF6) as primary glows
+   - Optional subtle accent in turquoise or cyber green for depth
+   - Gradient glow effects with modern neon shine
+
+3. **Styling:**
+   - Clean vector design with glowing lines
+   - Circuit board textures, node connectors, hexagonal grids
+   - Translucent UI layers suggesting holograms
+   - Matrix-like data streams and angular pipelines
+
+4. **Mood & Purpose:**
+   - Highly technical and visionary
+   - Illustrates the emergence of a new layer of the web controlled by autonomous agents
+   - Ideal for a blog post about post-browser architecture and A2A networks
+
+5. **Aspect Ratio & Size:**
+   - 16:9 ratio, 1920x1080 resolution
+
+6. **Composition Notes:**
+   - Left side: traditional web user interface (faded browser window, cloud symbols)
+   - Right side: futuristic mesh of agent nodes with API pathways and smart logic
+   - Center: visual split or bridge showing data being transmitted between layers (binary stream, glowing line, orb flow)
+  ```
 
 ### Step 4: Follow the Blog Structure
 Ensure your blog post follows this structure:
