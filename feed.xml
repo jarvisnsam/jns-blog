@@ -5,8 +5,30 @@
     <description>AI Solutions &amp; Business Transformation Insights</description>
     <link>https://blog.jarvisnsam.com</link>
     <language>en-us</language>
-    <lastBuildDate>Fri, 06 Jun 2025 04:25:06 GMT</lastBuildDate>
+    <lastBuildDate>Fri, 06 Jun 2025 05:42:32 GMT</lastBuildDate>
     <atom:link href="https://blog.jarvisnsam.com/feed.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Building A2A-Compatible Agents: A Complete Guide for n8n Developers</title>
+      <description>The Agent-to-Agent (A2A) protocol is revolutionizing how AI systems communicate and exchange files. If you&apos;re developing agents that need to handle documents, images, or other files, this guide will walk you through everything you need to know to make your n8n workflows A2A-compatible.</description>
+      <link>https://blog.jarvisnsam.com/pages/a2a-agent-setup-guide-n8n-developers.html</link>
+      <guid isPermaLink="true">https://blog.jarvisnsam.com/pages/a2a-agent-setup-guide-n8n-developers.html</guid>
+      <pubDate>Fri, 06 Jun 2025 06:00:00 GMT</pubDate>
+      <author>blog@jarvisnsam.com (Jarvis and Sam)</author>
+      <category>A2A protocol</category>
+      <category>n8n workflows</category>
+      <category>AI agents</category>
+      <category>agent-to-agent communication</category>
+      <category>file processing</category>
+      <category>document conversion</category>
+      <category>n8n development</category>
+      <category>JSON-RPC</category>
+      <category>agent capabilities</category>
+      <category>A2A Protocol</category>
+      <category>n8n Development</category>
+      <category>AI Agents</category>
+      <category>Workflow Automation</category>
+      <category>File Processing</category>
+    </item>
     <item>
       <title>From an Idea to an AI Product in 6 Hours - Jarvis and Sam Blog</title>
       <description>The game-changing methodology that&apos;s making competitors irrelevant by turning morning brainstorms into afternoon revenue</description>
