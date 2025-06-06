@@ -98,40 +98,43 @@ Add these meta tags in the `<head>` section:
 4. Here is a prompt template for generate a consistent image style for the hero image for each blog
 
 ```
-Create a futuristic, cyber-tech style blog hero image visualizing the concept of a "Parallel Internet" powered by agentic networks beyond the traditional browser.
+
+Create a futuristic, cyber-tech style blog hero image with the following characteristics:
 
 1. **Visual Theme:**
-   - Two or more abstract humanoid AI agents communicating across a split or mirrored digital plane
-   - One side showing traditional internet (browser tabs, web icons, URLs)
-   - The other side representing a futuristic agentic layer (JSON nodes, API chains, AI flows)
-   - Visualize data passing across this divide in the form of glowing packets, binary, or file icons
-   - Include elements like smart contracts, knowledge graphs, or AI node clusters
+   - Neon glow outline of abstract human or AI agents
+   - Circuit-board or dataflow background
+   - Holographic UI elements like data nodes, API icons, charts, or document flows
+   - Clear visualization of information transfer, agentic processing, or automation
 
 2. **Color Palette:**
    - Dark navy or black background
-   - Neon blue (#00D4FF) and electric purple (#8B5CF6) as primary glows
-   - Optional subtle accent in turquoise or cyber green for depth
-   - Gradient glow effects with modern neon shine
+   - Neon blue (#00D4FF), electric purple (#8B5CF6) as primary accents
+   - Subtle gradients, glows, and depth
 
 3. **Styling:**
-   - Clean vector design with glowing lines
-   - Circuit board textures, node connectors, hexagonal grids
-   - Translucent UI layers suggesting holograms
-   - Matrix-like data streams and angular pipelines
+   - Clean vector-style art with glowing effects
+   - Circuit lines, binary code, hex grids
+   - Holographic overlays and data packet visuals
+   - Slight 3D or lighting depth for modern finish
 
 4. **Mood & Purpose:**
-   - Highly technical and visionary
-   - Illustrates the emergence of a new layer of the web controlled by autonomous agents
-   - Ideal for a blog post about post-browser architecture and A2A networks
+   - Enterprise-grade and technical
+   - Represents automation, AI workflow, and data transformation
+   - Designed for blog content focused on intelligent systems or architecture
 
 5. **Aspect Ratio & Size:**
-   - 16:9 ratio, 1920x1080 resolution
+   - **Landscape orientation**
+   - **1920x1080 resolution**
+   - Designed to fit modern blog banners and social previews
 
 6. **Composition Notes:**
-   - Left side: traditional web user interface (faded browser window, cloud symbols)
-   - Right side: futuristic mesh of agent nodes with API pathways and smart logic
-   - Center: visual split or bridge showing data being transmitted between layers (binary stream, glowing line, orb flow)
-  ```
+   - Left: a business entity (symbolic human figure, briefcase icon, chart)
+   - Middle: AI agents or workflow nodes actively transforming data
+   - Right: finished digital output (website, product, delivery, or dashboard)
+   - Optional: Add a clock or text showing “6 hours” to indicate speed
+   
+```
 
 ### Step 4: Follow the Blog Structure
 Ensure your blog post follows this structure:
