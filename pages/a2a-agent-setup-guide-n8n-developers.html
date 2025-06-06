@@ -86,65 +86,15 @@
 
             <!-- Article Content -->
             <div class="article-content">
-                <p class="lead">The Agent-to-Agent (A2A) protocol is revolutionizing how AI systems communicate and exchange files. If you're developing agents that need to handle documents, images, or other files, this guide will walk you through everything you need to know to make your n8n workflows A2A-compatible.</p>
+                <p>The Agent-to-Agent (A2A) protocol is revolutionizing how AI systems communicate and exchange files. If you're developing agents that need to handle documents, images, or other files, this guide will walk you through everything you need to know to make your n8n workflows A2A-compatible.</p>
 
-                <h2 id="what-youll-learn">What You'll Learn in This Guide</h2>
-
-                <p>This comprehensive tutorial will take you from zero to having a fully functional A2A agent running in n8n. Here's exactly what we'll cover:</p>
-
-                <h3 id="core-concepts">🎯 <strong>Core Concepts</strong> (5 minutes read)</h3>
-                <ul>
-                    <li>What A2A protocol is and why it matters for your projects</li>
-                    <li>Understanding file types and MIME types your agent can handle</li>
-                    <li>How A2A agents communicate with each other</li>
-                </ul>
-
-                <h3 id="agent-declaration">📋 <strong>Agent Declaration Setup</strong> (10 minutes)</h3>
-                <ul>
-                    <li>Creating your <code>agent.json</code> file to declare capabilities</li>
-                    <li>Configuring supported input and output file formats</li>
-                    <li>Setting up security and authentication options</li>
-                </ul>
-
-                <h3 id="n8n-implementation">🔧 <strong>n8n Implementation</strong> (30 minutes - <strong>Most Important Section</strong>)</h3>
-                <ul>
-                    <li><strong>Complete n8n workflow JSON</strong> you can copy and paste directly</li>
-                    <li>Step-by-step setup instructions for your n8n instance</li>
-                    <li>How to handle file uploads, processing, and responses</li>
-                    <li>Real-world examples with document conversion workflows</li>
-                </ul>
-
-                <h3 id="security-practices">🔒 <strong>Security &amp; Best Practices</strong> (10 minutes)</h3>
-                <ul>
-                    <li>File validation and security measures</li>
-                    <li>Error handling and troubleshooting common issues</li>
-                    <li>Performance optimization for large files</li>
-                </ul>
-
-                <h3 id="testing-deployment">🧪 <strong>Testing &amp; Deployment</strong> (15 minutes)</h3>
-                <ul>
-                    <li>Testing your A2A agent with CLI tools and manual requests</li>
-                    <li>Deployment checklist and monitoring</li>
-                    <li>Advanced features like streaming and batch processing</li>
-                </ul>
-
-                <p><strong>Time Investment</strong>: About 1 hour to read and implement<br>
-                <strong>Result</strong>: A production-ready A2A agent that can exchange files with other AI systems</p>
-
-                <hr>
+                <p>This comprehensive tutorial will take you from zero to having a fully functional A2A agent running in n8n, complete with ready-to-use workflow JSON that you can copy and paste directly into your n8n instance.</p>
 
                 <h2 id="what-is-a2a">What is A2A and Why Should You Care?</h2>
 
                 <p>A2A (Agent-to-Agent) is a standardized protocol that allows AI agents to communicate with each other seamlessly. Think of it as a universal language that lets your agent declare what types of files it can process and exchange data with other AI systems.</p>
 
-                <p><strong>Key benefits for n8n developers:</strong></p>
-                <ul>
-                    <li>Your n8n workflows can automatically receive files from other AI agents</li>
-                    <li>Standardized file exchange eliminates custom integration work</li>
-                    <li>Built-in capability declaration tells other systems what your agent can do</li>
-                    <li>Real-time progress updates through streaming support</li>
-                    <li>JSON-RPC based communication that's easy to implement in n8n</li>
-                </ul>
+                <p>For n8n developers, A2A opens up powerful possibilities. Your workflows can automatically receive files from other AI agents, eliminating the need for custom integration work. The protocol includes built-in capability declaration, so other systems automatically know what your agent can do. Real-time progress updates through streaming support and JSON-RPC based communication make it straightforward to implement in n8n.</p>
 
                 <h2 id="understanding-file-handling">Understanding A2A File Handling</h2>
 
@@ -244,15 +194,9 @@
   ]
 }</code></pre>
 
-                <h3 id="key-config-fields">Key Configuration Fields</h3>
+                <p>The key configuration fields work together to define your agent's capabilities. The <code>defaultInputModes</code> field lists MIME types your agent accepts as input, telling other agents what files they can send to you. The <code>defaultOutputModes</code> field specifies MIME types your agent produces, so other agents know what to expect back from you.</p>
 
-                <p><strong><code>defaultInputModes</code></strong>: MIME types your agent accepts as input. This tells other agents what files they can send to you.</p>
-
-                <p><strong><code>defaultOutputModes</code></strong>: MIME types your agent produces. This tells other agents what to expect back from you.</p>
-
-                <p><strong><code>skills</code></strong>: Specific capabilities your agent offers. Each skill can have its own input/output modes, allowing for more granular control.</p>
-
-                <p><strong><code>capabilities.streaming</code></strong>: Set to <code>true</code> if your agent supports real-time progress updates during file processing.</p>
+                <p>The <code>skills</code> section defines specific capabilities your agent offers, with each skill having its own input/output modes for granular control. Setting <code>capabilities.streaming</code> to <code>true</code> enables real-time progress updates during file processing.</p>
 
                 <h2 id="step-2-n8n-workflows">Step 2: Setting Up n8n Workflows for A2A (⭐ Core Section for n8n Developers)</h2>
 
